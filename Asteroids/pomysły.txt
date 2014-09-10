@@ -1,0 +1,208 @@
+﻿Resources.json
+	Zawiera informacje dla loadera o teksturach, plikach dźwiękowych i danych potrzebnych do działania gry
+Game.json
+	Zawiera definicję obiektów i plansz gry
+Level1.json
+	Zawiera projekt planszy 1 w grze
+
+Rodzaje obiektów dostępnych w grze:
+-> Asteroidy
+-> Statki (gracz/wróg/przyjaciel/"cywil")
+-> Kryształy
+-> Wystrzały laserowe
+-> Rakiety (nośnik)
+-> Głowice rakiet
+--------- Obiekty dodatkowe
+-> Miny
+-> Pola sił
+
+Interesujące pomysły:
+-> Statki niezniszczalne, które potrzebują jednak ciągłych dostaw konkretnego rodzaju kryształu.
+	Zadanie: uniemożliwić zbiórkę.
+-> Statki "kamikaze": posiadają ograniczoną ilość amunicji laserowej. Po jej wyczerpaniu: namierzają przeciwnika
+	i eliminują go poprzez samobójcze zderzenie
+-> Statki wsparcie (plansze z bossem) - nadlatują "znikąd", na planszy jest ich stała ilość nawet przy ich
+	regularnym niszczeniu.
+-> Złodziej. Jego głównym celem jest niszczenie asteroid i zbieranie surowców dostępnych na planszy.
+	Może wykazywać różne interakcje z graczem:
+		-> Unikanie
+		-> Unikanie po zaatakowaniu
+		-> Kontratak
+		-> Atak niesprowokowany, gdy tylko znajdziemy się w pobliżu.
+ -> Tank. Powolny, ale dobrze opancerzony i uzbrojony. Często pojawia się jako boss.
+
+ Rakiety:
+	Nośniki
+	-> Standardowy. Po pewnym czasie ulega samodestrukcji.
+	-> Samo-naprowadzający (podąża w kierunku celu, na który był pierwotnie nakierowany)
+	-> Samo-naprowadzający ulepszony (po nakierowaniu na cel: nagle przyspiesza)
+	-> "Rozpryskowy". Rozpada się na 3 mniejsze części: każda zadaje 35% obrażeń
+	Głowice
+	-> Standardowa. Zadaje jednorazowo obrażenia
+	-> Odłamkowa. Po wybuchu wyzwala kilka odłamków, które lecą w losowych kierunkach i zadają obrażenia (15%)
+	-> Ładunek porażający: uszkadza silnik i czasowo uniemożliwia manewrowanie
+	-> Ładunek porażający: uniemożliwia lokalizowanie celów poza polem widzenia na jakiś czas
+		Graczowi wyłącza mapkę
+	-> Ładunek oślepiający:
+		CPU - brak manewrów, brak lokalizowania celów
+		Gracz - zamazany obraz
+	-> Ładunek grawitacyjny:
+		W małym zasięgu działa na pobliskie obiekty
+
+Projekt ulepszeń:
+
+OFENSYWNE
+Początkowy atak z amunicji laserowej:  5  - 10
+Początkowy atak z amunicji rakietowej: 10 - 20
+-> Strzelec wyborowy
+	Zwiększa moc ataku z amunicji laserowej
+	I	10%
+	II	20%
+	III 30%
+-> Celność
+	Zmniejsza rozpiętość siły ataku
+	Od górnego zakresu:
+	I	-40%
+	II	-30%
+	III -20%
+-> Pogromca asteroid
+	Asteroidy obrywają mocniej
+	I	25%
+	II  35%
+	III 50%
+-> Amunicja rakietowa
+	Zwiększa moc ataku z amunicji rakietowej i wprowadza nowe uzbrojenie
+	Amunicja rakietowa sama w sobie ma 2x większy atak niż laserowa
+	I   25%
+	II  30%
+	III 40%
+-> Snajper
+	Strzały są bardziej skuteczne
+	I   40%
+	II  50%
+	III 60%
+-> Intuicja
+	Zwiększa skuteczność ataku przeciw jednostkom latającym
+	I	25%
+	II  35%
+	III 50%
+-> Krytyczne uderzenie
+	Zwiększa moc ataku i wprowadza uderzenie krytyczne raz na x razy
+	I   75% raz na 5 razy
+	II  100% raz na 4 razy
+	III 125% raz na 3 razy
+-> Podwójny wystrzał
+	Zwiększa moc ataku i wprowadza podwójny wystrzał
+	I   35%
+	II  55%
+	III 75%
+DEFENSYWNE
+Początkowy pancerz: 80
+-> Pancerz
+	Zwiększa liczbę punktów pancerza
+	I	10%
+	II  20%
+	III 30%
+-> Twardziel
+	Zmniejsza obrażenia przy otarciach o asteroidy
+	I	-5%
+	II	-10%
+	III	-15%
+-> Odporność
+	Skraca czas trwania osłabień
+	I   5%
+	II  10%
+	III 15%
+-> Wytrwałość
+	Jak pancerz
+	I   15%
+	II  25%
+	III 40%
+-> Ekranowanie
+	Skraca czas trwania ataków elektromagnetycznych (domyślnie 6 sekund)
+	I	5sek
+	II	4.5sek
+	III	4sek
+-> Regeneracja
+	Wprowadza regenerację pancerza i zwiększa liczbę punktów
+	I	 1/5sek		+10%
+	II	 1/4sek		+15%
+	III  1/3sek		+20%
+-> Kamuflaż
+	Zwiększa odporność na ataki z amunicji laserowej
+	I	10%
+	II	15%
+	III 20%
+-> Unik
+	Średnio raz na x razy strzał chybia i nie zadaje obrażeń
+	I	1/8
+	II	1/6
+	III	1/4
+
+
+Pomysły na poziomy:
+ZACZYNAMY BIZNES
+	I.     Rozbijanie asteroid
+	II.    Rozbijanie większej ilości asteroid
+POZBYWAMY SIĘ KONKURENCJI
+	III.   Pojawia się złodziej: również rozbija asteroidy i kradnie surowce
+	IV.    Więcej złodziei - zaczynają się kryć po zaatakowaniu
+	V.     Kryją się cały czas.
+	VI.    Kryją się nadal, ale po ataku nagle odpowiadają kontratakiem
+	VII.   Kontratak staje się grupowy
+	VIII.  Oprócz złodziejskiej aktywności, atakują gdy jesteś w pobliżu
+	IX.    Pojawia się ciężki statek bojowy: na razie niezniszczalny i ignoruje Twoją obecność.
+	X.     Zniszcz ciężki statek bojowy
+POCZĄTEK WOJNY
+	XI.    Złodzieje zajmują się teraz własną aktywnością: atakują, ale nie latają za Tobą. 
+		   Tym zajmują się specjalizowani uzbrojeni żołnierze.
+    XII.   Żołnierzy jest więcej i są lepiej uzbrojeni.
+    XIII.  Do ataku włączają się złodzieje.
+    XIII.  Wokół zaczynają latać dwa statki bojowe (niezniszczalne). Złodzieje znikają, atakują jedynie żołnierze.
+    XV.    Statki bojowe zaczynają atakować. Należy je zniszczyć ignorując wciąż nadlatujące wsparcie.
+ROZWÓJ	
+	XVI.   Pojawiają się asteroidy "kolorowe" zbudowane z konkretnego kryształu. Pojawia się również statek wsparcia
+	XVII.  Wsparcia jest więcej, ale wracają złodzieje atakując je
+	XVIII. Sabotaż: jeden z Twoich statków nagle wybucha. Musisz pozbyć się złodziei, zanim całe Twoje wsparcie wybuchnie.
+	XIX.   Wśród wsparcia jest szpieg. Znajdziesz go, gdy odpowie kontratakiem na Twój atak.
+	XX.    Bunt: Twoje wsparcie nagle w pewnej chwili zaczyna Cię atakować. Musisz się go pozbyć.
+		   Nie jest to jednak tak łatwe, ponieważ Twoja firma zaczyna przysyłać swoich żołnierzy
+TERRORYZM
+	XXI.   Nie masz już wsparcia. Musisz zdobywać surowce. Pojawili się nowi żołnierze, którzy najpierw strzelają, a potem dokonują samobójczego nalotu.
+	XXII.  Żołnierze nadal atakują w ten sposób. Do tego pojawiły się kryształy-pułapki zadające obrażenia tajemną energią.
+	XXIII. Pojawiają się nowe kryształy, których nie możesz zebrać. Do tego latają wokół nowe, niezniszczalne statki
+	XXIV.  Poznałeś sekret tych statków: pozyskiwanie kryształów daje im czasową niezniszczalność. Musisz się ich pozbyć.
+	XXV.   Niezniszczalni zaczynają Cię atakować.
+POWRÓT
+	XXVI.  Znajdujesz przyjaciół wśród niezniszczalnych. Walka z wrogimi niezniszczalnymi
+	XXVII. Pozbywasz się wrogich niezniszczalnych. Pojawiają się jednak nowi wrogowie, którzy są w stanie ich zwalczyć.
+	XXVIII.Przyjaciele uciekają. Nadlatują ciężkie statki bojowe: na razie ignorują Twoją obecność
+	XXIX.  Statki bojowe jeszcze nie atakują. Dowiadujesz się jednak o ich słabym punkcie: nie potrafią omijać małych asteroid.
+		   Zderzenia z nimi mogą przebić ich pancerz. Musisz wyprodukować jak najwięcej takich odłamków... i przeżyć.
+    XXX.   Statki bojowe zaczynają atakować. Musisz przetrwać: trzymając się swojej taktyki.
+DOMINACJA
+	XXXI.  To jeszcze nie koniec. Statkom bojowym towarzyszą żołnierze.
+	XXXII. Pojawia się ostateczny boss. Musisz osłabić go jak najbardziej potrafisz.
+		   Na koniec czeka Cię próba siły: musisz wlecieć w niego i spróbować go przebić.
+
+Projekt struktury plików Data/Scenario
+
+MissionDescription:
+	MissionNumber
+	MajorTitle
+	MinorTitle
+	Description
+MissionIntro ARRAY:
+	FocusOn
+	Description
+	Duration
+MissionData
+	Width
+	Height
+	PlayerPosition
+	Target
+	Objects ARRAY
+		Model
+		Position
+		Velocity
+		ObjectName

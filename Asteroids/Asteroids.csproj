@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{6FBE2B7D-5ED6-4C8F-89F8-C6F019EF2D96}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <OutputPath>bin</OutputPath>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <TypeScriptToolsVersion>1.0</TypeScriptToolsVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="app.css" />
+    <Content Include="index.html">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>index.tt</DependentUpon>
+    </Content>
+    <Content Include="pixi\pixi.dev.js" />
+    <Content Include="pixi\pixi.js" />
+    <Content Include="pomysły.txt" />
+    <Content Include="Sprites\Asteroids\asteroid1_0.png" />
+    <Content Include="Sprites\Asteroids\asteroid1_1.png" />
+    <Content Include="Sprites\Asteroids\asteroid1_2.png" />
+    <Content Include="Sprites\Asteroids\asteroid2_0.png" />
+    <Content Include="Sprites\Asteroids\asteroid2_1.png" />
+    <Content Include="Sprites\Asteroids\asteroid2_2.png" />
+    <Content Include="Sprites\bglayer_0.jpg" />
+    <Content Include="Sprites\bglayer_1.png" />
+    <Content Include="Sprites\bullet.png" />
+    <Content Include="Sprites\Crystals\crystal1_0.png" />
+    <Content Include="Sprites\Crystals\crystal1_1.png" />
+    <Content Include="Sprites\Crystals\crystal1_2.png" />
+    <Content Include="Sprites\Crystals\crystal1_3.png" />
+    <Content Include="Sprites\Crystals\crystal1_4.png" />
+    <Content Include="Sprites\Crystals\crystal2_0.png" />
+    <Content Include="Sprites\Crystals\crystal2_1.png" />
+    <Content Include="Sprites\Crystals\crystal2_2.png" />
+    <Content Include="Sprites\Crystals\crystal2_3.png" />
+    <Content Include="Sprites\Crystals\crystal2_4.png" />
+    <Content Include="Sprites\Crystals\crystal3_0.png" />
+    <Content Include="Sprites\Crystals\crystal3_1.png" />
+    <Content Include="Sprites\Crystals\crystal3_2.png" />
+    <Content Include="Sprites\Crystals\crystal3_3.png" />
+    <Content Include="Sprites\Crystals\crystal3_4.png" />
+    <Content Include="Sprites\Crystals\crystal4_0.png" />
+    <Content Include="Sprites\Crystals\crystal4_1.png" />
+    <Content Include="Sprites\Crystals\crystal4_2.png" />
+    <Content Include="Sprites\Crystals\crystal4_3.png" />
+    <Content Include="Sprites\Crystals\crystal4_4.png" />
+    <Content Include="Sprites\Effects\Distortion\distortion1_0.png" />
+    <Content Include="Sprites\Effects\Distortion\distortion1_1.png" />
+    <Content Include="Sprites\Effects\Distortion\distortion1_2.png" />
+    <Content Include="Sprites\Effects\Distortion\distortion1_3.png" />
+    <Content Include="Sprites\Effects\Distortion\distortion1_4.png" />
+    <Content Include="Sprites\Effects\Distortion\distortion1_5.png" />
+    <Content Include="Sprites\Effects\Distortion\distortion1_6.png" />
+    <Content Include="Sprites\Effects\Distortion\distortion1_7.png" />
+    <Content Include="Sprites\Effects\Explosion\explosion1_0.png" />
+    <Content Include="Sprites\Effects\Explosion\explosion1_1.png" />
+    <Content Include="Sprites\Effects\Explosion\explosion1_10.png" />
+    <Content Include="Sprites\Effects\Explosion\explosion1_11.png" />
+    <Content Include="Sprites\Effects\Explosion\explosion1_12.png" />
+    <Content Include="Sprites\Effects\Explosion\explosion1_13.png" />
+    <Content Include="Sprites\Effects\Explosion\explosion1_14.png" />
+    <Content Include="Sprites\Effects\Explosion\explosion1_15.png" />
+    <Content Include="Sprites\Effects\Explosion\explosion1_2.png" />
+    <Content Include="Sprites\Effects\Explosion\explosion1_3.png" />
+    <Content Include="Sprites\Effects\Explosion\explosion1_4.png" />
+    <Content Include="Sprites\Effects\Explosion\explosion1_5.png" />
+    <Content Include="Sprites\Effects\Explosion\explosion1_6.png" />
+    <Content Include="Sprites\Effects\Explosion\explosion1_7.png" />
+    <Content Include="Sprites\Effects\Explosion\explosion1_8.png" />
+    <Content Include="Sprites\Effects\Explosion\explosion1_9.png" />
+    <Content Include="Sprites\Effects\Lightning\lightning1_0.png" />
+    <Content Include="Sprites\Effects\Lightning\lightning1_1.png" />
+    <Content Include="Sprites\Effects\Lightning\lightning1_2.png" />
+    <Content Include="Sprites\Effects\Lightning\lightning1_3.png" />
+    <Content Include="Sprites\Effects\Lightning\lightning1_4.png" />
+    <Content Include="Sprites\Effects\Lightning\lightning1_5.png" />
+    <Content Include="Sprites\Effects\Lightning\lightning1_6.png" />
+    <Content Include="Sprites\Effects\Lightning\lightning1_7.png" />
+    <Content Include="Sprites\Effects\Lightning\lightning1_8.png" />
+    <Content Include="Sprites\Effects\Lightning\lightning1_9.png" />
+    <Content Include="Sprites\logo.png" />
+    <Content Include="Sprites\Rockets\rocket1_0.png" />
+    <Content Include="Sprites\Rockets\rocket1_1.png" />
+    <Content Include="Sprites\Rockets\rocket1_2.png" />
+    <Content Include="Sprites\Rockets\rocket1_3.png" />
+    <Content Include="Sprites\Rockets\rocket1_4.png" />
+    <Content Include="Sprites\Rockets\rocket1_5.png" />
+    <Content Include="Sprites\Rockets\rocket2_0.png" />
+    <Content Include="Sprites\Rockets\rocket2_1.png" />
+    <Content Include="Sprites\Rockets\rocket2_2.png" />
+    <Content Include="Sprites\Rockets\rocket2_3.png" />
+    <Content Include="Sprites\Rockets\rocket2_4.png" />
+    <Content Include="Sprites\Rockets\rocket2_5.png" />
+    <Content Include="Sprites\Rockets\rocket3_0.png" />
+    <Content Include="Sprites\Rockets\rocket3_1.png" />
+    <Content Include="Sprites\Rockets\rocket3_2.png" />
+    <Content Include="Sprites\Rockets\rocket3_3.png" />
+    <Content Include="Sprites\Rockets\rocket3_4.png" />
+    <Content Include="Sprites\Rockets\rocket3_5.png" />
+    <Content Include="Sprites\Rockets\rocket4_0.png" />
+    <Content Include="Sprites\Rockets\rocket4_1.png" />
+    <Content Include="Sprites\Rockets\rocket4_2.png" />
+    <Content Include="Sprites\Rockets\rocket4_3.png" />
+    <Content Include="Sprites\Rockets\rocket4_4.png" />
+    <Content Include="Sprites\Rockets\rocket4_5.png" />
+    <Content Include="Sprites\Ships\ship1_0.png" />
+    <Content Include="Sprites\Ships\ship2_0.png" />
+    <Content Include="Sprites\Ships\ship3_0.png" />
+    <Content Include="Sprites\Ships\ship4_0.png" />
+    <Content Include="Sprites\Ships\ship5_0.png" />
+    <Content Include="Sprites\Ships\ship6_0.png" />
+    <Content Include="Sprites\Ships\ship7_0.png" />
+    <Content Include="Sprites\skillstar.png" />
+    <Content Include="Sprites\Skills\skill10_0.png" />
+    <Content Include="Sprites\Skills\skill10_1.png" />
+    <Content Include="Sprites\Skills\skill11_0.png" />
+    <Content Include="Sprites\Skills\skill11_1.png" />
+    <Content Include="Sprites\Skills\skill12_0.png" />
+    <Content Include="Sprites\Skills\skill12_1.png" />
+    <Content Include="Sprites\Skills\skill13_0.png" />
+    <Content Include="Sprites\Skills\skill13_1.png" />
+    <Content Include="Sprites\Skills\skill14_0.png" />
+    <Content Include="Sprites\Skills\skill14_1.png" />
+    <Content Include="Sprites\Skills\skill15_0.png" />
+    <Content Include="Sprites\Skills\skill15_1.png" />
+    <Content Include="Sprites\Skills\skill16_0.png" />
+    <Content Include="Sprites\Skills\skill16_1.png" />
+    <Content Include="Sprites\Skills\skill1_0.png" />
+    <Content Include="Sprites\Skills\skill1_1.png" />
+    <Content Include="Sprites\Skills\skill2_0.png" />
+    <Content Include="Sprites\Skills\skill2_1.png" />
+    <Content Include="Sprites\Skills\skill3_0.png" />
+    <Content Include="Sprites\Skills\skill3_1.png" />
+    <Content Include="Sprites\Skills\skill4_0.png" />
+    <Content Include="Sprites\Skills\skill4_1.png" />
+    <Content Include="Sprites\Skills\skill5_0.png" />
+    <Content Include="Sprites\Skills\skill5_1.png" />
+    <Content Include="Sprites\Skills\skill6_0.png" />
+    <Content Include="Sprites\Skills\skill6_1.png" />
+    <Content Include="Sprites\Skills\skill7_0.png" />
+    <Content Include="Sprites\Skills\skill7_1.png" />
+    <Content Include="Sprites\Skills\skill8_0.png" />
+    <Content Include="Sprites\Skills\skill8_1.png" />
+    <Content Include="Sprites\Skills\skill9_0.png" />
+    <Content Include="Sprites\Skills\skill9_1.png" />
+    <Content Include="web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="Modules\Keyboard.ts" />
+    <TypeScriptCompile Include="Layout\GameView.class.ts" />
+    <TypeScriptCompile Include="Layout\LoaderView.class.ts" />
+    <TypeScriptCompile Include="Layout\MainView.class.ts" />
+    <TypeScriptCompile Include="Layout\StartView.class.ts" />
+    <TypeScriptCompile Include="Layout\View.class.ts" />
+    <TypeScriptCompile Include="Layout\ViewManager.class.ts" />
+    <TypeScriptCompile Include="Objects\Asteroid.class.ts" />
+    <TypeScriptCompile Include="Objects\Bullet.class.ts" />
+    <TypeScriptCompile Include="Objects\CPUShip.class.ts" />
+    <TypeScriptCompile Include="Objects\Crystal.class.ts" />
+    <TypeScriptCompile Include="Objects\GameObject.class.ts" />
+    <TypeScriptCompile Include="Objects\ObjectFragment.class.ts" />
+    <TypeScriptCompile Include="Objects\PlayerShip.class.ts" />
+    <TypeScriptCompile Include="Objects\Rocket.class.ts" />
+    <TypeScriptCompile Include="Objects\Ship.class.ts" />
+    <TypeScriptCompile Include="Objects\World.class.ts" />
+    <TypeScriptCompile Include="pixi\pixi.d.ts" />
+    <TypeScriptCompile Include="Modules\Math.ts" />
+    <TypeScriptCompile Include="Modules\Player.ts" />
+    <TypeScriptCompile Include="Modules\Resources.ts" />
+    <TypeScriptCompile Include="_references.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="index.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>index.html</LastGenOutput>
+    </Content>
+    <Content Include="Data\Resources.json" />
+    <Content Include="Data\Scenario\Level1.json" />
+    <Content Include="pixi\pixi.dev.js.map" />
+    <Content Include="Fonts\Digital7.ttf" />
+    <Content Include="Fonts\Digital7.woff" />
+    <Content Include="Fonts\JacintoSans.ttf" />
+    <Content Include="Fonts\JacintoSans.woff" />
+    <Content Include="Data\Skills.json" />
+    <None Include="ReleaseAsteroids.pubxml" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>Asteroids</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>12532</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:23443/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptModuleKind>amd</TypeScriptModuleKind>
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptOutFile>app.js</TypeScriptOutFile>
+    <ExcludeGeneratedDebugSymbol>false</ExcludeGeneratedDebugSymbol>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptRemoveComments>True</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>false</TypeScriptSourceMap>
+    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
+    <TypeScriptOutFile>app.js</TypeScriptOutFile>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(VSToolsPath)\TypeScript\Microsoft.TypeScript.targets')" />
+  <PropertyGroup>
+    <PreBuildEvent>echo Processing T4 templates...
+set textTemplatingPath="%25CommonProgramFiles(x86)%25\Microsoft Shared\TextTemplating\$(VisualStudioVersion)\texttransform.exe"
+if %25textTemplatingPath%25=="\Microsoft Shared\TextTemplating\$(VisualStudioVersion)\texttransform.exe" set textTemplatingPath="%25CommonProgramFiles%25\Microsoft Shared\TextTemplating\$(VisualStudioVersion)\texttransform.exe"
+%25textTemplatingPath%25 "$(ProjectDir)index.tt"</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>if $(ConfigurationName) == Release (
+echo UglifyJS -^&gt; $(ProjectDir)app.js
+uglifyjs "$(ProjectDir)app.js" -v -m toplevel,sort -o "$(ProjectDir)app.js"
+)</PostBuildEvent>
+  </PropertyGroup>
+</Project>

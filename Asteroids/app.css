@@ -1,0 +1,24 @@
+﻿@font-face {
+    font-family: "Digital-7";
+    src: url('Fonts/Digital7.woff') format('woff'),
+        url('Fonts/Digital7.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: "JacintoSans";
+    src: url('Fonts/JacintoSans.woff') format('woff'),
+        url('Fonts/JacintoSans.ttf') format('truetype');
+}
+body 
+{
+    padding: 0;
+    margin: 0;
+    background-color: white;
+}
+#debug 
+{
+    font-family: monospace;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}

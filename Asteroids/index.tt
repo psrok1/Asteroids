@@ -1,0 +1,61 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
+<#@ output extension=".html" #>
+<#
+	int revisionNumber = 0;
+	Regex regex = new Regex(@".*<!\-\- REVISION = (\d+) \-\->.*");
+	try {
+		using(var f=File.OpenText(Host.ResolvePath("index.html")))
+		{
+			string line;
+			while((line = f.ReadLine())!=null)
+			{
+				Match match = regex.Match(line);
+				if(match.Success)
+					revisionNumber = int.Parse(match.Groups[1].Value)+1;
+			}
+		}
+	} catch
+	{
+		revisionNumber = 0;
+	}
+#>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Asteroids - Paweł Srokosz (C) 2014</title>
+    <link rel="stylesheet" href="app.css" type="text/css" />
+<!-- WARNING: Section handled by script! -->
+	<#= require("pixi/pixi.dev.js",revisionNumber) #>
+	<#= require("app.js", revisionNumber) #>
+	<script>
+		/*** bootstrap presets ***/
+		var scriptVersion = "v1.0.0.<#= revisionNumber #>";
+		PIXI.dontSayHello = true;
+	</script>
+</head>
+<body>
+<!-- WARNING: Section handled by script! -->
+    <div id="debug">
+		<!-- REVISION = <#= revisionNumber #> -->
+        Asteroids [20140704] v1.0.0.<#= revisionNumber #> DEBUG<br/>
+        Paweł Srokosz &copy; 2014
+		<!-- Font preloading -->
+		<div style="font-family: Digital-7; display:inline; color:white">.</div>
+		<div style="font-family: JacintoSans; display:inline; color:white">.</div>
+    </div>
+</body>
+</html>
+<#+ public string require(string name, int rev = 0)
+	{
+		return string.Format("<script src=\"{0}?v1.0.0.{1}\"></script>",name,rev);
+	}
+#>

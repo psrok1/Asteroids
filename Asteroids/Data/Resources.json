@@ -1,0 +1,91 @@
+﻿{
+    "resources": {
+        "backgroundLayer0": {
+            "type": "texture",
+            "file": "Sprites/bglayer_0.jpg"
+        },
+        "backgroundLayer1": {
+            "type": "texture",
+            "file": "Sprites/bglayer_1.png"
+        },
+        "ship": {
+            "type": "texture",
+            "path": "Sprites/Ships",
+            "fileGroup": "ship",
+            "extension": "png",
+            "groups": 7
+        },
+        "asteroid": {
+            "type": "texture",
+            "path": "Sprites/Asteroids",
+            "fileGroup": "asteroid",
+            "extension": "png",
+            "groups": 2,
+            "subgroups": 3
+        },
+        "crystal": {
+            "type": "texture",
+            "path": "Sprites/Crystals",
+            "fileGroup": "crystal",
+            "extension": "png",
+            "groups": 4,
+            "subgroups": 5
+        },
+        "explosion": {
+            "type": "texture",
+            "path": "Sprites/Effects/Explosion",
+            "fileGroup": "explosion",
+            "extension": "png",
+            "groups": 1,
+            "subgroups": 16
+        },
+        "lightning": {
+            "type": "texture",
+            "path": "Sprites/Effects/Lightning",
+            "fileGroup": "lightning",
+            "extension": "png",
+            "groups": 1,
+            "subgroups": 10
+        },
+        "distortion": {
+            "type": "texture",
+            "path": "Sprites/Effects/Distortion",
+            "fileGroup": "distortion",
+            "extension": "png",
+            "groups": 1,
+            "subgroups": 8
+        },
+        "rocket": {
+            "type": "texture",
+            "path": "Sprites/Rockets",
+            "fileGroup": "rocket",
+            "extension": "png",
+            "groups": 4,
+            "subgroups": 6
+        },
+        "skill": {
+            "type": "texture",
+            "path": "Sprites/Skills",
+            "fileGroup": "skill",
+            "extension": "png",
+            "groups": 16,
+            "subgroups": 2
+        },
+        "bullet": {
+            "type": "texture",
+            "file": "Sprites/bullet.png"
+        },
+        "skillStar": {
+            "type": "texture",
+            "file": "Sprites/skillstar.png"
+        },
+        "scenarioLevel1": {
+            "type": "data",
+            "file": "Data/Scenario/Level1.json"
+        },
+        "skillsData": {
+            "type": "data",
+            "file": "Data/Skills.json"
+        }
+    }
+}

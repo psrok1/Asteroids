@@ -1,0 +1,617 @@
+﻿{
+    "skills": [
+        {
+            "name": "Sharpshooter",
+            "levelData": [
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [
+                        {
+                            "skill": "Precision",
+                            "requiredLevel": 1
+                        }
+                    ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                }
+            ]
+        },
+        {
+            "name": "Precision",
+            "levelData": [
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                }
+            ]
+        },
+        {
+            "name": "Rockbreaker",
+            "levelData": [
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                }
+            ]
+        },
+        {
+            "name": "Rocket launcher",
+            "levelData": [
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                }
+            ]
+        },
+        {
+            "name": "Sniper",
+            "levelData": [
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                }
+            ]
+        },
+        {
+            "name": "Intuition",
+            "levelData": [
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                }
+            ]
+        },
+        {
+            "name": "Critical hit",
+            "levelData": [
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                }
+            ]
+        },
+        {
+            "name": "Doubleshooter",
+            "levelData": [
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                }
+            ]
+        },
+        {
+            "name": "Armor",
+            "levelData": [
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                }
+            ]
+        },
+        {
+            "name": "Daredevil",
+            "levelData": [
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                }
+            ]
+        },
+        {
+            "name": "Endurance",
+            "levelData": [
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                }
+            ]
+        },
+        {
+            "name": "Persistence",
+            "levelData": [
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                }
+            ]
+        },
+        {
+            "name": "Shielding",
+            "levelData": [
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                }
+            ]
+        },
+        {
+            "name": "Recovery",
+            "levelData": [
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                }
+            ]
+        },
+        {
+            "name": "Camouflage",
+            "levelData": [
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                }
+            ]
+        },
+        {
+            "name": "Dodge",
+            "levelData": [
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                },
+                {
+                    "value": 0,
+                    "description": "",
+                    "cost": {
+                        "red": 0,
+                        "green": 0,
+                        "yellow": 0,
+                        "blue": 0
+                    },
+                    "skillRequirements": [ ]
+                }
+            ]
+        }
+    ]
+}
