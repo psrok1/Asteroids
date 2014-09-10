@@ -6,12 +6,14 @@
         private effects: GameViewEffect[] = new Array()
         private blurFilter: PIXI.BlurFilter;
         private grayFilter: PIXI.GrayFilter;
+        private introNotification: IntroNotification;
         
         constructor() {
             super();
             this.sky = new Sky(this);
             this.world = new Objects.World(this, "scenarioLevel1");
             this.camera = new Camera(this.sky, this.world);
+            this.introNotification = new IntroNotification(this);
             // Filters
             this.blurFilter = new PIXI.BlurFilter();
             this.grayFilter = new PIXI.GrayFilter();
@@ -273,6 +275,43 @@
         }
         isGameOver() {
             return this.gameOverText.visible;
+        }
+    }
+
+    class IntroNotification {
+        private parentView: GameView;
+        private box: PIXI.Graphics;
+        private message: PIXI.Text;
+        private skip: PIXI.Text;
+
+        constructor(parent: GameView) {
+            this.parentView = parent;
+            this.box = new PIXI.Graphics();
+            this.box.beginFill(0x000020, 0.6);
+            this.box.lineStyle(1, 0x404060, 1);
+            this.box.drawRect(0, 0, 536, 80);
+            this.box.endFill();
+            this.box.position = new PIXI.Point(32, 488);
+
+            this.message = new PIXI.Text("Use arrow keys for steering and Space for shooting.\nIn further missions you can also use numeric keys for launching rockets.",
+                {
+                    font: "12px monospace",
+                    fill: "white",
+                    align: "center",
+                    wordWrap: true,
+                    wordWrapWidth: 472
+                });
+            this.message.anchor = new PIXI.Point(0.5, 0.5);
+            this.message.position = new PIXI.Point(240, 34);
+            this.box.addChild(this.message);
+
+            this.skip = new PIXI.Text("SKIP >>>", {
+                font: "12px Digital-7",
+                fill: "white"
+            });
+            this.skip.position = new PIXI.Point(445, 55);
+            this.box.addChild(this.skip);
+            this.parentView.addChild(this.box);
         }
     }
 }
