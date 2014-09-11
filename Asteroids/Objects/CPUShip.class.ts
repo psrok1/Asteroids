@@ -177,8 +177,10 @@
                 }
             }
             if (!this.avoidObstacle()) {
-                this.followObject(this.world.player);
-                this.attackObject(this.world.player);
+                if (!this.world.isIntroPhase()) {
+                    this.followObject(this.world.player);
+                    this.attackObject(this.world.player);
+                }
             } else
                 this.follow = false;
             this.shotDelay--;

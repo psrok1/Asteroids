@@ -113,25 +113,6 @@
     }
 }
 
-/* 
-TODO
-    Scenario and ScenarioObject are <DEPRECATED>
-    Use Mission class declaration and modify World to support new format
-*/
-
-declare class Scenario /*<DEPRECATED>*/ {
-    width: number;
-    height: number;
-    playerPosition: IPoint;
-    objects: ScenarioObject[];
-}
-declare class ScenarioObject /*<DEPRECATED>*/ {
-    name: string;
-    type: string;
-    position: IPoint;
-    velocity: IVector;
-}
-
 declare class SkillData {
     name: string;
     levelData: SkillLevelInformation[];

@@ -79,9 +79,12 @@
             "type": "texture",
             "file": "Sprites/skillstar.png"
         },
-        "scenarioLevel1": {
+        "mission": {
             "type": "data",
-            "file": "Data/Scenario/Level1.json"
+            "path": "Data/Scenario",
+            "fileGroup": "Mission",
+            "extension": "json",
+            "groups": 1
         },
         "skillsData": {
             "type": "data",

@@ -54,6 +54,7 @@
             this.sprite.rotation = this.rotation;
 
             this.world.view.addChild(this.renderObject);
+            this.world.objects.push(this);
         }
         update() {
             this.position.move(this.velocity);

@@ -73,7 +73,6 @@
                 fragmentVelocity,
                 fragmentSprite);
             fragment.rotate(-fragmentRotation);
-            world.objects.push(fragment);
         }
     }
 } 

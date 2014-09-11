@@ -18,12 +18,12 @@
             this.subviews["skills"] = new SkillsSubview(this);
             this.subviews["equipment"] = new EquipmentSubview(this);
             this.activeSubview = this.subviews["mission"];
-            this.activeSubview.resume();
         }
 
         startMission() {
             ViewManager.getInstance().switchView("game");
         }
+
         onKeyDown(event: KeyboardEvent) {
             var key: number = (event.which == null ? event.keyCode : event.which);
             if (key == Keyboard.Key.Tab)
@@ -166,6 +166,12 @@
         resume() {
             super.resume();
             this.updatePlayerData();
+            this.activeSubview.resume();
+        }
+
+        pause() {
+            super.pause();
+            this.activeSubview.pause();
         }
     }
 
@@ -224,57 +230,71 @@
 
     class MissionSubview extends Subview {
         private blinkPhase: number = 0;
+        private missionNumber: PIXI.Text;
+        private missionName: PIXI.Text;
+        private missionTitle: PIXI.Text;
+        private missionDescription: PIXI.Text;
+        private missionStart: PIXI.Text;
 
         constructor(parent: MainView) {
             super(parent);
 
-            var missionNumber = new PIXI.Text("FIRST MISSION", {
+            this.missionNumber = new PIXI.Text("FIRST MISSION", {
                 font: "24px JacintoSans",
                 fill: "white"
             });
-            missionNumber.anchor.x = 0.5;
-            missionNumber.position = new PIXI.Point(300, 160);
-            this.registerObject("missionNumber", missionNumber);
+            this.missionNumber.anchor.x = 0.5;
+            this.missionNumber.position = new PIXI.Point(300, 160);
+            this.registerObject("missionNumber", this.missionNumber);
 
-            var missionName = new PIXI.Text("NEWBIE", {
+            this.missionName = new PIXI.Text("NEWBIE", {
                 font: "32px JacintoSans",
                 fill: "white"
             });
-            missionName.anchor.x = 0.5;
-            missionName.position = new PIXI.Point(300, 200);
-            this.registerObject("missionName", missionName);
+            this.missionName.anchor.x = 0.5;
+            this.missionName.position = new PIXI.Point(300, 200);
+            this.registerObject("missionName", this.missionName);
 
-            var missionTitle = new PIXI.Text("this game is too easy to lose", {
+            this.missionTitle = new PIXI.Text("this game is too easy to lose", {
                 font: "24px JacintoSans",
                 fill: "white"
             });
-            missionTitle.anchor.x = 0.5;
-            missionTitle.position = new PIXI.Point(300, 232);
-            this.registerObject("missionTitle", missionTitle);
+            this.missionTitle.anchor.x = 0.5;
+            this.missionTitle.position = new PIXI.Point(300, 232);
+            this.registerObject("missionTitle", this.missionTitle);
 
-            var missionDescription = new PIXI.Text("very very long description....", {
+            this.missionDescription = new PIXI.Text("very very long description....", {
                 font: "16px Digital-7",
                 fill: "white",
                 wordWrap: true,
                 wordWrapWidth: 536
             });
+            // DEBUG
             var debugDesc = "";
             for (var i = 0; i < 6; i++)
                 debugDesc += "very long endless description for debugging purpose... ";
-            missionDescription.position = new PIXI.Point(32, 300);
-            missionDescription.setText(debugDesc);
-            this.registerObject("missionDescription", missionDescription);
+            this.missionDescription.position = new PIXI.Point(32, 300);
+            this.missionDescription.setText(debugDesc);
+            this.registerObject("missionDescription", this.missionDescription);
 
-            var missionStart = new PIXI.Text("START GAME", {
+            this.missionStart = new PIXI.Text("START GAME", {
                 font: "32px Digital-7",
                 fill: "white"
             });
-            missionStart.anchor.x = 0.5;
-            missionStart.position = new PIXI.Point(300, 332 + missionDescription.height);
-            missionStart.touchstart = missionStart.mousedown = parent.startMission.bind(parent);
-            this.registerObject("missionStart", missionStart);
+            this.missionStart.anchor.x = 0.5;
+            this.missionStart.position = new PIXI.Point(300, 420);
+            this.missionStart.touchstart = this.missionStart.mousedown = parent.startMission.bind(parent);
+            this.registerObject("missionStart", this.missionStart);
             this.pause();
         }
+
+        setMissionDescription(mission: Mission) {
+            this.missionNumber.setText(mission.numberDescription);
+            this.missionName.setText(mission.majorTitle);
+            this.missionTitle.setText(mission.minorTitle);
+            this.missionDescription.setText(mission.description);
+        }
+
         update() {
             if (this.blinkPhase++ == 20) {
                 var missionStart = this.getObject("missionStart");
@@ -286,6 +306,7 @@
             super.resume();
             this.blinkPhase = 0;
             this.getObject("missionStart").visible = true;
+            this.setMissionDescription(Player.getCurrentMission());
         }
     }
 

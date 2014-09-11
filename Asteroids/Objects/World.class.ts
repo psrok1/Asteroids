@@ -5,28 +5,28 @@
         width: number;
         height: number;
         player: PlayerShip;
+        private introPhase: boolean;
+        private mission: Mission;
 
         private paused: boolean = true;
 
-        constructor(view: Layout.GameView, scenarioID: string) {
-            var scenario: Scenario = Resources.getObject(scenarioID);
-            this.width  = scenario.width;
-            this.height = scenario.height;
+        constructor(view: Layout.GameView, mission: Mission) {
+            this.mission = mission;
+            this.width  = this.mission.width;
+            this.height = this.mission.height;
             this.view = view;
             this.objects = new Array();
-            for (var object in scenario.objects)
-                this.objects.push(this.createObject(scenario.objects[object]));
-            this.player = new PlayerShip(this, new Point(
-                scenario.playerPosition.x, scenario.playerPosition.y));
-            this.objects.push(this.player);
+            for (var object in this.mission.objects)
+                this.createObject(this.mission.objects[object]);
+            this.startIntroPhase();
             this.resume();
         }
 
-        private createObject(object: ScenarioObject): GameObject {
+        createObject(object: MissionObject): GameObject {
             var position: Point = new Point(object.position.x, object.position.y);
             var velocity: Vector = new Vector(object.velocity.x, object.velocity.y);
             var gameObject: GameObject = null;
-            switch (object.type) {
+            switch (object.model) {
                 // DEBUG: hard-coded types
                 case "asteroid":
                     gameObject = new Asteroid(this, 10, position, velocity);
@@ -35,10 +35,10 @@
                     gameObject = new CPUShip(this, 2, position, velocity, 32, 5);
                     break;
                 default:
-                    throw new Error("Error: World.createObject failed. Unknown type of object '"+object.type+"'");
+                    throw new Error("Error: World.createObject failed. Unknown model of object '" + object.model + "'");
             }
-            if (gameObject && object.name)
-                gameObject.name = object.name;
+            if (gameObject && object.objectName)
+                gameObject.name = object.objectName;
             return gameObject;
         }
 
@@ -96,6 +96,20 @@
                         second.onCollide(first);
                     }
                 }
+        }
+
+        startIntroPhase() {
+            this.introPhase = true;
+        }
+
+        endIntroPhase() {
+            this.introPhase = false;
+            this.player = new PlayerShip(this, new Point(
+                this.mission.playerPosition.x, this.mission.playerPosition.y));
+        }
+
+        isIntroPhase() {
+            return this.introPhase;
         }
     }
 } 

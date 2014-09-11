@@ -6,14 +6,14 @@
         private effects: GameViewEffect[] = new Array()
         private blurFilter: PIXI.BlurFilter;
         private grayFilter: PIXI.GrayFilter;
+        private currentMission: Mission;
         private introNotification: IntroNotification;
+        private introStep: number;
+        private introClock: number;
         
         constructor() {
             super();
             this.sky = new Sky(this);
-            this.world = new Objects.World(this, "scenarioLevel1");
-            this.camera = new Camera(this.sky, this.world);
-            this.introNotification = new IntroNotification(this);
             // Filters
             this.blurFilter = new PIXI.BlurFilter();
             this.grayFilter = new PIXI.GrayFilter();
@@ -23,11 +23,47 @@
             // Effects
             this.registerEffect("distortion", new DistortionEffect(this));
             this.registerEffect("criticalDamage", new CriticalDamageBlur(this));
-            this.registerEffect("gameOver", new GameOverEffect(this));
-            // Set camera focus on player
-            this.camera.setFocus(App.DebugPresets.FocusOnAttacker ?
-                this.world.getObjectByName("attacker") : this.world.player);
+            this.registerEffect("gameOver", new GameOverEffect(this));            
         }
+
+        startMission() {
+            this.currentMission = Player.getCurrentMission();
+            this.world = new Objects.World(this, this.currentMission);
+            this.camera = new Camera(this.sky, this.world);
+            this.resetEffects();
+            this.introNotification = new IntroNotification(this);
+            this.introStep = -1;
+            this.nextIntroStep();
+        }
+
+        endMission() {
+            this.world.pause();
+            for (var objectID in this.world.objects)
+                this.removeChild(this.world.objects[objectID].renderObject);
+        }
+
+        nextIntroStep() {
+            this.introClock = 0;
+            if (++this.introStep >= this.currentMission.introData.length) {
+                this.world.endIntroPhase();
+                this.camera.setFocus(App.DebugPresets.FocusOnAttacker ?
+                    this.world.getObjectByName("attacker") : this.world.player);
+                this.introNotification.hide();
+                return;
+            }
+            var introData = this.currentMission.introData[this.introStep];
+            this.introNotification.setMessage(introData.description);
+            this.camera.setFocus(this.world.getObjectByName(introData.focusOn));
+        }
+
+        private introUpdate() {
+            if (this.world.isIntroPhase()) {
+                this.introClock++;
+                if (this.introClock >= this.currentMission.introData[this.introStep].duration)
+                    this.nextIntroStep();
+            }
+        }
+
         private registerEffect(name: string, effect: GameViewEffect) {
             if (this.effects[name])
                 throw new Error("Error: GameViewEffect "+name+" duplicated");
@@ -37,12 +73,18 @@
             for (var effectName in this.effects)
                 this.effects[effectName].update();
         }
+        private resetEffects() {
+            for (var effectName in this.effects)
+                this.effects[effectName].reset();
+        }
         onKeyDown(event: KeyboardEvent) {
             var key: number = (event.which == null ? event.keyCode : event.which);
             if (key == Keyboard.Key.Space)
                 if ((<GameOverEffect>this.effects["gameOver"]).isGameOver()) {
                     (<GameOverEffect>this.effects["gameOver"]).reset();
                     ViewManager.getInstance().switchView("main");
+                } else if (this.world.isIntroPhase()) {
+                    this.nextIntroStep();
                 } else if (!Keyboard.isLocked(Keyboard.Key.Space)) {
                     this.world.player.shot();
                     Keyboard.lockKey(Keyboard.Key.Space);
@@ -57,6 +99,8 @@
         }
         updatePlayerSteering() {
             var player = this.world.player;
+            if (!player)
+                return;
             if (Keyboard.getState(Keyboard.Key.Left))
                 player.rotate(-Math.PI / 36);
             if (Keyboard.getState(Keyboard.Key.Right))
@@ -72,6 +116,7 @@
             this.world.update();
             this.camera.update();
             this.updateEffects();
+            this.introUpdate();
         }
         shakeCamera() {
             this.camera.shake();
@@ -90,6 +135,14 @@
         }
         setGray(gray: number) {
             this.grayFilter.gray = gray;
+        }
+        resume() {
+            super.resume();
+            this.startMission();
+        }
+        pause() {
+            super.resume();
+            this.endMission();
         }
     }
 
@@ -161,6 +214,7 @@
     interface GameViewEffect {
         update();
         play();
+        reset();
         isPlayed(): boolean;
     }
     class DistortionEffect implements GameViewEffect {
@@ -201,6 +255,13 @@
             this.played = true;
             this.view.setBlur(16);
         }
+        reset() {
+            if (this.played) {
+                this.view.removeChild(this.sprite);
+                this.played = false;
+            }
+            this.view.setBlur(0);
+        }
         isPlayed(): boolean {
             return this.played;
         }
@@ -227,6 +288,11 @@
         play() {
             this.clock = 0;
             this.played = true;
+        }
+        reset() {
+            this.played = false;
+            this.clock = 0;
+            this.view.setBlur(0);
         }
         isPlayed(): boolean {
             return this.played;
@@ -309,9 +375,20 @@
                 font: "12px Digital-7",
                 fill: "white"
             });
+            this.skip.interactive = true;
+            this.skip.mousedown = this.skip.touchstart = this.parentView.nextIntroStep.bind(this.parentView);
             this.skip.position = new PIXI.Point(490, 60);
             this.box.addChild(this.skip);
             this.parentView.addChild(this.box);
+        }
+
+        setMessage(message: string) {
+            this.message.setText(message);
+        }
+
+        hide() {
+            this.skip.mousedown = this.skip.touchstart = null;
+            this.parentView.removeChild(this.box);
         }
     }
 }

@@ -24,13 +24,11 @@
                 var velocity2 = this.getVelocity().clone();
                 velocity1.rotate(-Math.PI / 4);
                 velocity2.rotate(Math.PI / 4);
-                this.world.objects.push(new Asteroid(this.world, this.type, this.getPosition().clone(),
-                    velocity1, this.generation + 1));
-                this.world.objects.push(new Asteroid(this.world, this.type, this.getPosition().clone(),
-                    velocity2, this.generation + 1));
+                new Asteroid(this.world, this.type, this.getPosition().clone(), velocity1, this.generation + 1);
+                new Asteroid(this.world, this.type, this.getPosition().clone(), velocity2, this.generation + 1);
             }
             for (var i = 0; i < 10 * Math.random(); i++)
-                this.world.objects.push(new Crystal(this.world, Math.floor(4 * Math.random() + 1) * 10 + Math.floor(5 * Math.random()), this.getPosition().clone(), 4));
+                new Crystal(this.world, Math.floor(4 * Math.random() + 1) * 10 + Math.floor(5 * Math.random()), this.getPosition().clone(), 4);
         }
 
         onCollide(which: GameObject) {

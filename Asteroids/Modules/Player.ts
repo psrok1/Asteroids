@@ -28,7 +28,7 @@
     }
 
     export function getName(): string { return playerData.name; }
-    export function getCurrentMission(): number { return playerData.currentMission; }
+    export function getCurrentMission(): Mission { return Resources.getObject("mission" + playerData.currentMission); }
     export function nextMission() {
         playerData.currentMission++; save();
     }

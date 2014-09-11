@@ -17,12 +17,10 @@
             destroyObjectToFragments(this);
         }
         shot() {
-            var bullet = new Bullet(this.world, this);
-            this.world.objects.push(bullet);
+            new Bullet(this.world, this);
         }
         rocketShot() {
-            var bullet = new Rocket(this.world, this, 1);
-            this.world.objects.push(bullet);
+            new Rocket(this.world, this, 1);
         }
     }
 } 

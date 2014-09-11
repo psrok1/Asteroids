@@ -189,7 +189,7 @@
       <LastGenOutput>index.html</LastGenOutput>
     </Content>
     <Content Include="Data\Resources.json" />
-    <Content Include="Data\Scenario\Level1.json" />
+    <Content Include="Data\Scenario\Mission1_0.json" />
     <Content Include="pixi\pixi.dev.js.map" />
     <Content Include="Fonts\Digital7.ttf" />
     <Content Include="Fonts\Digital7.woff" />
