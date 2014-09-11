@@ -302,14 +302,14 @@
                     wordWrapWidth: 472
                 });
             this.message.anchor = new PIXI.Point(0.5, 0.5);
-            this.message.position = new PIXI.Point(240, 34);
+            this.message.position = new PIXI.Point(268, 34);
             this.box.addChild(this.message);
 
             this.skip = new PIXI.Text("SKIP >>>", {
                 font: "12px Digital-7",
                 fill: "white"
             });
-            this.skip.position = new PIXI.Point(445, 55);
+            this.skip.position = new PIXI.Point(490, 60);
             this.box.addChild(this.skip);
             this.parentView.addChild(this.box);
         }

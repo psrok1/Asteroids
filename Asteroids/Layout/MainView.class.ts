@@ -81,11 +81,10 @@
             icon.beginFill(0x101010, 0.3);
             icon.drawRect(0, 0, 64, 64);
             icon.endFill();
-            ship.scale.x = ship.scale.y = 0.75;
-            icon.position.x = icon.position.y = 32;
-            ship.position.y = 32;
-            ship.position.x = 29;
-            ship.anchor.x = ship.anchor.y = 0.5;
+            ship.scale = new PIXI.Point(0.75, 0.75);
+            icon.position = new PIXI.Point(32, 32);
+            ship.position = new PIXI.Point(32, 32);
+            ship.anchor = new PIXI.Point(0.5, 0.5);
             icon.addChild(ship);
             this.addChild(icon);
         }
@@ -397,7 +396,7 @@
                 font: "bold 12px monospace",
                 fill: "white"
             });
-            this.skillName.position = new PIXI.Point(85, 16);
+            this.skillName.position = new PIXI.Point(90, 16);
             this.skillName.anchor = new PIXI.Point(0.5, 0.5);
             this.box.addChild(this.skillName);
 
@@ -405,7 +404,7 @@
                 font: "bold 10px monospace",
                 fill: "yellow"
             });
-            this.currentLevel.position = new PIXI.Point(85, 32);
+            this.currentLevel.position = new PIXI.Point(90, 32);
             this.currentLevel.anchor = new PIXI.Point(0.5, 0.5);
             this.box.addChild(this.currentLevel);
 
@@ -413,7 +412,7 @@
                 font: "10px monospace",
                 fill: "white"
             });
-            this.currentDescription.position = new PIXI.Point(12, 48);
+            this.currentDescription.position = new PIXI.Point(16, 48);
             this.currentDescription.anchor = new PIXI.Point(0, 0.5);
             this.box.addChild(this.currentDescription);
 
@@ -421,7 +420,7 @@
                 font: "bold 10px monospace",
                 fill: "lime"
             });
-            this.nextLevel.position = new PIXI.Point(85, 64);
+            this.nextLevel.position = new PIXI.Point(90, 64);
             this.nextLevel.anchor = new PIXI.Point(0.5, 0.5);
             this.box.addChild(this.nextLevel);
 
@@ -429,7 +428,7 @@
                 font: "8px monospace",
                 fill: "lime"
             });
-            this.nextUpgradeInfo.position = new PIXI.Point(85, 76);
+            this.nextUpgradeInfo.position = new PIXI.Point(90, 76);
             this.nextUpgradeInfo.anchor = new PIXI.Point(0.5, 0.5);
             this.box.addChild(this.nextUpgradeInfo);
 
@@ -437,7 +436,7 @@
                 font: "10px monospace",
                 fill: "white"
             });
-            this.nextDescription.position = new PIXI.Point(12, 90);
+            this.nextDescription.position = new PIXI.Point(16, 90);
             this.nextDescription.anchor = new PIXI.Point(0, 0.5);
             this.box.addChild(this.nextDescription);
 
@@ -445,7 +444,7 @@
                 font: "8px monospace",
                 fill: "white"
             });
-            this.requirementsLabel.position = new PIXI.Point(85, 106);
+            this.requirementsLabel.position = new PIXI.Point(90, 106);
             this.requirementsLabel.anchor = new PIXI.Point(0.5, 0.5);
             this.box.addChild(this.requirementsLabel);
 
@@ -480,7 +479,7 @@
                     font: "10px monospace",
                     fill: "white"
                 });
-                this.skillRequirements[i].position = new PIXI.Point(12, 134+16*i);
+                this.skillRequirements[i].position = new PIXI.Point(16, 134+16*i);
                 this.skillRequirements[i].anchor = new PIXI.Point(0, 0.5);
                 this.box.addChild(this.skillRequirements[i]);
             }
