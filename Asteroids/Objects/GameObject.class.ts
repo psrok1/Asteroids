@@ -5,6 +5,8 @@
         renderObject: PIXI.Sprite;
         sprite: PIXI.Sprite;
 
+        destroyed: boolean = false;
+
         armor: number = Infinity;
         armorMaximum: number = Infinity;
         invulnerable: boolean = false;
@@ -113,6 +115,8 @@
         }
         onCollide(which: GameObject) { } 
         onDestroy() {
+            // TODO: Move removing child from view to World.destroyObject
+            this.destroyed = true;
             this.world.view.removeChild(this.renderObject);
         }
         getVelocity(): Vector { return this.velocity; }

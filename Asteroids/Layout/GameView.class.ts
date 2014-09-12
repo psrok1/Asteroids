@@ -137,11 +137,11 @@
             this.grayFilter.gray = gray;
         }
         resume() {
-            super.resume();
             this.startMission();
+            super.resume();
         }
         pause() {
-            super.resume();
+            super.pause();
             this.endMission();
         }
     }

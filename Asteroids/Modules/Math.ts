@@ -32,7 +32,9 @@ class Vector implements IVector {
         return (this.crossProductMagnitude(vec) > 0 ? 1 : -1);
     }
     angleToVector(vec: Vector): number {
-        return Math.asin(this.crossProductMagnitude(vec) / (this.length * vec.length));
+        // DEBUG Experiment: evaluating angle in full range <-Math.PI;Math.PI>
+        var direction = Math.acos(this.scalarProduct(vec) / (this.length * vec.length));
+        return this.signOfSumRotation(vec) * direction;
     }
     get length(): number {
         return Math.sqrt(this.x * this.x + this.y * this.y);

@@ -3,6 +3,7 @@
         world: World;
         private shotDelay: number = 0;
         follow: boolean = false;
+        targetObject: GameObject = null;
 
         // DEBUG
         armor: number = 40;
@@ -17,6 +18,7 @@
             maxVelocity: number) {
             super(world, type, position, velocity, radius, maxVelocity);
             this.attachRotationToVelocity();
+            this.world.CPUobjects.push(this);
         }
         private isThreatening(object: GameObject, ahead: Vector): number {
             // DEBUG: Experiment
@@ -35,9 +37,9 @@
                     y: AHEAD_WIDTH * Math.sin(-ahead.rotation + i * Math.PI / 2)
                 };
                 // DEBUG: EXPERIMENT (hardcoded +32 calibration)
-                if (rayIntersectsObject(<Point>ray, ahead, position, object.getRadius()+32))
+                if (rayIntersectsObject(<Point>ray, ahead, position, object.getRadius() + 32))
                     return distance.length;
-            } 
+            }
             return -1;
         }
         private getAheadForObject(object: GameObject, ahead: Vector) {
@@ -147,15 +149,14 @@
             } else
                 return false;
         }
-        escapeObject(object: GameObject): boolean {
+        escapeObject(object: GameObject, escapeDistance: number = 512): boolean {
             var MAX_FORCE = 0.2;
-            var ESCAPE_DISTANCE = 512;
 
             var velLength: number = this.getVelocity().length;
             var position: RelativeTorusPoint = object.getPosition().getRelative(this.getPosition());
             var steering: Vector = new Vector(-position.x, -position.y);
 
-            if (steering.length <= ESCAPE_DISTANCE) {
+            if (steering.length <= escapeDistance) {
                 steering.length = MAX_FORCE;
                 this.applyForce(steering);
                 this.getVelocity().length = velLength;
@@ -163,61 +164,118 @@
             } else
                 return false;
         }
-        update() {
-            var nearestCrystal: GameObject = null;
-            var nearestAsteroid: GameObject = null;
-            for (var i = 0; i < this.world.objects.length; i++) {
-                var object: GameObject = this.world.objects[i];
-                if (object instanceof Crystal) {
-                    nearestCrystal = object;
-                    break;
-                } else
-                if (object instanceof Asteroid) {
-                    nearestAsteroid = object;
+        isTargetReserved(target: GameObject): boolean {
+            for (var shipIndex in this.world.CPUobjects) {
+                var ship: CPUShip = this.world.CPUobjects[shipIndex];
+                if (ship.targetObject === target)
+                    return true;
+            }
+            return false;
+        }
+
+        findNearestTarget(type: any, distanceLimit: number = Infinity): GameObject {
+            var nearestTarget: GameObject = null;
+            var nearestTargetScore: number = null;
+            var ANGLE_WEIGHT = 200;
+            for (var objectIndex in this.world.objects) {
+                var object: GameObject = this.world.objects[objectIndex];
+                if (!(object instanceof type))
+                    continue;
+                var relPosition = object.getPosition().getRelative(this.getPosition());
+                var distanceVector = new Vector(relPosition.x, relPosition.y);
+                if (distanceLimit !== Infinity && distanceVector.length > distanceLimit)
+                    continue;
+                if (this.isTargetReserved(object))
+                    continue;
+                var targetAngleScore =
+                    Math.abs(this.getVelocity().angleToVector(distanceVector)) / Math.PI * ANGLE_WEIGHT;
+                var targetScore = (distanceVector.length + targetAngleScore) / 2;
+                if (nearestTarget == null || nearestTargetScore > targetScore) {
+                    nearestTarget = object;
+                    nearestTargetScore = targetScore;
                 }
             }
-            if (!this.avoidObstacle()) {
-                if (!this.world.isIntroPhase()) {
-                    this.followObject(this.world.player);
-                    this.attackObject(this.world.player);
-                }
-            } else
-                this.follow = false;
+            return nearestTarget;
+        }
+
+        onDestroy() {
+            this.world.CPUobjects.splice(this.world.CPUobjects.indexOf(this),1);
+            super.onDestroy();
+        }
+
+        update() {
             this.shotDelay--;
             super.update();
         }
 
-        // DEBUG
         onCollide(which: GameObject) {
+            // Post-collision avoidance
+            if (which instanceof CPUShip || which instanceof Asteroid) {
+                this.escapeObject(which);
+            }
+        }
+    }
+
+    export class ThiefShip extends CPUShip {
+        world: World;
+        armor: number = 80;
+        armorMaximum: number = 80;
+
+        constructor(
+            world: World,
+            position: Point,
+            velocity: Vector) {
+            // type = 1, radius = 32, maxVelocity = 5
+            super(world, 1, position, velocity, 32, 5);
+        }
+
+        update() {
+            if (!this.avoidObstacle() && !this.world.isIntroPhase()) {
+                if (this.escapeObject(this.world.player, 400)) {
+                    this.targetObject = null;
+                } else {
+                    if (this.targetObject === null)
+                        this.targetObject = this.findNearestTarget(Crystal);
+                    if (this.targetObject === null)
+                        this.targetObject = this.findNearestTarget(Asteroid);
+                    if (this.targetObject !== null) {
+                        if (this.targetObject instanceof Crystal)
+                            this.collectObject(this.targetObject);
+                        else {
+                            this.followObject(this.targetObject);
+                            this.attackObject(this.targetObject);
+                        }
+                        if (this.targetObject.destroyed)
+                            this.targetObject = null;
+                    }
+                }
+            } else
+                this.follow = false;
+            super.update();
+        }
+
+        onCollide(which: GameObject) {
+            var damaged: boolean = false;
             if (which instanceof Bullet) {
                 this.doExplosion();
+                damaged = true;
                 this.armor -= evaluateDamage(this, which, 5);
+            } else if (which instanceof Rocket) {
+                this.doLightning();
+                damaged = true;
+                this.armor -= evaluateDamage(this, which, 25);
+            } else if (which instanceof PlayerShip) {
+                this.doExplosion();
+                damaged = true;
+                this.armor -= evaluateDamage(this, which, 80);
+            }
+            if (damaged) {
                 if (this.armor <= 0)
                     this.world.destroyObject(this);
                 else
                     this.showArmorBar();
-            } else
-                if (which instanceof Rocket) {
-                    this.doLightning();
-                    this.armor -= evaluateDamage(this, which, 25);
-                    if (this.armor <= 0)
-                        this.world.destroyObject(this);
-                    else
-                        this.showArmorBar();
-                } else
-                if (which instanceof PlayerShip) {
-                    this.doExplosion();
-                    this.armor -= evaluateDamage(this, which, 160);
-                    if (this.armor <= 0)
-                        this.world.destroyObject(this);
-                    else
-                        this.showArmorBar();
-
-                } else
-                    // DEBUG Experiment: Post-collision avoiding
-                    if (which instanceof CPUShip) {
-                        this.escapeObject(which);
-                    }
+            }
+            super.onCollide(which);
         }
     }
 }

@@ -100,28 +100,6 @@
                 "y": -3
             },
             "objectName": "attacker"
-        },
-        {
-            "model": "ship",
-            "position": {
-                "x": 450,
-                "y": 100
-            },
-            "velocity": {
-                "x": -3,
-                "y": -3
-            }
-        },
-        {
-            "model": "ship",
-            "position": {
-                "x": 800,
-                "y": -300
-            },
-            "velocity": {
-                "x": -3,
-                "y": -3
-            }
         }
     ]
 }

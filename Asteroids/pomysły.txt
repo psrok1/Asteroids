@@ -206,3 +206,8 @@ MissionData
 		Position
 		Velocity
 		ObjectName
+
+Obsługa CPUShip - namierzanie celu
+	Najlepszy cel do zbiórki znajduje się blisko, o jak najmniejszym odchyleniu i 
+	nie jest zarezerwowany przez inną jednostkę.
+	(to ostatnie unika zderzeń w wyniku akcji Collect na tym samym obiekcie).

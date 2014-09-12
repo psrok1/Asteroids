@@ -1,7 +1,8 @@
 ﻿module Objects {
     export class World {
         view: Layout.GameView;
-        objects: GameObject[];
+        objects: GameObject[] = new Array();
+        CPUobjects: CPUShip[] = new Array();
         width: number;
         height: number;
         player: PlayerShip;
@@ -15,7 +16,6 @@
             this.width  = this.mission.width;
             this.height = this.mission.height;
             this.view = view;
-            this.objects = new Array();
             for (var object in this.mission.objects)
                 this.createObject(this.mission.objects[object]);
             this.startIntroPhase();
@@ -32,7 +32,7 @@
                     gameObject = new Asteroid(this, 10, position, velocity);
                     break;
                 case "ship":
-                    gameObject = new CPUShip(this, 2, position, velocity, 32, 5);
+                    gameObject = new ThiefShip(this, position, velocity);
                     break;
                 default:
                     throw new Error("Error: World.createObject failed. Unknown model of object '" + object.model + "'");
