@@ -220,20 +220,50 @@
         world: World;
         armor: number = 80;
         armorMaximum: number = 80;
+        attacked: boolean = false;
+        settings: ThiefShipSettings;
 
         constructor(
             world: World,
             position: Point,
-            velocity: Vector) {
+            velocity: Vector,
+            settings: ThiefShipSettings = { }) {
             // type = 1, radius = 32, maxVelocity = 5
             super(world, 1, position, velocity, 32, 5);
+            this.settings = settings;
+        }
+
+        private propagateAttack() {
+            for (var objectIndex in this.world.CPUobjects)
+                if (this.world.CPUobjects[objectIndex] instanceof ThiefShip)
+                    (<ThiefShip>this.world.CPUobjects[objectIndex]).attacked = true;
+        }
+
+        private setAsAttacked() {
+            this.attacked = true;
+            if (this.settings.propagateAttack)
+                this.propagateAttack();
+        }
+
+        private playerInteraction(): boolean {
+            var result: boolean = false;
+            if (this.settings.avoidPlayer || (this.settings.avoidPlayerAfterAttack && this.attacked))
+                if (this.escapeObject(this.world.player, 400)) {
+                    this.targetObject = null;
+                    result = true;
+                }
+            if (this.settings.followPlayer || (this.settings.followPlayerAfterAttack && this.attacked)) {
+                this.followObject(this.world.player);
+                result = true;
+            }
+            if (this.settings.attackPlayer || (this.settings.attackPlayerAfterAttack && this.attacked))
+                this.attackObject(this.world.player);
+            return result;
         }
 
         update() {
             if (!this.avoidObstacle() && !this.world.isIntroPhase()) {
-                if (this.escapeObject(this.world.player, 400)) {
-                    this.targetObject = null;
-                } else {
+                if (!this.playerInteraction()) {
                     if (this.targetObject === null)
                         this.targetObject = this.findNearestTarget(Crystal);
                     if (this.targetObject === null)
@@ -260,10 +290,12 @@
                 this.doExplosion();
                 damaged = true;
                 this.armor -= evaluateDamage(this, which, 5);
+                this.setAsAttacked();
             } else if (which instanceof Rocket) {
                 this.doLightning();
                 damaged = true;
                 this.armor -= evaluateDamage(this, which, 25);
+                this.setAsAttacked();
             } else if (which instanceof PlayerShip) {
                 this.doExplosion();
                 damaged = true;
@@ -277,5 +309,15 @@
             }
             super.onCollide(which);
         }
+    }
+
+    export interface ThiefShipSettings {
+        avoidPlayer?: boolean;
+        avoidPlayerAfterAttack?: boolean;
+        attackPlayer?: boolean;
+        attackPlayerAfterAttack?: boolean;
+        followPlayer?: boolean;
+        followPlayerAfterAttack?: boolean;
+        propagateAttack?: boolean;
     }
 }
