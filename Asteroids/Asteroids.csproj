@@ -34,7 +34,8 @@
     <Content Include="Sprites\Asteroids\asteroid2_2.png" />
     <Content Include="Sprites\bglayer_0.jpg" />
     <Content Include="Sprites\bglayer_1.png" />
-    <Content Include="Sprites\bullet.png" />
+    <Content Include="Sprites\Bullets\bullet1_0.png" />
+    <Content Include="Sprites\Bullets\bullet2_0.png" />
     <Content Include="Sprites\Crystals\crystal1_0.png" />
     <Content Include="Sprites\Crystals\crystal1_1.png" />
     <Content Include="Sprites\Crystals\crystal1_2.png" />

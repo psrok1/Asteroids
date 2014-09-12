@@ -73,7 +73,10 @@
         },
         "bullet": {
             "type": "texture",
-            "file": "Sprites/bullet.png"
+            "path": "Sprites/Bullets",
+            "fileGroup": "bullet",
+            "extension": "png",
+            "groups": 2
         },
         "skillStar": {
             "type": "texture",
