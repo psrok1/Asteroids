@@ -106,8 +106,7 @@
             this.renderObject.position.y = relPosition.y + 300;
         }
         testCollision(which: GameObject) {
-            var relPosition: RelativeTorusPoint = which.position.getRelative(this.position);
-            var vec: Vector = new Vector(relPosition.x, relPosition.y);
+            var vec: Vector = which.position.getRelative(this.position).getPositionVector();
             return vec.length <= (this.radius + which.radius);
         }
         rotate(angle: number) {

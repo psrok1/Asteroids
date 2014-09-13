@@ -6,6 +6,7 @@
         private effects: GameViewEffect[] = new Array()
         private blurFilter: PIXI.BlurFilter;
         private grayFilter: PIXI.GrayFilter;
+        private rgbSplitFilter: PIXI.RGBSplitFilter;
         private currentMission: Mission;
         private introNotification: IntroNotification;
         private introStep: number;
@@ -17,13 +18,15 @@
             // Filters
             this.blurFilter = new PIXI.BlurFilter();
             this.grayFilter = new PIXI.GrayFilter();
+            this.rgbSplitFilter = new PIXI.RGBSplitFilter();
             this.blurFilter.blur = 0;
             this.grayFilter.gray = 0;
-            this.filters = [this.blurFilter, this.grayFilter];
+            this.filters = [this.blurFilter, this.grayFilter, this.rgbSplitFilter];
             // Effects
             this.registerEffect("distortion", new DistortionEffect(this));
             this.registerEffect("criticalDamage", new CriticalDamageBlur(this));
             this.registerEffect("gameOver", new GameOverEffect(this));            
+            this.registerEffect("rgbSplitter", new RGBSplitter(this, this.rgbSplitFilter));
         }
 
         startMission() {
@@ -77,6 +80,7 @@
             for (var effectName in this.effects)
                 this.effects[effectName].reset();
         }
+
         onKeyDown(event: KeyboardEvent) {
             var key: number = (event.which == null ? event.keyCode : event.which);
             if (key == Keyboard.Key.Space)
@@ -127,6 +131,9 @@
         doCriticalBlur() {
             this.effects["criticalDamage"].play();
         }
+        doRGBSplit() {
+            this.effects["rgbSplitter"].play();
+        }
         onGameOver() {
             this.effects["gameOver"].play();
         }
@@ -164,8 +171,7 @@
             this.focusedObject = object;
         }
         private moveCamera(where: TorusPoint) {
-            var rel: RelativeTorusPoint = where.getRelative(this.cameraPosition);
-            var movement: Vector = new Vector(rel.x, rel.y);
+            var movement: Vector = where.getRelative(this.cameraPosition).getPositionVector();
             if (movement.length > this.maxCameraVelocity)
                 movement.length = this.maxCameraVelocity;
             this.sky.move(movement);
@@ -341,6 +347,55 @@
         }
         isGameOver() {
             return this.gameOverText.visible;
+        }
+    }
+
+    // Unstable PIXI feature
+    class RGBSplitter implements GameViewEffect {
+        private clock: number = 0;
+        private played: boolean = false;
+        private filter: PIXI.RGBSplitFilter;
+
+        constructor(view: GameView, filter: PIXI.RGBSplitFilter) {
+            this.filter = filter;
+            this.split = 0;
+        }
+
+        private get split(): number {
+            return this.filter.uniforms["red"].value.x;
+        }
+
+        private set split(val: number) {
+            this.filter.uniforms["red"].value = { x: val, y: val };
+            this.filter.uniforms["green"].value = { x: -val, y: val };
+            this.filter.uniforms["blue"].value = { x: val, y: -val };
+        }
+
+        update() {
+            if (!this.played)
+                return;
+            if (this.clock === 0)
+                this.played = false;
+            else if (this.clock < 40) {
+                this.split = this.clock / 4;
+            } else
+                this.split = 10;
+            this.clock--;
+        }
+
+        play() {
+            this.clock = 80;
+            this.played = true;
+        }
+
+        reset() {
+            this.split = 0;
+            this.played = false;
+            this.clock = 0;
+        }
+
+        isPlayed(): boolean {
+            return this.played;
         }
     }
 

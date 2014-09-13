@@ -523,6 +523,10 @@ declare module PIXI {
         contains(x: number, y: number): boolean
     }
 
+    export class RGBSplitFilter extends AbstractFilter {
+        angle: number;
+    }
+
     export class Rope {
         points: Point[];
         vertices: Float32Array;

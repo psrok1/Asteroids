@@ -28,8 +28,8 @@
 
             var AHEAD_WIDTH = this.getRadius() + 32;
 
-            var position: RelativeTorusPoint = new RelativeTorusPoint(object.getPosition(), this.getPosition());
-            var distance: Vector = new Vector(position.x, position.y);
+            var position: RelativeTorusPoint = object.getPosition().getRelative(this.getPosition());
+            var distance: Vector = position.getPositionVector();
             if (distance.length > ahead.length + object.getRadius())
                 return -1;
             for (var i = -1; i <= 1; i++) {
@@ -91,8 +91,7 @@
             var MAX_FORCE = 0.2;
 
             var velLength: number = this.getVelocity().length;
-            var position: RelativeTorusPoint = object.getPosition().getRelative(this.getPosition());
-            var steering: Vector = new Vector(position.x, position.y);
+            var steering: Vector = object.getPosition().getRelative(this.getPosition()).getPositionVector();
             if (this.follow == false && steering.length > 512)
                 this.follow = true;
             if (this.follow == true && steering.length < 256)
@@ -110,7 +109,7 @@
 
             var velLength: number = this.getVelocity().length;
             var position: RelativeTorusPoint = object.getPosition().getRelative(this.getPosition());
-            var steering: Vector = new Vector(position.x, position.y);
+            var steering: Vector = position.getPositionVector();
             var ahead: Vector = this.getVelocity().clone();
             ahead.length = 512;
 
@@ -182,8 +181,7 @@
                 var object: GameObject = this.world.objects[objectIndex];
                 if (!(object instanceof type))
                     continue;
-                var relPosition = object.getPosition().getRelative(this.getPosition());
-                var distanceVector = new Vector(relPosition.x, relPosition.y);
+                var distanceVector = object.getPosition().getRelative(this.getPosition()).getPositionVector();
                 if (distanceLimit !== Infinity && distanceVector.length > distanceLimit)
                     continue;
                 if (this.isTargetReserved(object))

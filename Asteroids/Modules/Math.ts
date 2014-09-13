@@ -89,6 +89,9 @@ class Point implements IPoint {
     clone(): Point {
         return new Point(this.x, this.y);
     }
+    getPositionVector(): Vector {
+        return new Vector(this.x, this.y);
+    }
 }
 
 class TorusPoint extends Point {

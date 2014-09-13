@@ -36,7 +36,8 @@
                 // DEBUG: Hardcoded rocket attack
                 if (!this.invulnerable)
                     this.armor -= evaluateDamage(this, which, 25);
-            } else if (which instanceof Ship || which instanceof Asteroid) {
+            } else if ((this instanceof CPUShip && which instanceof PlayerShip) ||
+                       (this instanceof PlayerShip && (which instanceof CPUShip || which instanceof Asteroid))) {
                 this.doExplosion();
                 damaged = true;
                 if (!this.invulnerable)

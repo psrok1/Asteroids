@@ -32,7 +32,7 @@
                     gameObject = new Asteroid(this, 10, position, velocity);
                     break;
                 case "ship":
-                    gameObject = new ThiefShip(this, position, velocity);
+                    gameObject = new SoldierShip(this, position, velocity);
                     break;
                 default:
                     throw new Error("Error: World.createObject failed. Unknown model of object '" + object.model + "'");
@@ -60,8 +60,7 @@
             for (var index in this.objects) {
                 var object: GameObject = this.objects[index];
                 if (rayIntersectsObject(rayStart, rayVector, object.getPosition(), object.getRadius())) {
-                    var relPosition: RelativeTorusPoint = object.getPosition().getRelative(rayStart);
-                    var posVector: Vector = new Vector(relPosition.x, relPosition.y);
+                    var posVector: Vector = object.getPosition().getRelative(rayStart).getPositionVector();
                     if (nearestLength == null || nearestLength > posVector.length) {
                         nearestLength = posVector.length;
                         nearestObject = object;
