@@ -4,6 +4,7 @@
         private shotDelay: number = 0;
         follow: boolean = false;
         targetObject: GameObject = null;
+        attackForce: number = 5;
 
         // DEBUG
         armor: number = 40;
@@ -210,9 +211,9 @@
 
         onCollide(which: GameObject) {
             // Post-collision avoidance
-            if (which instanceof CPUShip || which instanceof Asteroid) {
+            if (which instanceof CPUShip || which instanceof Asteroid)
                 this.escapeObject(which);
-            }
+            super.onCollide(which);
         }
     }
 
@@ -285,28 +286,8 @@
         }
 
         onCollide(which: GameObject) {
-            var damaged: boolean = false;
-            if (which instanceof Bullet) {
-                this.doExplosion();
-                damaged = true;
-                this.armor -= evaluateDamage(this, which, 5);
+            if (which instanceof Bullet && (<Bullet>which).source === this.world.player)
                 this.setAsAttacked();
-            } else if (which instanceof Rocket) {
-                this.doLightning();
-                damaged = true;
-                this.armor -= evaluateDamage(this, which, 25);
-                this.setAsAttacked();
-            } else if (which instanceof PlayerShip) {
-                this.doExplosion();
-                damaged = true;
-                this.armor -= evaluateDamage(this, which, 80);
-            }
-            if (damaged) {
-                if (this.armor <= 0)
-                    this.world.destroyObject(this);
-                else
-                    this.showArmorBar();
-            }
             super.onCollide(which);
         }
     }
@@ -319,5 +300,56 @@
         followPlayer?: boolean;
         followPlayerAfterAttack?: boolean;
         propagateAttack?: boolean;
+    }
+
+    export class SoldierShip extends CPUShip {
+        world: World;
+        armor: number = 120;
+        armorMaximum: number = 120;
+        kamikazeClock: number = 20;
+        settings: SoldierShipSettings;
+
+        constructor(
+            world: World,
+            position: Point,
+            velocity: Vector,
+            settings: SoldierShipSettings = {}) {
+            // Standard: type = 7, radius = 32, maxVelocity = 7
+            // Heavy:    type = 6, radius = 32, maxVelocity = 3
+            super(world,
+                (settings.heavyBattleship ? 6 : 7),
+                position, velocity, 32,
+                (settings.heavyBattleship ? 3 : 7));
+            if (settings.invulnerable)
+                this.invulnerable = true;
+            this.settings = settings;
+        }
+
+        attack() {
+            if (this.kamikazeClock > 0)
+                this.kamikazeClock--;
+            super.attack();
+        }
+
+        update() {
+            if (!this.avoidObstacle() && !this.world.isIntroPhase()) {
+                if (!this.settings.ignorePlayer) {
+                    if (this.settings.kamikazeMode && this.kamikazeClock <= 0) {
+                        this.collectObject(this.world.player);
+                    } else
+                        this.followObject(this.world.player);
+                    this.attackObject(this.world.player);
+                }
+            } else
+                this.follow = false;
+            super.update();
+        }        
+    }
+
+    export interface SoldierShipSettings {
+        heavyBattleship?: boolean;
+        ignorePlayer?: boolean;
+        invulnerable?: boolean;
+        kamikazeMode?: boolean;
     }
 }
