@@ -13,9 +13,9 @@
             name: name,
             currentMission: 1,
             skillsLevel: ZeroArray(16),
-            crystalsAmount: ZeroArray(4),
-            rocketsStorage: ZeroArray(6),
-            rocketsAmount: ZeroArray(6)
+            crystalsAmount: ZeroArray(4),            
+            rocketsStorage: [-1, -1],
+            rocketsAmount: [0, 0]
         };
         save();
     }
@@ -32,8 +32,11 @@
     export function nextMission() {
         playerData.currentMission++; save();
     }
-    export function getSkillLevel(which: number) {
+    export function getSkillLevel(which: number): number {
         return playerData.skillsLevel[which];
+    }
+    export function rocketSkillLevel(): number {
+        return getSkillLevel(3);
     }
     function getSkillIdByName(name: string): number {
         var skillData: SkillData[] = Resources.getObject("skillsData").skills;
@@ -69,6 +72,39 @@
     }
     export function setCrystalAmount(which: number, amount: number) {
         playerData.crystalsAmount[which] = amount;
+    }
+
+    export function getRocketSlot(which: number): RocketSlot {
+        return {
+            type: playerData.rocketsStorage[which],
+            amount: playerData.rocketsAmount[which]
+        };
+    }
+
+    export function loadRocketSlot(which: number, type: number) {
+        var amountArray: number[];
+        switch (rocketSkillLevel()) {
+            case 0:
+                amountArray = [0, 0, 0, 0, 0, 0];
+                break;
+            case 1:
+                amountArray = [1, 1, 0, 0, 0, 0];
+                break;
+            case 2:
+                amountArray = [2, 1, 1, 1, 0, 0];
+                break;
+            case 3:
+                amountArray = [3, 2, 1, 1, 1, 1];
+                break;
+        }
+        playerData.rocketsStorage[which] = type;
+        playerData.rocketsAmount[which] = amountArray[type];
+        save();
+    }
+
+    export interface RocketSlot {
+        type: number;
+        amount: number;
     }
 
     export interface Data {
