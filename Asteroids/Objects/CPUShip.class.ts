@@ -18,6 +18,7 @@
             radius: number,
             maxVelocity: number) {
             super(world, type, position, velocity, radius, maxVelocity);
+            this.getVelocity().length = maxVelocity;
             this.attachRotationToVelocity();
             this.world.CPUobjects.push(this);
         }
@@ -207,6 +208,15 @@
             super.update();
         }
 
+        onShipHit(ship: Ship): boolean {
+            if (ship instanceof PlayerShip)
+                if (!this.invulnerable) {
+                    this.armor -= evaluateDamage(this, ship, this.armorMaximum);
+                    return true;
+                }
+            return false;
+        }
+
         onCollide(which: GameObject) {
             // Post-collision avoidance
             if (which instanceof CPUShip || which instanceof Asteroid)
@@ -283,10 +293,10 @@
             super.update();
         }
 
-        onCollide(which: GameObject) {
-            if (which instanceof Bullet && (<Bullet>which).source === this.world.player)
+        onBulletHit(bullet: Bullet): boolean {
+            if(bullet.source === this.world.player)
                 this.setAsAttacked();
-            super.onCollide(which);
+            return super.onBulletHit(bullet);
         }
     }
 
@@ -312,12 +322,12 @@
             position: Point,
             velocity: Vector,
             settings: SoldierShipSettings = {}) {
-            // Standard: type = 7, radius = 32, maxVelocity = 7
+            // Standard: type = 7, radius = 32, maxVelocity = 5
             // Heavy:    type = 6, radius = 32, maxVelocity = 3
             super(world,
                 (settings.heavyBattleship ? 6 : 7),
                 position, velocity, 32,
-                (settings.heavyBattleship ? 3 : 7));
+                (settings.heavyBattleship ? 3 : 5));
             if (settings.invulnerable)
                 this.invulnerable = true;
             this.settings = settings;

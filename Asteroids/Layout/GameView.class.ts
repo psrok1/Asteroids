@@ -127,6 +127,7 @@
         }
         doDistortion() {
             this.effects["distortion"].play();
+            this.doRGBSplit();
         }
         doCriticalBlur() {
             this.effects["criticalDamage"].play();

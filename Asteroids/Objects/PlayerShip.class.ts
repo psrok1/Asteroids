@@ -7,19 +7,33 @@
 
         constructor(world: World, position: Point) {
             super(world, 3, position, new Vector(), 32, 5);
-        } 
-        onCollide(which: GameObject) {
-            if (which instanceof Bullet) {
-                this.world.view.shakeCamera();
-            } else if (which instanceof Rocket) {
-                this.world.view.doDistortion();
-                this.world.view.shakeCamera();
-            } else if (which instanceof Ship || which instanceof Asteroid) {
-                this.world.view.doCriticalBlur();
-                this.world.view.shakeCamera();
-            }
-            super.onCollide(which);
         }
+
+        onShipHit(ship: Ship): boolean {
+            this.world.view.doCriticalBlur();
+            this.world.view.shakeCamera();
+            this.armor -= evaluateDamage(this, ship, this.armorMaximum);
+            return true;
+        }
+
+        onBulletHit(bullet: Bullet): boolean {
+            this.world.view.shakeCamera();
+            return super.onBulletHit(bullet);
+        }
+
+        onRocketHit(rocket: Rocket): boolean {
+            this.world.view.doDistortion();
+            this.world.view.shakeCamera();
+            return super.onRocketHit(rocket);
+        }
+
+        onAsteroidHit(asteroid: Asteroid): boolean {
+            this.world.view.doCriticalBlur();
+            this.world.view.shakeCamera();
+            this.armor -= evaluateDamage(this, asteroid, this.armorMaximum);
+            return true;
+        }
+         
         onDestroy() {
             this.world.view.onGameOver();
             super.onDestroy();
