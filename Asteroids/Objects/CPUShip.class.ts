@@ -360,4 +360,70 @@
         invulnerable?: boolean;
         kamikazeMode?: boolean;
     }
+
+    export class SupportShip extends CPUShip {
+        world: World;
+        armor: number = 80;
+        armorMaximum: number = 80;
+        settings: SupportShipSettings;
+        target: Ship = null;
+
+        constructor(
+            world: World,
+            position: Point,
+            velocity: Vector,
+            settings: SupportShipSettings = {}) {
+            // Standard: type = 3, radius = 32, maxVelocity = 5
+            // Soldier:  type = 5, radius = 32, maxVelocity = 6
+            super(world,
+                (settings.playerAttacker ? 5 : 3),
+                position, velocity, 32,
+                (settings.playerAttacker ? 6 : 5));
+            if (settings.playerAttacker) {
+                this.invulnerable = true;
+                this.attackForce = 100;
+            }
+            this.settings = settings;
+        }
+
+        update() {
+            if (!this.avoidObstacle() && !this.world.isIntroPhase()) {
+                if (!this.settings.playerAttacker) {
+                    if (this.targetObject === null && this.settings.soldier)
+                        this.targetObject = this.findNearestTarget(ThiefShip, 512);
+                    if (this.targetObject === null && this.settings.soldier)
+                        this.targetObject = this.findNearestTarget(SoldierShip, 512);
+                    if (this.targetObject === null)
+                        this.targetObject = this.findNearestTarget(Crystal);
+                    if (this.targetObject === null)
+                        this.targetObject = this.findNearestTarget(Asteroid);
+                    if (this.targetObject !== null) {
+                        if (this.targetObject instanceof Crystal)
+                            this.collectObject(this.targetObject);
+                        else {
+                            this.followObject(this.targetObject);
+                            this.attackObject(this.targetObject);
+                        }
+                        if (this.targetObject.destroyed)
+                            this.targetObject = null;
+                    }
+                    if (this.settings.soldier) {
+                        for (var i = 0; i < this.world.CPUobjects.length; i++)
+                            if (!(this.world.CPUobjects[i] instanceof SupportShip))
+                                this.attackObject(this.world.CPUobjects[i]);
+                    }
+                } else {
+                    this.followObject(this.world.player);
+                    this.attackObject(this.world.player);
+                }
+            } else
+                this.follow = false;
+            super.update();
+        }
+    }
+
+    export interface SupportShipSettings {
+        playerAttacker?: boolean;
+        soldier?: boolean;
+    }
 }

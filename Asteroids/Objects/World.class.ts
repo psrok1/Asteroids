@@ -34,6 +34,9 @@
                 case "ship":
                     gameObject = new SoldierShip(this, position, velocity);
                     break;
+                case "support":
+                    gameObject = new SupportShip(this, position, velocity, {soldier:true});
+                    break;
                 default:
                     throw new Error("Error: World.createObject failed. Unknown model of object '" + object.model + "'");
             }

@@ -90,7 +90,7 @@
             }
         },
         {
-            "model": "ship",
+            "model": "support",
             "position": {
                 "x": 500,
                 "y": 500

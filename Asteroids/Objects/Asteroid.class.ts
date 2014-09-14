@@ -2,18 +2,26 @@
     export class Asteroid extends GameObject {
         private generation: number;
         private type: number;
+        private hitsToGo: number;
+        private hitsToChip: number;
+
+        private chipping: boolean;        
 
         constructor(world: World,
             type: number,
             position: Point,
             velocity: Vector,
-            generation: number = 0) {
+            generation: number = 0,
+            chipping: boolean = false) {
             var resID: string = "asteroid" + type;
             var sprite: PIXI.Sprite = new PIXI.Sprite(Resources.getObject(resID));
             sprite.scale.x = sprite.scale.y = 1 / (1<<generation);
             var maxVelocity: number = 10;
             this.generation = generation;
             this.type = type;
+            this.chipping = chipping;
+            this.hitsToChip = 5;
+            this.hitsToGo = 1;
             super(world, sprite, position, velocity, 64 / (1<<generation), maxVelocity);
         }
 
@@ -32,7 +40,25 @@
         }
 
         onCollide(which: GameObject) {
-            if (which instanceof Bullet || which instanceof Ship)
+            if (which instanceof Bullet) {
+                this.hitsToGo--;
+                if (this.generation == 0 && this.chipping)
+                    if (--this.hitsToChip == 0) {
+                        this.hitsToChip = 5;
+                        var positionChip = this.getPosition().clone();
+                        var velocityChip = this.getVelocity().clone();
+                        velocityChip.rotate(randomFromRange(-Math.PI, Math.PI));
+                        velocityChip.length = 64;
+                        positionChip.move(velocityChip);
+                        velocityChip.length = this.getVelocity().length;
+                        new Asteroid(this.world, this.type, positionChip, velocityChip, 2);
+                    }
+            }
+            if (which instanceof Rocket)
+                this.hitsToGo -= 2;
+            if (which instanceof Ship)
+                this.hitsToGo = 0;
+            if (this.hitsToGo <= 0)
                 this.world.destroyObject(this);
         }
     }
