@@ -67,11 +67,25 @@
         return true;
     }
 
+    export function increaseSkillLevel(which: number) {
+        if (playerData.skillsLevel[which] === 3 || !checkSkillRequirements(which))
+            return;
+        var skillData: SkillData = Resources.getObject("skillsData").skills[which];
+        var skillCrystalRequirements = skillData.levelData[playerData.skillsLevel[which]].cost;
+        setCrystalAmount(0, getCrystalAmount(0) - skillCrystalRequirements.red);
+        setCrystalAmount(1, getCrystalAmount(1) - skillCrystalRequirements.green);
+        setCrystalAmount(2, getCrystalAmount(2) - skillCrystalRequirements.yellow);
+        setCrystalAmount(3, getCrystalAmount(3) - skillCrystalRequirements.blue);
+        playerData.skillsLevel[which]++;
+        save();
+    }
+
     export function getCrystalAmount(which: number) {
         return playerData.crystalsAmount[which];
     }
     export function setCrystalAmount(which: number, amount: number) {
         playerData.crystalsAmount[which] = amount;
+        save();
     }
 
     export function getRocketSlot(which: number): RocketSlot {

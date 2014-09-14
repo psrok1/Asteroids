@@ -33,6 +33,11 @@
             this.armor -= evaluateDamage(this, asteroid, this.armorMaximum);
             return true;
         }
+
+        onCrystalHit(crystal: Crystal) {
+            var valueArray = [1, 2, 3, 5, 8];
+            Player.setCrystalAmount(crystal.type, Player.getCrystalAmount(crystal.type) + valueArray[crystal.sizeClass]);
+        }
          
         onDestroy() {
             this.world.view.onGameOver();

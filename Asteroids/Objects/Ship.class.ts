@@ -40,6 +40,7 @@
 
         onAsteroidHit(asteroid: Asteroid): boolean { return false; }
         onShipHit(ship: Ship): boolean { return false; }
+        onCrystalHit(crystal: Crystal) { }
 
         shot() {
             new Bullet(this.world, this);
@@ -61,6 +62,8 @@
             } else if (which instanceof Ship) {
                 if (this.onShipHit(<Ship>which))
                     damaged = true;
+            } else if (which instanceof Crystal) {
+                this.onCrystalHit(<Crystal>which);
             }
             if (damaged) {
                 if (this.armor <= 0)

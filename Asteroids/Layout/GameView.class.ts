@@ -86,6 +86,8 @@
             if (key == Keyboard.Key.Space)
                 if ((<GameOverEffect>this.effects["gameOver"]).isGameOver()) {
                     (<GameOverEffect>this.effects["gameOver"]).reset();
+                    // Experiment: hack for MainView interactivity bug
+                    ViewManager.getInstance().registerView("main", new MainView(), false);
                     ViewManager.getInstance().switchView("main");
                 } else if (this.world.isIntroPhase()) {
                     this.nextIntroStep();

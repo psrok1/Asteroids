@@ -43,8 +43,8 @@
             this.applyRatio(this.currentView, 1/this.ratio);
         }
 
-        registerView(name: string, view: View):View {
-            if (this.views[name])
+        registerView(name: string, view: View, strict: boolean = true):View {
+            if (strict && this.views[name])
                 return this.views[name];
             this.views[name] = view;
             return view;

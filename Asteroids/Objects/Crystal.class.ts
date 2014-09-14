@@ -1,6 +1,7 @@
 ﻿module Objects {
     export class Crystal extends GameObject {
         world: World;
+        type: number;
         sizeClass: number;
 
         constructor(
@@ -14,6 +15,7 @@
             velocity.length   = Math.random() * 4 + 2;
             velocity.rotation = Math.random() * 2 * Math.PI; 
             this.sizeClass = type % 10; 
+            this.type = Math.floor(type / 10)-1;
             super(world, sprite, position, velocity, radius, 6);
         }
 
