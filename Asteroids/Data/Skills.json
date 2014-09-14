@@ -4,8 +4,8 @@
             "name": "Sharpshooter",
             "levelData": [
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 10,
+                    "description": "Laser gun 10% stronger",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -20,8 +20,8 @@
                     ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 20,
+                    "description": "Laser gun 20% stronger",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -31,8 +31,8 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 30,
+                    "description": "Laser gun 30% stronger",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -47,8 +47,8 @@
             "name": "Precision",
             "levelData": [
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 10,
+                    "description": "10% better accuracy",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -58,8 +58,8 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 15,
+                    "description": "15% better accuracy",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -69,8 +69,8 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 20,
+                    "description": "20% better accuracy",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -85,8 +85,8 @@
             "name": "Rockbreaker",
             "levelData": [
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 25,
+                    "description": "25% easier to crush asteroid",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -96,8 +96,8 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 35,
+                    "description": "35% easier to crush asteroid",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -107,8 +107,8 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 50,
+                    "description": "50% easier to crush asteroid",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -123,8 +123,8 @@
             "name": "Rocket launcher",
             "levelData": [
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 25,
+                    "description": "25%+ rocket damage",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -134,8 +134,8 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 30,
+                    "description": "30%+ rocket damage",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -145,8 +145,8 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 40,
+                    "description": "40%+ rocket damage",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -161,8 +161,8 @@
             "name": "Sniper",
             "levelData": [
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 40,
+                    "description": "40%+ accuracy",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -172,8 +172,8 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 50,
+                    "description": "50%+ accuracy",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -183,8 +183,8 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 60,
+                    "description": "60%+ accuracy",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -199,8 +199,8 @@
             "name": "Intuition",
             "levelData": [
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 25,
+                    "description": "25%+ armor penetration",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -210,8 +210,8 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 35,
+                    "description": "35%+ armor penetration",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -221,8 +221,8 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 50,
+                    "description": "50%+ armor penetration",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -237,8 +237,8 @@
             "name": "Critical hit",
             "levelData": [
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 75,
+                    "description": "20% chance for critical hit",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -248,8 +248,8 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 100,
+                    "description": "25% chance for critical hit",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -259,8 +259,8 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 125,
+                    "description": "33% chance for critical hit",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -275,8 +275,8 @@
             "name": "Doubleshooter",
             "levelData": [
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 35,
+                    "description": "Double shot (+35% hit)",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -286,8 +286,8 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 55,
+                    "description": "Double shot (+55% hit)",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -297,8 +297,8 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 75,
+                    "description": "Double shot (+75% hit)",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -313,8 +313,8 @@
             "name": "Armor",
             "levelData": [
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 10,
+                    "description": "10% thicker armor",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -324,8 +324,8 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 20,
+                    "description": "20% thicker armor",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -335,8 +335,8 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 30,
+                    "description": "30% thicker armor",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -351,8 +351,8 @@
             "name": "Daredevil",
             "levelData": [
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 5,
+                    "description": "5%+ scratchproof",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -362,8 +362,8 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 10,
+                    "description": "10%+ scratchproof",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -373,8 +373,8 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 15,
+                    "description": "15% scratchproof",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -389,8 +389,8 @@
             "name": "Endurance",
             "levelData": [
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 5,
+                    "description": "5% shorter rocket side effects",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -400,8 +400,8 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 10,
+                    "description": "10% shorter rocket side effects",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -411,8 +411,8 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 15,
+                    "description": "15% shorter rocket side effects",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -427,8 +427,8 @@
             "name": "Persistence",
             "levelData": [
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 15,
+                    "description": "15%+ patience in being attacked",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -438,8 +438,8 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 25,
+                    "description": "25%+ patience in being attacked",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -449,8 +449,8 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 40,
+                    "description": "40%+ patience in being attacked",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -465,8 +465,8 @@
             "name": "Shielding",
             "levelData": [
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 5,
+                    "description": "Fast recover after EMP attack",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -476,8 +476,8 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 4.5,
+                    "description": "Faster recover after EMP attack",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -487,8 +487,8 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 4,
+                    "description": "The fastest recover after EMP attack",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -503,8 +503,8 @@
             "name": "Recovery",
             "levelData": [
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 5,
+                    "description": "Enables armor self-repair",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -514,8 +514,8 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 4.5,
+                    "description": "A bit faster armor self-repair",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -525,8 +525,8 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 4,
+                    "description": "Faster armor self-repair",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -541,8 +541,8 @@
             "name": "Camouflage",
             "levelData": [
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 10,
+                    "description": "-10% less enemy accuracy",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -552,8 +552,8 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 15,
+                    "description": "-15% less enemy accuracy",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -563,8 +563,8 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 20,
+                    "description": "-20% less enemy accuracy",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -579,8 +579,8 @@
             "name": "Dodge",
             "levelData": [
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 8,
+                    "description": "12% chance to dodge",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -590,8 +590,8 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 6,
+                    "description": "16% chance to dodge",
                     "cost": {
                         "red": 0,
                         "green": 0,
@@ -601,8 +601,8 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 0,
-                    "description": "",
+                    "value": 4,
+                    "description": "25% chance to dodge",
                     "cost": {
                         "red": 0,
                         "green": 0,

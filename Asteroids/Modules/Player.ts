@@ -49,13 +49,13 @@
         var skillData: SkillData = Resources.getObject("skillsData").skills[which];
         var skillCrystalRequirements = skillData.levelData[playerData.skillsLevel[which]].cost;
         var skillOtherRequirements = skillData.levelData[playerData.skillsLevel[which]].skillRequirements;
-        if (skillCrystalRequirements.red < playerData.crystalsAmount[0])
+        if (skillCrystalRequirements.red > playerData.crystalsAmount[0])
             return false;
-        if (skillCrystalRequirements.green < playerData.crystalsAmount[1])
+        if (skillCrystalRequirements.green > playerData.crystalsAmount[1])
             return false;
-        if (skillCrystalRequirements.yellow < playerData.crystalsAmount[2])
+        if (skillCrystalRequirements.yellow > playerData.crystalsAmount[2])
             return false;
-        if (skillCrystalRequirements.blue < playerData.crystalsAmount[3])
+        if (skillCrystalRequirements.blue > playerData.crystalsAmount[3])
             return false;
         for (var i = 0; i < skillOtherRequirements.length; i++) {
             var skillID = getSkillIdByName(skillOtherRequirements[i].skill);
