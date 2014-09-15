@@ -88,6 +88,12 @@
         save();
     }
 
+    export function zeroCrystals() {
+        for(var which = 0; which < 4; which++)
+            playerData.crystalsAmount[which] = 0;
+        save();
+    }
+
     export function getRocketSlot(which: number): RocketSlot {
         return {
             type: playerData.rocketsStorage[which],

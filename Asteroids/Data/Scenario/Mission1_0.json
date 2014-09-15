@@ -2,11 +2,10 @@
     "numberDescription": "FIRST MISSION",
     "majorTitle": "BEGINNER",
     "minorTitle": "this game is too easy to lose",
-    "description": "YOUR MISSION IS QUITE SIMPLE: JUST SURVIVE.",
     "introData": [
         {
             "focusOn": "asteroid",
-            "description": "In this mission you must destroy some asteroids to collect crystals.",
+            "description": "Your mission is to destroy some asteroids to collect crystals.",
             "duration": 160
         },
         {
@@ -15,18 +14,13 @@
             "duration": 240
         },
         {
-            "focusOn": "attacker",
-            "description": "Watch out! There are ships not pleased with stealing their treasure\n",
+            "focusOn": "asteroid2",
+            "description": "Try to find, destroy and collect all of them.\nGood luck!",
             "duration": 240
-        },
-        {
-            "focusOn": "attacker",
-            "description": "Watch out! There are ships not pleased with stealing their treasure\nJust kill'em all.",
-            "duration": 160
         }
     ],
-    "width": 3000,
-    "height": 3000,
+    "width": 2000,
+    "height": 2000,
     "playerPosition": {
         "x": 0,
         "y": 0
@@ -34,7 +28,7 @@
     "target": "CollectAll",
     "objects": [
         {
-            "model": "asteroid",
+            "model": "basicAsteroid",
             "position": {
                 "x": 640,
                 "y": 110
@@ -46,7 +40,7 @@
             "objectName": "asteroid"
         },
         {
-            "model": "asteroid",
+            "model": "basicAsteroid",
             "position": {
                 "x": 210,
                 "y": 110
@@ -57,7 +51,7 @@
             }
         },
         {
-            "model": "asteroid",
+            "model": "basicAsteroid",
             "position": {
                 "x": 800,
                 "y": -350
@@ -65,63 +59,8 @@
             "velocity": {
                 "x": 1,
                 "y": -2
-            }
-        },
-        {
-            "model": "asteroid",
-            "position": {
-                "x": -270,
-                "y": -670
             },
-            "velocity": {
-                "x": -1,
-                "y": 0
-            }
-        },
-        {
-            "model": "asteroid",
-            "position": {
-                "x": -500,
-                "y": 400
-            },
-            "velocity": {
-                "x": -1,
-                "y": -1
-            }
-        },
-        {
-            "model": "support",
-            "position": {
-                "x": 500,
-                "y": 500
-            },
-            "velocity": {
-                "x": -3,
-                "y": -3
-            },
-            "objectName": "attacker"
-        },
-        {
-            "model": "ship",
-            "position": {
-                "x": 450,
-                "y": 100
-            },
-            "velocity": {
-                "x": -3,
-                "y": -3
-            }
-        },
-        {
-            "model": "ship",
-            "position": {
-                "x": 800,
-                "y": -300
-            },
-            "velocity": {
-                "x": -3,
-                "y": -3
-            }
+            "objectName": "asteroid2"
         }
     ]
 }

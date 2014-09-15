@@ -138,7 +138,6 @@ declare class Mission {
     numberDescription: string;
     majorTitle: string;
     minorTitle: string;
-    description: string;
     introData: MissionIntro[];
     width: number;
     height: number;

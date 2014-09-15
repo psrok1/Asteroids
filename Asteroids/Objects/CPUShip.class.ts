@@ -271,7 +271,7 @@
         }
 
         update() {
-            if (!this.avoidObstacle() && !this.world.isIntroPhase()) {
+            if (!this.avoidObstacle() && this.world.isGameMode()) {
                 if (!this.playerInteraction()) {
                     if (this.targetObject === null)
                         this.targetObject = this.findNearestTarget(Crystal);
@@ -340,7 +340,7 @@
         }
 
         update() {
-            if (!this.avoidObstacle() && !this.world.isIntroPhase()) {
+            if (!this.avoidObstacle() && this.world.isGameMode()) {
                 if (!this.settings.ignorePlayer) {
                     if (this.settings.kamikazeMode && this.kamikazeClock <= 0) {
                         this.collectObject(this.world.player);
@@ -386,8 +386,13 @@
             this.settings = settings;
         }
 
+        onCrystalHit(crystal: Crystal) {
+            var valueArray = [1, 2, 3, 5, 8];
+            Player.setCrystalAmount(crystal.type, Player.getCrystalAmount(crystal.type) + valueArray[crystal.sizeClass]);
+        }
+
         update() {
-            if (!this.avoidObstacle() && !this.world.isIntroPhase()) {
+            if (!this.avoidObstacle() && this.world.isGameMode()) {
                 if (!this.settings.playerAttacker) {
                     if (this.targetObject === null && this.settings.soldier)
                         this.targetObject = this.findNearestTarget(ThiefShip, 512);

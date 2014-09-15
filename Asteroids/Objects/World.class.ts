@@ -8,7 +8,7 @@
         player: PlayerShip;
         private introPhase: boolean;
         private mission: Mission;
-
+        private gameMode: boolean = false;
         private paused: boolean = true;
 
         constructor(view: Layout.GameView, mission: Mission) {
@@ -22,14 +22,32 @@
             this.resume();
         }
 
+        checkTargetCondition(): boolean {
+            switch (this.mission.target) {
+                case "CollectAll":
+                    if (this.objects.length <= this.CPUobjects.length + 1) {
+                        for (var i = 0; i < this.objects.length; i++)
+                            if (!(this.objects[i] instanceof Ship))
+                                return false;
+                        return true;
+                    }
+                    break;
+            }
+            return false;
+        }
+
         createObject(object: MissionObject): GameObject {
             var position: Point = new Point(object.position.x, object.position.y);
             var velocity: Vector = new Vector(object.velocity.x, object.velocity.y);
             var gameObject: GameObject = null;
             switch (object.model) {
                 // DEBUG: hard-coded types
-                case "asteroid":
-                    gameObject = new Asteroid(this, 10, position, velocity);
+                case "basicAsteroid":
+                    gameObject = new Asteroid(this, 10, position, velocity, {
+                        hitsToGo: 1,
+                        crystalsMaxAmount: 5,
+                        crystalsMaxType: 3
+                    });
                     break;
                 case "ship":
                     gameObject = new SoldierShip(this, position, velocity);
@@ -73,6 +91,18 @@
             return nearestObject;
         }
 
+        enableGameMode() {
+            this.gameMode = true;
+        }
+
+        disableGameMode() {
+            this.gameMode = false;
+        }
+
+        isGameMode(): boolean {
+            return this.gameMode;
+        }
+
         pause() {
             this.paused = true;
         }
@@ -98,14 +128,19 @@
                         second.onCollide(first);
                     }
                 }
+            if (this.isGameMode() && this.checkTargetCondition()) {
+                this.view.onGameOver(true);
+            }
         }
 
         startIntroPhase() {
             this.introPhase = true;
+            this.disableGameMode();
         }
 
         endIntroPhase() {
             this.introPhase = false;
+            this.enableGameMode();
             this.player = new PlayerShip(this, new Point(
                 this.mission.playerPosition.x, this.mission.playerPosition.y));
         }

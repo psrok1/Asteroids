@@ -40,7 +40,8 @@
         }
          
         onDestroy() {
-            this.world.view.onGameOver();
+            if(this.world.isGameMode())
+                this.world.view.onGameOver();
             super.onDestroy();
         }
     }

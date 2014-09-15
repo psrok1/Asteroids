@@ -15,7 +15,7 @@
                 fill: "white"
             });
             this.missionNumber.anchor.x = 0.5;
-            this.missionNumber.position = new PIXI.Point(300, 160);
+            this.missionNumber.position = new PIXI.Point(300, 192);
             this.registerObject("missionNumber", this.missionNumber);
 
             this.missionName = new PIXI.Text("NEWBIE", {
@@ -23,7 +23,7 @@
                 fill: "white"
             });
             this.missionName.anchor.x = 0.5;
-            this.missionName.position = new PIXI.Point(300, 200);
+            this.missionName.position = new PIXI.Point(300, 232);
             this.registerObject("missionName", this.missionName);
 
             this.missionTitle = new PIXI.Text("this game is too easy to lose", {
@@ -31,7 +31,7 @@
                 fill: "white"
             });
             this.missionTitle.anchor.x = 0.5;
-            this.missionTitle.position = new PIXI.Point(300, 232);
+            this.missionTitle.position = new PIXI.Point(300, 264);
             this.registerObject("missionTitle", this.missionTitle);
 
             this.missionDescription = new PIXI.Text("very very long description....", {
@@ -40,13 +40,6 @@
                 wordWrap: true,
                 wordWrapWidth: 536
             });
-            // DEBUG
-            var debugDesc = "";
-            for (var i = 0; i < 6; i++)
-                debugDesc += "very long endless description for debugging purpose... ";
-            this.missionDescription.position = new PIXI.Point(32, 300);
-            this.missionDescription.setText(debugDesc);
-            this.registerObject("missionDescription", this.missionDescription);
 
             this.missionStart = new PIXI.Text("START GAME", {
                 font: "32px Digital-7",
@@ -63,7 +56,6 @@
             this.missionNumber.setText(mission.numberDescription);
             this.missionName.setText(mission.majorTitle);
             this.missionTitle.setText(mission.minorTitle);
-            this.missionDescription.setText(mission.description);
         }
 
         update() {

@@ -1,7 +1,7 @@
 ﻿module Layout {
     export class GameView extends View {
         private sky: Sky;
-        private world: Objects.World;
+        world: Objects.World;
         private camera: Camera;
         private effects: GameViewEffect[] = new Array()
         private blurFilter: PIXI.BlurFilter;
@@ -11,6 +11,8 @@
         private introNotification: IntroNotification;
         private introStep: number;
         private introClock: number;
+
+        private gameNotification: PIXI.Text;
         
         constructor() {
             super();
@@ -91,11 +93,11 @@
                     ViewManager.getInstance().switchView("main");
                 } else if (this.world.isIntroPhase()) {
                     this.nextIntroStep();
-                } else if (!Keyboard.isLocked(Keyboard.Key.Space)) {
+                } else if (this.world.isGameMode() && !Keyboard.isLocked(Keyboard.Key.Space)) {
                     this.world.player.shot();
                     Keyboard.lockKey(Keyboard.Key.Space);
                 }
-            if (key == Keyboard.Key.Enter)
+            if (this.world.isGameMode() && key == Keyboard.Key.Enter)
                 this.world.player.rocketShot();
         }
         onKeyUp(event: KeyboardEvent) {
@@ -105,7 +107,7 @@
         }
         updatePlayerSteering() {
             var player = this.world.player;
-            if (!player)
+            if (!this.world.isGameMode())
                 return;
             if (Keyboard.getState(Keyboard.Key.Left))
                 player.rotate(-Math.PI / 36);
@@ -137,7 +139,8 @@
         doRGBSplit() {
             this.effects["rgbSplitter"].play();
         }
-        onGameOver() {
+        onGameOver(success: boolean = false) {
+            (<GameOverEffect>this.effects["gameOver"]).success = success;
             this.effects["gameOver"].play();
         }
         setBlur(blur: number) {
@@ -146,13 +149,32 @@
         setGray(gray: number) {
             this.grayFilter.gray = gray;
         }
+
+        showNotification(message: string) {
+            this.gameNotification = new PIXI.Text(message, {
+                font: "32px Digital-7",
+                fill: "white"
+            });
+            this.gameNotification.anchor = new PIXI.Point(0.5, 0.5);
+            this.gameNotification.position = new PIXI.Point(300, 300);
+            this.addChild(this.gameNotification);
+        }
+
+        hideNotification() {
+            if (this.gameNotification) {
+                this.removeChild(this.gameNotification);
+                this.gameNotification = null;
+            }
+        }
+
         resume() {
             this.startMission();
             super.resume();
         }
         pause() {
             super.pause();
-            this.endMission();
+            this.endMission();            
+            this.hideNotification();
         }
     }
 
@@ -311,45 +333,45 @@
         private clock: number = 0;
         private view: GameView;
         private played: boolean = false;
-        private gameOverText: PIXI.Text;
+        private gameOver: boolean = false;
+
+        success: boolean = true;
 
         constructor(view: GameView) {
             this.view = view;
-            this.gameOverText = new PIXI.Text("GAME OVER", {
-                font: "32px Digital-7",
-                fill: "white"
-            });
-            this.gameOverText.anchor = new PIXI.Point(0.5, 0.5);
-            this.gameOverText.position = new PIXI.Point(300, 300);
-            this.gameOverText.visible = false;
-            this.view.addChild(this.gameOverText);
         }
+
         update() {
             if (!this.played)
                 return;
             if (this.clock >= 100) {
-                this.gameOverText.visible = true;
+                this.view.showNotification((this.success ? "MISSION COMPLETED" : "GAME OVER"));
                 this.played = false;
+                this.gameOver = true;
                 return;
             }
             this.clock++;
-            this.view.setBlur(this.clock * 0.05);
-            this.view.setGray(this.clock * 0.01);
+            if (!this.success) {
+                this.view.setBlur(this.clock * 0.05);
+                this.view.setGray(this.clock * 0.01);
+            }
         }
         play() {
             this.clock = 0;
             this.played = true;
+            this.view.world.disableGameMode();
         }
         isPlayed(): boolean {
             return this.played;
         }
         reset() {
-            this.gameOverText.visible = false;
             this.view.setBlur(0);
             this.view.setGray(0);
+            this.gameOver = false;
+            this.played = false;
         }
         isGameOver() {
-            return this.gameOverText.visible;
+            return this.gameOver;
         }
     }
 
