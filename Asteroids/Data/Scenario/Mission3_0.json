@@ -1,0 +1,83 @@
+﻿{
+    "numberDescription": "THIRD MISSION",
+    "majorTitle": "COMPETITION",
+    "minorTitle": "if your only goal is to become rich\nyou will never achieve it",
+    "introData": [
+        {
+            "focusOn": "thief",
+            "description": "You have new friends. Unfortunately, they don't want to share the profits.",
+            "duration": 240
+        },
+        {
+            "focusOn": "thief",
+            "description": "Just kill'em all.",
+            "duration": 200
+        }
+    ],
+    "width": 2000,
+    "height": 2000,
+    "playerPosition": {
+        "x": 0,
+        "y": 0
+    },
+    "target": "CollectAll",
+    "objects": [
+        {
+            "model": "standardAsteroid",
+            "position": {
+                "x": -1240,
+                "y": 110
+            },
+            "velocity": {
+                "x": 1,
+                "y": 2
+            }
+        },
+        {
+            "model": "standardAsteroid",
+            "position": {
+                "x": 210,
+                "y": 110
+            },
+            "velocity": {
+                "x": -4,
+                "y": 1
+            }
+        },
+        {
+            "model": "standardAsteroid",
+            "position": {
+                "x": 800,
+                "y": -350
+            },
+            "velocity": {
+                "x": 1,
+                "y": -2
+            }
+        },
+        {
+            "model": "thief",
+            "position": {
+                "x": 300,
+                "y": 300
+            },
+            "velocity": {
+                "x": -1,
+                "y": -1
+            },
+            "objectName": "thief"
+        },
+        {
+            "model": "thief",
+            "position": {
+                "x": 600,
+                "y": -400
+            },
+            "velocity": {
+                "x": 1,
+                "y": -1
+            },
+            "objectName": "thief"
+        }
+    ]
+}

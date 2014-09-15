@@ -4,7 +4,6 @@
         private missionNumber: PIXI.Text;
         private missionName: PIXI.Text;
         private missionTitle: PIXI.Text;
-        private missionDescription: PIXI.Text;
         private missionStart: PIXI.Text;
 
         constructor(parent: MainView) {
@@ -28,18 +27,12 @@
 
             this.missionTitle = new PIXI.Text("this game is too easy to lose", {
                 font: "24px JacintoSans",
-                fill: "white"
+                fill: "white",
+                align: "center"
             });
             this.missionTitle.anchor.x = 0.5;
-            this.missionTitle.position = new PIXI.Point(300, 264);
+            this.missionTitle.position = new PIXI.Point(300, 280);
             this.registerObject("missionTitle", this.missionTitle);
-
-            this.missionDescription = new PIXI.Text("very very long description....", {
-                font: "16px Digital-7",
-                fill: "white",
-                wordWrap: true,
-                wordWrapWidth: 536
-            });
 
             this.missionStart = new PIXI.Text("START GAME", {
                 font: "32px Digital-7",

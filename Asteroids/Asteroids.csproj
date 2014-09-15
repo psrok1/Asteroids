@@ -200,6 +200,9 @@
     <Content Include="Fonts\JacintoSans.ttf" />
     <Content Include="Fonts\JacintoSans.woff" />
     <Content Include="Data\Skills.json" />
+    <Content Include="Data\Scenario\Mission2_0.json" />
+    <Content Include="Data\Scenario\Mission3_0.json" />
+    <Content Include="Data\Scenario\Mission4_0.json" />
     <None Include="ReleaseAsteroids.pubxml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>

@@ -15,7 +15,7 @@
             var resID: string = "asteroid" + type;
             var sprite: PIXI.Sprite = new PIXI.Sprite(Resources.getObject(resID));
             sprite.scale.x = sprite.scale.y = 1 / (1<<generation);
-            var maxVelocity: number = 10;
+            var maxVelocity: number = 2;
             this.generation = generation;
             this.type = type;
             this.settings = settings;

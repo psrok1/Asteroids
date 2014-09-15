@@ -1,0 +1,66 @@
+﻿{
+    "numberDescription": "SECOND MISSION",
+    "majorTitle": "BEGINNER",
+    "minorTitle": "the true beginning of your end",
+    "introData": [
+        {
+            "focusOn": "asteroid",
+            "description": "Some of asteroids may be a little harder to crush.",
+            "duration": 160
+        }
+    ],
+    "width": 2000,
+    "height": 2000,
+    "playerPosition": {
+        "x": 0,
+        "y": 0
+    },
+    "target": "CollectAll",
+    "objects": [
+        {
+            "model": "basicHarderAsteroid",
+            "position": {
+                "x": 340,
+                "y": 610
+            },
+            "velocity": {
+                "x": -1,
+                "y": -1
+            },
+            "objectName": "asteroid"
+        },
+        {
+            "model": "basicAsteroid",
+            "position": {
+                "x": -400,
+                "y": -210
+            },
+            "velocity": {
+                "x": -1,
+                "y": 1
+            }
+        },
+        {
+            "model": "basicHarderAsteroid",
+            "position": {
+                "x": -350,
+                "y": 800
+            },
+            "velocity": {
+                "x": 1,
+                "y": -2
+            }
+        },
+        {
+            "model": "basicAsteroid",
+            "position": {
+                "x": 750,
+                "y": -800
+            },
+            "velocity": {
+                "x": 1,
+                "y": -3
+            }
+        }
+    ]
+}

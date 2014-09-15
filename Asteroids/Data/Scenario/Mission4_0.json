@@ -1,0 +1,120 @@
+﻿{
+    "numberDescription": "FOURTH MISSION",
+    "majorTitle": "COMPETITION",
+    "minorTitle": "somebody is in the wrong place",
+    "introData": [
+        {
+            "focusOn": "thief",
+            "description": "Suddenly, there are more thieves than before.",
+            "duration": 200
+        },
+        {
+            "focusOn": "thief",
+            "description": "They may suddenly want to hide... or make a trap for you",
+            "duration": 200
+        },
+        {
+            "focusOn": "thief",
+            "description": "Mission will be completed after you destroy the last ship.\nCollect as much crystals, as you can, destroy some ships and run away",
+            "duration": 240
+        }
+    ],
+    "width": 2500,
+    "height": 2500,
+    "playerPosition": {
+        "x": 0,
+        "y": 0
+    },
+    "target": "KillAll",
+    "objects": [
+        {
+            "model": "standardAsteroid",
+            "position": {
+                "x": 1240,
+                "y": -1130
+            },
+            "velocity": {
+                "x": 1,
+                "y": 2
+            }
+        },
+        {
+            "model": "standardAsteroid",
+            "position": {
+                "x": 210,
+                "y": 610
+            },
+            "velocity": {
+                "x": -3,
+                "y": 1
+            }
+        },
+        {
+            "model": "standardAsteroid",
+            "position": {
+                "x": 800,
+                "y": -350
+            },
+            "velocity": {
+                "x": -2,
+                "y": 1
+            }
+        },
+        {
+            "model": "standardAsteroid",
+            "position": {
+                "x": -800,
+                "y": -350
+            },
+            "velocity": {
+                "x": 3,
+                "y": 1
+            }
+        },
+        {
+            "model": "smartThief",
+            "position": {
+                "x": 300,
+                "y": 300
+            },
+            "velocity": {
+                "x": -1,
+                "y": 1
+            },
+            "objectName": "thief"
+        },
+        {
+            "model": "smartThief",
+            "position": {
+                "x": 600,
+                "y": -400
+            },
+            "velocity": {
+                "x": 1,
+                "y": -1
+            }
+        },
+        {
+            "model": "smartThief",
+            "position": {
+                "x": 1600,
+                "y": -200
+            },
+            "velocity": {
+                "x": 1,
+                "y": -1
+            }
+        },
+        {
+            "model": "smartThief",
+            "position": {
+                "x": -100,
+                "y": -400
+            },
+            "velocity": {
+                "x": -1,
+                "y": -1
+            }
+        }
+    ]
+}

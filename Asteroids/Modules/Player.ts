@@ -30,7 +30,10 @@
     export function getName(): string { return playerData.name; }
     export function getCurrentMission(): Mission { return Resources.getObject("mission" + playerData.currentMission); }
     export function nextMission() {
-        playerData.currentMission++; save();
+        if (Resources.getObject("mission" + (playerData.currentMission + 1))) {
+            playerData.currentMission++;
+            save();
+        }
     }
     export function getSkillLevel(which: number): number {
         return playerData.skillsLevel[which];

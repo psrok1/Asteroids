@@ -29,9 +29,19 @@
                         for (var i = 0; i < this.objects.length; i++)
                             if (!(this.objects[i] instanceof Ship))
                                 return false;
+                            else {
+                                var ship = <Ship>this.objects[i];
+                                if (!(ship instanceof PlayerShip || ship instanceof SupportShip || ship.invulnerable))
+                                    return false;
+                            }
                         return true;
                     }
                     break;
+                case "KillAll":
+                    for (var i = 0; i < this.CPUobjects.length; i++)
+                        if (!(this.CPUobjects[i] instanceof SupportShip))
+                            return false;
+                    return true;
             }
             return false;
         }
@@ -49,8 +59,27 @@
                         crystalsMaxType: 3
                     });
                     break;
-                case "ship":
-                    gameObject = new SoldierShip(this, position, velocity);
+                case "basicHarderAsteroid":
+                    gameObject = new Asteroid(this, 10, position, velocity, {
+                        hitsToGo: 4,
+                        crystalsMaxAmount: 8,
+                        crystalsMaxType: 3
+                    });
+                    break;
+                case "standardAsteroid":
+                    gameObject = new Asteroid(this, 11, position, velocity, {
+                        hitsToGo: 3,
+                        crystalsMaxAmount: 8,
+                        crystalsMaxType: 4
+                    });
+                    break;
+                case "thief":
+                    gameObject = new ThiefShip(this, position, velocity);
+                    break;
+                case "smartThief":
+                    gameObject = new ThiefShip(this, position, velocity, {
+                        avoidPlayerAfterAttack: true
+                    });
                     break;
                 case "support":
                     gameObject = new SupportShip(this, position, velocity, {soldier:true});
@@ -130,6 +159,7 @@
                 }
             if (this.isGameMode() && this.checkTargetCondition()) {
                 this.view.onGameOver(true);
+                Player.nextMission();
             }
         }
 
