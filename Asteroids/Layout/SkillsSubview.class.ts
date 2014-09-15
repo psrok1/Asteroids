@@ -245,7 +245,6 @@
                 this.skillRequirements[i].visible = true;
         }
         private redrawBox(width: number, height: number) {
-            // TODO: Apply view scale
             this.box.clear();
             this.box.beginFill(0x202020, 0.6);
             this.box.lineStyle(1, 0x606060, 1);
@@ -339,7 +338,6 @@
                     });
                 }
             }
-            // TODO: check requirements
         }
         show(position: PIXI.Point, whichSkill: number) {
             this.box.position = position.clone();

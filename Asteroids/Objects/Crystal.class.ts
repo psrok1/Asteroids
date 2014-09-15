@@ -11,9 +11,7 @@
             radius: number) {
             var resID: string = "crystal" + type;
             var sprite: PIXI.Sprite = new PIXI.Sprite(Resources.getObject(resID));
-            var velocity: Vector = new Vector(1, 1);
-            velocity.length   = Math.random() * 4 + 2;
-            velocity.rotation = Math.random() * 2 * Math.PI; 
+            var velocity: Vector = new PolarVector(randomFromRange(0, 2 * Math.PI), randomFromRange(2, 6));
             this.sizeClass = type % 10; 
             this.type = Math.floor(type / 10)-1;
             super(world, sprite, position, velocity, radius, 6);

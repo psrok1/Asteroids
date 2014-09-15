@@ -51,7 +51,6 @@
             var velocity: Vector = new Vector(object.velocity.x, object.velocity.y);
             var gameObject: GameObject = null;
             switch (object.model) {
-                // DEBUG: hard-coded types
                 case "basicAsteroid":
                     gameObject = new Asteroid(this, 10, position, velocity, {
                         hitsToGo: 1,

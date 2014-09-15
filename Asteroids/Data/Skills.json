@@ -7,17 +7,12 @@
                     "value": 10,
                     "description": "Laser gun 10% stronger",
                     "cost": {
-                        "red": 0,
+                        "red": 30,
                         "green": 0,
-                        "yellow": 0,
+                        "yellow": 30,
                         "blue": 0
                     },
-                    "skillRequirements": [
-                        {
-                            "skill": "Precision",
-                            "requiredLevel": 1
-                        }
-                    ]
+                    "skillRequirements": [ ]
                 },
                 {
                     "value": 20,
@@ -317,9 +312,9 @@
                     "description": "10% thicker armor",
                     "cost": {
                         "red": 0,
-                        "green": 0,
+                        "green": 30,
                         "yellow": 0,
-                        "blue": 0
+                        "blue": 30
                     },
                     "skillRequirements": [ ]
                 },

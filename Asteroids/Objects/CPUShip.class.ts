@@ -6,9 +6,8 @@
         targetObject: GameObject = null;
         attackForce: number = 5;
 
-        // DEBUG
-        armor: number = 40;
-        armorMaximum: number = 40;
+        armor: number;
+        armorMaximum: number;
 
         constructor(
             world: World,
@@ -23,7 +22,6 @@
             this.world.CPUobjects.push(this);
         }
         private isThreatening(object: GameObject, ahead: Vector): number {
-            // DEBUG: Experiment
             if (object instanceof Crystal)
                 return -1;
 
@@ -34,12 +32,9 @@
             if (distance.length > ahead.length + object.getRadius())
                 return -1;
             for (var i = -1; i <= 1; i++) {
-                var ray = {
-                    x: AHEAD_WIDTH * Math.cos(-ahead.rotation + i * Math.PI / 2),
-                    y: AHEAD_WIDTH * Math.sin(-ahead.rotation + i * Math.PI / 2)
-                };
-                // DEBUG: EXPERIMENT (hardcoded +32 calibration)
-                if (rayIntersectsObject(<Point>ray, ahead, position, object.getRadius() + 32))
+                var ray = new PolarVector(-ahead.rotation + i * Math.PI / 2, AHEAD_WIDTH);
+                // hardcoded +32 calibration
+                if (rayIntersectsObject(ray, ahead, position, object.getRadius() + 32))
                     return distance.length;
             }
             return -1;

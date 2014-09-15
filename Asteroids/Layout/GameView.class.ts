@@ -114,8 +114,7 @@
             if (Keyboard.getState(Keyboard.Key.Right))
                 player.rotate(Math.PI / 36);
             if (Keyboard.getState(Keyboard.Key.Up)) {
-                var accelerationForce: Vector = new Vector(0.25, 0);
-                accelerationForce.rotation = player.getRotation();
+                var accelerationForce: Vector = new PolarVector(player.getRotation(), 0.25);
                 player.applyForce(accelerationForce);
             }
         }

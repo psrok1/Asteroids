@@ -5,12 +5,10 @@
         distance: number;
 
         constructor(world: World, source: Ship) {
-            var resID: string = (source instanceof PlayerShip ? "bullet2" : "bullet1");
+            var resID: string = (source instanceof PlayerShip || source instanceof SupportShip ? "bullet2" : "bullet1");
             var sprite: PIXI.Sprite = new PIXI.Sprite(Resources.getObject(resID));
-            var velocity: Vector = new Vector(1, 1);
             var position: TorusPoint = source.getPosition().clone();
-            velocity.rotation = source.getRotation();
-            velocity.length = 20;
+            var velocity: Vector = new PolarVector(source.getRotation(), 20);
             velocity.add(source.getVelocity());
             for(var i = 0; i < 3; i++)
                 position.move(velocity);
@@ -25,8 +23,7 @@
                 this.world.destroyObject(this);
         }
         onCollide(which: GameObject) {
-            // DEBUG
-            if (which instanceof Crystal)
+            if (which instanceof Crystal || which instanceof Bullet || which instanceof Rocket)
                 return;
             this.distance = 0;
         } 

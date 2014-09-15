@@ -253,7 +253,7 @@
     <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
     <TypeScriptSourceMap>True</TypeScriptSourceMap>
     <TypeScriptModuleKind>amd</TypeScriptModuleKind>
-    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptGeneratesDeclarations>True</TypeScriptGeneratesDeclarations>
     <TypeScriptOutFile>app.js</TypeScriptOutFile>
     <ExcludeGeneratedDebugSymbol>false</ExcludeGeneratedDebugSymbol>
   </PropertyGroup>
@@ -273,8 +273,8 @@ if %25textTemplatingPath%25=="\Microsoft Shared\TextTemplating\$(VisualStudioVer
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>if $(ConfigurationName) == Release (
+uglifyjs "$(ProjectDir)app.js" -v -m toplevel,sort -c -o "$(ProjectDir)app.js"
 echo UglifyJS -^&gt; $(ProjectDir)app.js
-uglifyjs "$(ProjectDir)app.js" -v -m toplevel,sort -o "$(ProjectDir)app.js"
 )</PostBuildEvent>
   </PropertyGroup>
 </Project>

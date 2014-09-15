@@ -106,6 +106,18 @@
                 "y": -1
             },
             "objectName": "soldier"
+        },
+        {
+            "model": "soldier",
+            "position": {
+                "x": -600,
+                "y": -800
+            },
+            "velocity": {
+                "x": 1,
+                "y": 1
+            }
         }
+
     ]
 }

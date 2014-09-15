@@ -31,8 +31,7 @@ class Vector implements IVector {
     signOfSumRotation(vec: Vector): number {
         return (this.crossProductMagnitude(vec) > 0 ? 1 : -1);
     }
-    angleToVector(vec: Vector): number {
-        // DEBUG Experiment: evaluating angle in full range <-Math.PI;Math.PI>
+    angleToVector(vec: Vector): number {        
         var direction = Math.acos(this.scalarProduct(vec) / (this.length * vec.length));
         return this.signOfSumRotation(vec) * direction;
     }
@@ -67,6 +66,12 @@ class Vector implements IVector {
     assign(vec: Vector) {
         this.x = vec.x;
         this.y = vec.y;
+    }
+}
+
+class PolarVector extends Vector {
+    constructor(angle: number = 0, length: number = 0) {
+        super(length * Math.cos(angle), length * Math.sin(angle));
     }
 }
 
@@ -137,8 +142,8 @@ class RelativeTorusPoint extends TorusPoint {
     }
 }
 
-function rayIntersectsObject(rayStart: Point, rayVector: Vector,
-                             position: Point, radius: number): boolean {
+function rayIntersectsObject(rayStart: IPoint, rayVector: Vector,
+                             position: IPoint, radius: number): boolean {
     var d: Vector = rayVector;
     var f: Vector = new Vector(rayStart.x - position.x, rayStart.y - position.y);
 

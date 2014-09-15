@@ -7,10 +7,8 @@
         constructor(world: World, source: Ship, headType: RocketHeadingType) {
             var resID: string = "rocket1" + headType;
             var sprite: PIXI.Sprite = new PIXI.Sprite(Resources.getObject(resID));
-            var velocity: Vector = new Vector(1, 1);
             var position: TorusPoint = source.getPosition().clone();
-            velocity.rotation = source.getRotation();
-            velocity.length = 32;
+            var velocity: Vector = new PolarVector(source.getRotation(), 32);
             velocity.add(source.getVelocity());
             for (var i = 0; i < 3; i++)
                 position.move(velocity);
@@ -22,9 +20,7 @@
         update() {
             super.update();
             this.distance -= this.getVelocity().length;
-            var accelerationForce = new Vector(1, 1);
-            accelerationForce.rotation = this.getRotation();
-            accelerationForce.length = 0.5;
+            var accelerationForce = new PolarVector(this.getRotation(), 0.5);
             this.applyForce(accelerationForce);
             if (this.distance <= 0) {
                 destroyObjectToFragments(this);
@@ -32,8 +28,7 @@
             }
         }
         onCollide(which: GameObject) {
-            // DEBUG
-            if (which instanceof Crystal)
+            if (which instanceof Crystal || which instanceof Bullet || which instanceof Rocket)
                 return;
             this.distance = 0;
         }
