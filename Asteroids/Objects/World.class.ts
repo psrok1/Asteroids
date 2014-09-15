@@ -74,12 +74,25 @@
                     });
                     break;
                 case "thief":
-                    gameObject = new ThiefShip(this, position, velocity);
+                    gameObject = new ThiefShip(this, position, velocity, {
+                        propagateAttack: true
+                    });
                     break;
                 case "smartThief":
                     gameObject = new ThiefShip(this, position, velocity, {
                         avoidPlayerAfterAttack: true
                     });
+                    break;
+                case "trapThief":
+                    gameObject = new ThiefShip(this, position, velocity, {
+                        avoidPlayerBeforeAttack: true,
+                        followPlayerAfterAttack: true,
+                        attackPlayerAfterAttack: true,
+                        propagateAttack: true
+                    });
+                    break;
+                case "soldier":
+                    gameObject = new SoldierShip(this, position, velocity);
                     break;
                 case "support":
                     gameObject = new SupportShip(this, position, velocity, {soldier:true});

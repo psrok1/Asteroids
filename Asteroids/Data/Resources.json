@@ -87,7 +87,7 @@
             "path": "Data/Scenario",
             "fileGroup": "Mission",
             "extension": "json",
-            "groups": 4
+            "groups": 6
         },
         "skillsData": {
             "type": "data",

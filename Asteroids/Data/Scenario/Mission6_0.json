@@ -1,26 +1,16 @@
 ﻿{
-    "numberDescription": "FOURTH MISSION",
-    "majorTitle": "COMPETITION",
-    "minorTitle": "somebody is in the wrong place",
-    "introData": [
+    "numberDescription": "SIXTH MISSION",
+    "majorTitle": "BODYGUARDS",
+    "minorTitle": "there is no place to hide",
+    "introData": [ 
         {
-            "focusOn": "thief",
-            "description": "Suddenly, there are more thieves than before.",
+            "focusOn": "soldier",
+            "description": "After unsuccessful try to destroy you, thieves hired soldiers to defend",
             "duration": 200
-        },
-        {
-            "focusOn": "thief",
-            "description": "They may suddenly want to hide... or make a trap for you",
-            "duration": 200
-        },
-        {
-            "focusOn": "thief",
-            "description": "Mission will be completed after you destroy the last ship.\nCollect as much crystals, as you can, destroy some ships and run away",
-            "duration": 240
         }
     ],
-    "width": 2500,
-    "height": 2500,
+    "width": 3000,
+    "height": 3000,
     "playerPosition": {
         "x": 0,
         "y": 0
@@ -30,19 +20,19 @@
         {
             "model": "standardAsteroid",
             "position": {
-                "x": 1240,
-                "y": -1130
+                "x": -1240,
+                "y": 1130
             },
             "velocity": {
                 "x": 1,
-                "y": 4
+                "y": -4
             }
         },
         {
             "model": "standardAsteroid",
             "position": {
-                "x": 210,
-                "y": 610
+                "x": 850,
+                "y": 145
             },
             "velocity": {
                 "x": -1,
@@ -63,8 +53,8 @@
         {
             "model": "standardAsteroid",
             "position": {
-                "x": -800,
-                "y": -350
+                "x": -1300,
+                "y": 350
             },
             "velocity": {
                 "x": 1,
@@ -72,7 +62,7 @@
             }
         },
         {
-            "model": "smartThief",
+            "model": "thief",
             "position": {
                 "x": -300,
                 "y": 500
@@ -84,7 +74,7 @@
             "objectName": "thief"
         },
         {
-            "model": "smartThief",
+            "model": "thief",
             "position": {
                 "x": 600,
                 "y": -400
@@ -95,26 +85,27 @@
             }
         },
         {
-            "model": "smartThief",
+            "model": "soldier",
             "position": {
-                "x": 1600,
-                "y": -200
-            },
-            "velocity": {
-                "x": 1,
-                "y": -1
-            }
-        },
-        {
-            "model": "smartThief",
-            "position": {
-                "x": -100,
+                "x": 100,
                 "y": -400
             },
             "velocity": {
                 "x": -1,
                 "y": -1
             }
+        },
+        {
+            "model": "soldier",
+            "position": {
+                "x": 500,
+                "y": 400
+            },
+            "velocity": {
+                "x": 1,
+                "y": -1
+            },
+            "objectName": "soldier"
         }
     ]
 }

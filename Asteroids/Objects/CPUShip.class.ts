@@ -129,14 +129,8 @@
         }
         attack() {
             if (this.shotDelay <= 0) {
-                if (randomFromRange(0, 80) <= 70) {
-                    this.shot();
-                    this.shotDelay = 10;
-                }
-                else {
-                    this.rocketShot();
-                    this.shotDelay = 40;
-                }
+                this.shot();
+                this.shotDelay = 10;
             }
         }
         attackObject(object: GameObject): boolean {
@@ -230,6 +224,7 @@
         armor: number = 80;
         armorMaximum: number = 80;
         attacked: boolean = false;
+        attackForce: number = 8;
         settings: ThiefShipSettings;
 
         constructor(
@@ -256,7 +251,8 @@
 
         private playerInteraction(): boolean {
             var result: boolean = false;
-            if (this.settings.avoidPlayer || (this.settings.avoidPlayerAfterAttack && this.attacked))
+            if (this.settings.avoidPlayer || (this.settings.avoidPlayerAfterAttack && this.attacked) ||
+                (this.settings.avoidPlayerBeforeAttack && !this.attacked))
                 if (this.escapeObject(this.world.player, 400)) {
                     this.targetObject = null;
                     result = true;
@@ -303,6 +299,7 @@
     export interface ThiefShipSettings {
         avoidPlayer?: boolean;
         avoidPlayerAfterAttack?: boolean;
+        avoidPlayerBeforeAttack?: boolean;
         attackPlayer?: boolean;
         attackPlayerAfterAttack?: boolean;
         followPlayer?: boolean;
@@ -312,9 +309,10 @@
 
     export class SoldierShip extends CPUShip {
         world: World;
-        armor: number = 120;
-        armorMaximum: number = 120;
+        armor: number = 100;
+        armorMaximum: number = 100;
         kamikazeClock: number = 20;
+        attackForce: number = 15;
         settings: SoldierShipSettings;
 
         constructor(
