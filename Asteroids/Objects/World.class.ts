@@ -3,6 +3,7 @@
         view: Layout.GameView;
         objects: GameObject[] = new Array();
         CPUobjects: CPUShip[] = new Array();
+        crystalsAmount: number[] = [0, 0, 0, 0];
         width: number;
         height: number;
         player: PlayerShip;
@@ -20,6 +21,11 @@
                 this.createObject(this.mission.objects[object]);
             this.startIntroPhase();
             this.resume();
+        }
+
+        getCrystalsFromWorld() {
+            for (var i = 0; i < 4; i++)
+                Player.setCrystalAmount(i, Player.getCrystalAmount(i) + this.crystalsAmount[i]);
         }
 
         checkTargetCondition(): boolean {
@@ -174,6 +180,7 @@
                 }
             if (this.isGameMode() && this.checkTargetCondition()) {
                 this.view.onGameOver(true);
+                this.getCrystalsFromWorld();
                 Player.nextMission();
             }
         }
