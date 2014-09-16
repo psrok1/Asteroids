@@ -206,7 +206,6 @@
     <Content Include="Data\Scenario\Mission5_0.json" />
     <Content Include="Data\Scenario\Mission6_0.json" />
     <None Include="Properties\PublishProfiles\Release server.pubxml" />
-    <None Include="ReleaseAsteroids.pubxml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

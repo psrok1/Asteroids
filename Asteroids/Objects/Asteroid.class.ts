@@ -57,6 +57,9 @@
                 this.hitsToGo -= 2;
             if (which instanceof Ship)
                 this.hitsToGo = 0;
+            if (which instanceof Bullet && (<Bullet>which).source === this.world.player) {
+                this.hitsToGo -= Player.getSkillValue(2)/100; // Rockbreaker skill
+            }
             if (this.hitsToGo <= 0)
                 this.world.destroyObject(this);
         }

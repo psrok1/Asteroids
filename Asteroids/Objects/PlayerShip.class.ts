@@ -2,11 +2,13 @@
     export class PlayerShip extends Ship {  
         world: World;
         armor: number = 100;
-        armorMaximum: number = 100;
-        attackForce: number = 5;
+        armorMaximum: number;
+        attackForce: number;
 
         constructor(world: World, position: Point) {
             super(world, 3, position, new Vector(), 32, 5);
+            this.armor = this.armorMaximum = Player.evaluatePlayerArmor();
+            this.attackForce = Player.evaluatePlayerAttack();
         }
 
         onShipHit(ship: Ship): boolean {

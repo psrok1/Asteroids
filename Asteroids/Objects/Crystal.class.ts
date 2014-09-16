@@ -17,6 +17,14 @@
             super(world, sprite, position, velocity, radius, 6);
         }
 
+        onObjectNear(which: GameObject) {
+            if (which instanceof Ship) {
+                var posVector = which.getPosition().getRelative(this.getPosition()).getPositionVector();
+                posVector.length = 0.5 + (posVector.length - (this.getRadius()+which.getRadius()))/64;
+                this.applyForce(posVector);
+            }
+        }
+
         update() {
             var velocity: Vector = this.getVelocity();
             var velLen: number = velocity.length;

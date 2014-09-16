@@ -167,6 +167,9 @@
                     if (first.testCollision(second)) {
                         first.onCollide(second);
                         second.onCollide(first);
+                    } else if (first.testNearness(second)) {
+                        first.onObjectNear(second);
+                        second.onObjectNear(first);
                     }
                 }
             if (this.isGameMode() && this.checkTargetCondition()) {

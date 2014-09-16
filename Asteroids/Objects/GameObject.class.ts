@@ -105,14 +105,19 @@
             this.renderObject.position.x = relPosition.x + 300;
             this.renderObject.position.y = relPosition.y + 300;
         }
-        testCollision(which: GameObject) {
+        testCollision(which: GameObject): boolean {
             var vec: Vector = which.position.getRelative(this.position).getPositionVector();
             return vec.length <= (this.radius + which.radius);
+        }
+        testNearness(which: GameObject): boolean {
+            var vec: Vector = which.position.getRelative(this.position).getPositionVector();
+            return vec.length <= (this.radius + which.radius + 32);
         }
         rotate(angle: number) {
             this.rotation += angle;
         }
         onCollide(which: GameObject) { } 
+        onObjectNear(which: GameObject) { }
         onDestroy() {
             // TODO: Move removing child from view to World.destroyObject
             this.destroyed = true;

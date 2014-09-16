@@ -48,6 +48,13 @@
                 return i;
         return -1;
     }
+
+    export function getSkillValue(which: number): number {
+        var skillData: SkillData = Resources.getObject("skillsData").skills[which];
+        var level = playerData.skillsLevel[which];
+        return (level == 0 ? 0 : skillData.levelData[level-1].value);
+    }
+
     export function checkSkillRequirements(which: number): boolean {
         var skillData: SkillData = Resources.getObject("skillsData").skills[which];
         var skillCrystalRequirements = skillData.levelData[playerData.skillsLevel[which]].cost;
@@ -95,6 +102,22 @@
         for(var which = 0; which < 4; which++)
             playerData.crystalsAmount[which] = 0;
         save();
+    }
+
+    export function evaluatePlayerAttack(): number {
+        var attackForce = 5;
+        var attackSkills = [0, 1, 4, 5, 7];
+        for(var i = 0; i < attackSkills.length; i++)
+            attackForce *= 1 + (getSkillValue(attackSkills[i]) / 100);
+        return attackForce;
+    }
+
+    export function evaluatePlayerArmor(): number {
+        var armor = 80;
+        var armorSkills = [8, 11, 14];
+        for (var i = 0; i < armorSkills.length; i++)
+            armor *= 1 + (getSkillValue(armorSkills[i]) / 100);
+        return armor;
     }
 
     export function getRocketSlot(which: number): RocketSlot {
