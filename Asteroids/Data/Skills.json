@@ -286,7 +286,7 @@
             "levelData": [
                 {
                     "value": 75,
-                    "description": "20% chance for critical hit",
+                    "description": "10% chance for critical hit",
                     "cost": {
                         "red": 0,
                         "green": 300,
@@ -302,7 +302,7 @@
                 },
                 {
                     "value": 100,
-                    "description": "25% chance for critical hit",
+                    "description": "12.5% chance for critical hit",
                     "cost": {
                         "red": 0,
                         "green": 550,
@@ -313,7 +313,7 @@
                 },
                 {
                     "value": 125,
-                    "description": "33% chance for critical hit",
+                    "description": "16% chance for critical hit",
                     "cost": {
                         "red": 0,
                         "green": 800,

@@ -2,6 +2,7 @@
     export class Rocket extends GameObject {
         world: World;
         distance: number;
+        source: Ship;
         headType: RocketHeadingType;
 
         constructor(world: World, source: Ship, headType: RocketHeadingType) {
@@ -14,6 +15,7 @@
                 position.move(velocity);
             this.distance = 600;
             this.headType = headType;
+            this.source = source;
             super(world, sprite, position, source.getVelocity().clone(), 16, 20);
             this.setRotation(source.getRotation());
         }

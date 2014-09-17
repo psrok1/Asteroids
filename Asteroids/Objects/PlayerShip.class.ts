@@ -3,6 +3,7 @@
         world: World;
         armor: number = 100;
         armorMaximum: number;
+        recoverClock: number = 0;
         attackForce: number;
 
         constructor(world: World, position: Point) {
@@ -32,7 +33,9 @@
         onAsteroidHit(asteroid: Asteroid): boolean {
             this.world.view.doCriticalBlur();
             this.world.view.shakeCamera();
-            this.armor -= evaluateDamage(this, asteroid, this.armorMaximum);
+            // Daredevil skill
+            var scratchForce = this.armorMaximum * (1 - Player.getSkillValue(9) / 100);
+            this.armor -= evaluateDamage(this, asteroid, scratchForce);
             return true;
         }
 
@@ -45,6 +48,19 @@
             if(this.world.isGameMode())
                 this.world.view.onGameOver();
             super.onDestroy();
+        }
+
+        update() {
+            if (Player.getSkillLevel(13) > 0) {
+                // Recovery
+                if (this.recoverClock >= Player.getSkillValue(13) * 20) {
+                    this.recoverClock = 0;
+                    if(this.armor < this.armorMaximum)
+                        this.armor++;
+                }
+                this.recoverClock++;
+            }
+            super.update();
         }
     }
 } 

@@ -23,7 +23,16 @@
         onBulletHit(bullet: Bullet): boolean {
             this.doExplosion();
             if (!this.invulnerable) {
-                this.armor -= evaluateDamage(this, bullet, bullet.source.attackForce);
+                var attackForce = bullet.source.attackForce;
+                if (bullet.source === this.world.player && Player.getSkillLevel(6) > 0)
+                {
+                    // Critical hit
+                    var value = Player.getSkillValue(6) / 100;
+                    var chance = 100 * (1 / ((1.25 - value) * 8 + 6));
+                    if (randomFromRange(0, 100) < chance)
+                        attackForce *= 1 + value;
+                }
+                this.armor -= evaluateDamage(this, bullet, attackForce);
                 return true;
             }
             return false;
@@ -32,7 +41,12 @@
         onRocketHit(rocket: Rocket): boolean {
             this.doLightning();
             if (!this.invulnerable) {
-                this.armor -= evaluateDamage(this, rocket, 25);
+                var attackForce = rocket.source.attackForce * 4;
+                if (rocket.source === this.world.player && Player.getSkillLevel(3) > 0) {
+                    // Rocket launcher
+                    attackForce *= 1 + (Player.getSkillValue(3) / 100);
+                }
+                this.armor -= evaluateDamage(this, rocket, attackForce);
                 return true;
             }
             return false;

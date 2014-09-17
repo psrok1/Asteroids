@@ -22,7 +22,7 @@
             this.world.CPUobjects.push(this);
         }
         private isThreatening(object: GameObject, ahead: Vector): number {
-            if (object instanceof Crystal)
+            if (object instanceof Crystal || object instanceof Bullet)
                 return -1;
 
             var AHEAD_WIDTH = this.getRadius() + 32;
