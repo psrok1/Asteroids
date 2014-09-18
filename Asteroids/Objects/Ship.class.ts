@@ -78,10 +78,10 @@
                 return;
             new Bullet(this.world, this);
         }
-        rocketShot() {
+        rocketShot(headType: RocketHeadingType) {
             if (this.gunFailure)
                 return;
-            new Rocket(this.world, this, RocketHeadingType.EngineBreaker);
+            new Rocket(this.world, this, headType);
         }
         onCollide(which: GameObject) {
             var damaged = false;

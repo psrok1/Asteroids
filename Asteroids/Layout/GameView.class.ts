@@ -90,7 +90,7 @@
                 if ((<GameOverEffect>this.effects["gameOver"]).isGameOver()) {
                     (<GameOverEffect>this.effects["gameOver"]).reset();
                     // Experiment: hack for MainView interactivity bug
-                    ViewManager.getInstance().registerView("main", new MainView(), false);
+                    (<any>ViewManager.getInstance().getView("main"))._interactiveEventsAdded = false;
                     ViewManager.getInstance().switchView("main");
                 } else if (this.world.isIntroPhase()) {
                     this.nextIntroStep();
@@ -98,13 +98,31 @@
                     this.world.player.shot();
                     Keyboard.lockKey(Keyboard.Key.Space);
                 }
-            if (this.world.isGameMode() && key == Keyboard.Key.Enter)
-                this.world.player.rocketShot();
+            if (this.world.isGameMode() && key == Keyboard.Key.CKey) {
+                if (Player.getRocketSlot(0).amount>0 && !Keyboard.isLocked(Keyboard.Key.CKey)) {
+                    this.world.player.rocketShot(Player.getRocketSlot(0).type);
+                    Player.useRocketSlot(0);
+                    Keyboard.lockKey(Keyboard.Key.CKey);
+                    this.world.player.gunFailure = 50;
+                }
+            }
+            if (this.world.isGameMode() && key == Keyboard.Key.MKey) {
+                if (Player.getRocketSlot(1).amount > 0 && !Keyboard.isLocked(Keyboard.Key.MKey)) {
+                    this.world.player.rocketShot(Player.getRocketSlot(1).type);
+                    Player.useRocketSlot(1);
+                    Keyboard.lockKey(Keyboard.Key.MKey);
+                    this.world.player.gunFailure = 50;
+                }
+            }
         }
         onKeyUp(event: KeyboardEvent) {
             var key: number = (event.which == null ? event.keyCode : event.which);
             if (key == Keyboard.Key.Space)
                 Keyboard.unlockKey(Keyboard.Key.Space);
+            if (key == Keyboard.Key.CKey)
+                Keyboard.unlockKey(Keyboard.Key.CKey);
+            if (key == Keyboard.Key.MKey)
+                Keyboard.unlockKey(Keyboard.Key.MKey);
         }
         updatePlayerSteering() {
             var player = this.world.player;

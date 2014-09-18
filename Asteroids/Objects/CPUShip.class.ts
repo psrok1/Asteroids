@@ -129,7 +129,7 @@
             // debug
             if (this.shotDelay <= 0) {
                 if (randomFromRange(0, 100) < 20) {
-                    this.rocketShot();
+                    this.rocketShot(RocketHeadingType.Standard);
                     this.shotDelay = 40;
                 } else {
                     this.shot();

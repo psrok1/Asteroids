@@ -56,6 +56,8 @@
         Backspace = 8,
         Enter = 13,
         Tab = 9,
-        Escape = 27
+        Escape = 27,
+        MKey = 77,
+        CKey = 67
     }
 }

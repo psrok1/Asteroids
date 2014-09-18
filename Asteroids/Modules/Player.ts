@@ -148,6 +148,14 @@
         save();
     }
 
+    export function useRocketSlot(which: number) {
+        if (playerData.rocketsAmount[which] > 0) {
+            playerData.rocketsAmount[which]--;
+        } else
+            playerData.rocketsStorage[which] = -1;
+        save();
+    }
+
     export interface RocketSlot {
         type: number;
         amount: number;

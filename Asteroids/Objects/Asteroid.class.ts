@@ -14,14 +14,14 @@
             generation: number = 0) {
             var resID: string = "asteroid" + type;
             var sprite: PIXI.Sprite = new PIXI.Sprite(Resources.getObject(resID));
-            sprite.scale.x = sprite.scale.y = 1 / (1<<generation);
+            sprite.scale.x = sprite.scale.y = 1 / (1 << generation);
             var maxVelocity: number = 2;
             this.generation = generation;
             this.type = type;
             this.settings = settings;
             this.hitsToGo = this.settings.hitsToGo;
             this.hitsToChip = this.settings.hitsToChip;
-            super(world, sprite, position, velocity, 64 / (1<<generation), maxVelocity);
+            super(world, sprite, position, velocity, 64 / (1 << generation), maxVelocity);
         }
 
         onDestroy() {
@@ -39,31 +39,30 @@
         }
 
         onCollide(which: GameObject) {
+            var attackForce = 0;
             if (which instanceof Bullet) {
-                this.hitsToGo--;
-                if (this.generation == 0 && this.settings.chipping)
-                    if (--this.hitsToChip == 0) {
-                        this.hitsToChip = this.settings.hitsToChip;
-                        var positionChip = this.getPosition().clone();
-                        var velocityChip = this.getVelocity().clone();
-                        velocityChip.rotate(randomFromRange(-Math.PI, Math.PI));
-                        velocityChip.length = 64;
-                        positionChip.move(velocityChip);
-                        velocityChip.length = this.getVelocity().length;
-                        new Asteroid(this.world, this.type, positionChip, velocityChip, this.settings, 2);
-                    }
+                attackForce = 1;
+                if ((<Bullet>which).source === this.world.player)
+                    attackForce += Player.getSkillValue(2) / 100;
             }
-            if (which instanceof Rocket) {
-                if ((<Rocket>which).headType === RocketHeadingType.Explosive)
-                    this.hitsToGo -= 5;
-                this.hitsToGo -= 2;
-                //TODO: chipping
-            }
-            if (which instanceof Ship)
+            if (which instanceof Rocket)
+                attackForce = ((<Rocket>which).headType === RocketHeadingType.Explosive ? 5 : 2);
+            if (which instanceof Ship) {
                 this.hitsToGo = 0;
-            if (which instanceof Bullet && (<Bullet>which).source === this.world.player) {
-                // TODO: merge with condition above
-                this.hitsToGo -= Player.getSkillValue(2) / 100; // Rockbreaker skill
+            }
+            this.hitsToGo -= attackForce;
+            if(this.settings.chipping)
+                this.hitsToChip -= attackForce;
+            if (this.generation == 0 && this.settings.chipping &&
+                this.hitsToChip <= 0 && this.hitsToGo > 0) {
+                this.hitsToChip = this.settings.hitsToChip;
+                var positionChip = this.getPosition().clone();
+                var velocityChip = this.getVelocity().clone();
+                velocityChip.rotate(randomFromRange(-Math.PI, Math.PI));
+                velocityChip.length = 64;
+                positionChip.move(velocityChip);
+                velocityChip.length = this.getVelocity().length;
+                new Asteroid(this.world, this.type, positionChip, velocityChip, this.settings, 2);
             }
             if (this.hitsToGo <= 0)
                 this.world.destroyObject(this);
