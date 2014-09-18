@@ -43,7 +43,7 @@
                 this.hitsToGo--;
                 if (this.generation == 0 && this.settings.chipping)
                     if (--this.hitsToChip == 0) {
-                        this.hitsToChip = 5;
+                        this.hitsToChip = this.settings.hitsToChip;
                         var positionChip = this.getPosition().clone();
                         var velocityChip = this.getVelocity().clone();
                         velocityChip.rotate(randomFromRange(-Math.PI, Math.PI));
@@ -53,12 +53,17 @@
                         new Asteroid(this.world, this.type, positionChip, velocityChip, this.settings, 2);
                     }
             }
-            if (which instanceof Rocket)
+            if (which instanceof Rocket) {
+                if ((<Rocket>which).headType === RocketHeadingType.Explosive)
+                    this.hitsToGo -= 5;
                 this.hitsToGo -= 2;
+                //TODO: chipping
+            }
             if (which instanceof Ship)
                 this.hitsToGo = 0;
             if (which instanceof Bullet && (<Bullet>which).source === this.world.player) {
-                this.hitsToGo -= Player.getSkillValue(2)/100; // Rockbreaker skill
+                // TODO: merge with condition above
+                this.hitsToGo -= Player.getSkillValue(2) / 100; // Rockbreaker skill
             }
             if (this.hitsToGo <= 0)
                 this.world.destroyObject(this);

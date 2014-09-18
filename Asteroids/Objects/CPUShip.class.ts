@@ -68,7 +68,8 @@
         avoidObstacle(): boolean {
             var MAX_FORCE = 0.2;
             var avoidanceForce: Vector = new Vector();
-
+            if (this.engineFailure > 0)
+                return;
             var object: GameObject = this.findMostThreatening();
             if (object) {
                 var velLength: number = this.getVelocity().length;
@@ -85,7 +86,8 @@
         }
         followObject(object: GameObject): boolean {
             var MAX_FORCE = 0.2;
-
+            if (this.engineFailure > 0)
+                return;
             var velLength: number = this.getVelocity().length;
             var steering: Vector = object.getPosition().getRelative(this.getPosition()).getPositionVector();
             if (this.follow == false && steering.length > 512)
@@ -102,7 +104,8 @@
         }
         collectObject(object: GameObject): boolean {
             var MAX_FORCE = 0.2;
-
+            if (this.engineFailure > 0)
+                return;
             var velLength: number = this.getVelocity().length;
             var position: RelativeTorusPoint = object.getPosition().getRelative(this.getPosition());
             var steering: Vector = position.getPositionVector();
@@ -123,9 +126,15 @@
                 return false;
         }
         attack() {
+            // debug
             if (this.shotDelay <= 0) {
-                this.shot();
-                this.shotDelay = 10;
+                if (randomFromRange(0, 100) < 20) {
+                    this.rocketShot();
+                    this.shotDelay = 40;
+                } else {
+                    this.shot();
+                    this.shotDelay = 10;
+                }
             }
         }
         attackObject(object: GameObject): boolean {
@@ -141,7 +150,8 @@
         }
         escapeObject(object: GameObject, escapeDistance: number = 512): boolean {
             var MAX_FORCE = 0.2;
-
+            if (this.engineFailure > 0)
+                return;
             var velLength: number = this.getVelocity().length;
             var position: RelativeTorusPoint = object.getPosition().getRelative(this.getPosition());
             var steering: Vector = new Vector(-position.x, -position.y);

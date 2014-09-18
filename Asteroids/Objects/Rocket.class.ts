@@ -34,6 +34,13 @@
                 return;
             this.distance = 0;
         }
+        onObjectNear(which: GameObject) {
+            if (this.headType === RocketHeadingType.Gravity) {
+                var posVector = this.getPosition().getRelative(which.getPosition()).getPositionVector();
+                posVector.length = 0.5 + (posVector.length - (this.getRadius() + which.getRadius())) / 64;
+                which.applyForce(posVector);
+            }
+        }
     }
 
     export enum RocketHeadingType {

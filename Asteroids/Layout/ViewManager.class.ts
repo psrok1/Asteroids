@@ -1,4 +1,6 @@
 ﻿module Layout {
+    var FRAME_RATE = 60;
+
     export class ViewManager {
         private static instance: ViewManager = null;
         private views: View[] = new Array();
@@ -10,6 +12,7 @@
         private defaultHeight: number = 600;
         private width: number;
         private height: number;
+        private lastFrameTime: any = new Date();
 
         constructor() {
             if (ViewManager.instance) {
@@ -22,7 +25,7 @@
             this.renderer.view.style.position = "absolute";
             this.rescale();
             window.addEventListener("resize", this.rescale.bind(this), false);
-            requestAnimationFrame(this.update);
+            requestAnimationFrame(this.render);            
             ViewManager.instance = this;
             return this;
         }
@@ -33,14 +36,22 @@
             return ViewManager.instance;
         }
 
-        update() {
-            requestAnimationFrame(function () { this.update() }.bind(ViewManager.getInstance()));
+        render() {
+            // Main update loop
+            requestAnimationFrame(function () { this.render() }.bind(ViewManager.getInstance()));
+
+            var now: any = new Date();
+            var interval = 1000 / FRAME_RATE;
+            var delta = now - this.lastFrameTime;
             if (!this.currentView || this.currentView.isPaused())
                 return;
-            this.currentView.update();
-            this.applyRatio(this.currentView, this.ratio);
-            this.renderer.render(this.currentView);
-            this.applyRatio(this.currentView, 1/this.ratio);
+            if (App.DebugPresets.DisableFramerateLimit || delta > interval) {
+                this.currentView.update();
+                this.lastFrameTime = now - (delta % interval);
+                this.applyRatio(this.currentView, this.ratio);
+                this.renderer.render(this.currentView);
+                this.applyRatio(this.currentView, 1 / this.ratio);
+            }
         }
 
         registerView(name: string, view: View, strict: boolean = true):View {

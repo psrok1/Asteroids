@@ -32,6 +32,11 @@
                     if (randomFromRange(0, 100) < chance)
                         attackForce *= 1 + value;
                 }
+                if (this instanceof PlayerShip && Player.getSkillLevel(15) > 0) {
+                    // Dodge
+                    if (randomFromRange(0, 100) < Player.getSkillValue(15))
+                        return false;
+                }
                 this.armor -= evaluateDamage(this, bullet, attackForce);
                 return true;
             }
@@ -46,6 +51,18 @@
                     // Rocket launcher
                     attackForce *= 1 + (Player.getSkillValue(3) / 100);
                 }
+                var sideEffectsTime = 200;
+                // Endurance skill
+                if (this === this.world.player && Player.getSkillLevel(10) > 0)
+                    sideEffectsTime *= (1 - Player.getSkillValue(10) / 100);
+                if (this === this.world.player && Player.getSkillLevel(12) > 0)
+                    sideEffectsTime *= (1 - Player.getSkillValue(12) / 100);
+                if (rocket.headType == RocketHeadingType.EngineBreaker ||
+                    rocket.headType == RocketHeadingType.Flashbang)
+                    this.engineFailure = sideEffectsTime;
+                if (rocket.headType == RocketHeadingType.GunSilencer ||
+                    rocket.headType == RocketHeadingType.Flashbang)
+                    this.gunFailure = sideEffectsTime;
                 this.armor -= evaluateDamage(this, rocket, attackForce);
                 return true;
             }
@@ -57,10 +74,14 @@
         onCrystalHit(crystal: Crystal) { }
 
         shot() {
+            if (this.gunFailure)
+                return;
             new Bullet(this.world, this);
         }
         rocketShot() {
-            new Rocket(this.world, this, 1);
+            if (this.gunFailure)
+                return;
+            new Rocket(this.world, this, RocketHeadingType.EngineBreaker);
         }
         onCollide(which: GameObject) {
             var damaged = false;
@@ -86,6 +107,12 @@
                     this.showArmorBar();
             }
             super.onCollide(which);
+        }
+
+        update() {
+            this.gunFailure = (this.gunFailure > 0 ? this.gunFailure - 1 : 0);
+            this.engineFailure = (this.engineFailure > 0 ? this.engineFailure - 1 : 0);
+            super.update();
         }
     }
 }

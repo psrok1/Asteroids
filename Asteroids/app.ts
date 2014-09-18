@@ -14,6 +14,7 @@ module App {
     export module DebugPresets {
         export var ShowObjectRadius: boolean = false;
         export var FocusOnAttacker: boolean = false;
+        export var DisableFramerateLimit: boolean = false;
     }
 
     var viewManager: Layout.ViewManager;

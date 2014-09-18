@@ -11,6 +11,7 @@
         private introNotification: IntroNotification;
         private introStep: number;
         private introClock: number;
+        private failureMessage: boolean;
 
         private gameNotification: PIXI.Text;
         
@@ -109,6 +110,8 @@
             var player = this.world.player;
             if (!this.world.isGameMode())
                 return;
+            if (player.engineFailure > 0)
+                return;
             if (Keyboard.getState(Keyboard.Key.Left))
                 player.rotate(-Math.PI / 36);
             if (Keyboard.getState(Keyboard.Key.Right))
@@ -124,6 +127,8 @@
             this.camera.update();
             this.updateEffects();
             this.introUpdate();
+            if (this.failureMessage && this.world.player.gunFailure == 0 && this.world.player.engineFailure == 0)
+                this.hideFailureNotification();
         }
         shakeCamera() {
             this.camera.shake();
@@ -150,6 +155,7 @@
         }
 
         showNotification(message: string) {
+            this.hideFailureNotification();            
             this.gameNotification = new PIXI.Text(message, {
                 font: "32px Digital-7",
                 fill: "white"
@@ -166,6 +172,20 @@
             }
         }
 
+        showFailureNotification(message: string) {
+            this.showNotification("ENGINE FAILURE");
+            this.gameNotification.setStyle({
+                font: "32px Digital-7",
+                fill: "red"
+            });
+            this.failureMessage = true;
+        }
+
+        hideFailureNotification() {
+            this.failureMessage = false;
+            this.hideNotification();
+        }
+
         resume() {
             this.startMission();
             super.resume();
@@ -173,7 +193,7 @@
         pause() {
             super.pause();
             this.endMission();            
-            this.hideNotification();
+            this.hideFailureNotification();
         }
     }
 

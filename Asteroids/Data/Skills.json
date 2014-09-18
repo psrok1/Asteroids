@@ -573,7 +573,7 @@
                     ]
                 },
                 {
-                    "value": 4.5,
+                    "value": 10,
                     "description": "Faster recover after EMP attack",
                     "cost": {
                         "red": 0,
@@ -589,7 +589,7 @@
                     ]
                 },
                 {
-                    "value": 4,
+                    "value": 15,
                     "description": "The fastest recover after EMP attack",
                     "cost": {
                         "red": 0,
@@ -705,7 +705,7 @@
             "name": "Dodge",
             "levelData": [
                 {
-                    "value": 8,
+                    "value": 12,
                     "description": "12% chance to dodge",
                     "cost": {
                         "red": 0,
@@ -721,7 +721,7 @@
                     ]
                 },
                 {
-                    "value": 6,
+                    "value": 16,
                     "description": "16% chance to dodge",
                     "cost": {
                         "red": 0,
@@ -732,7 +732,7 @@
                     "skillRequirements": [ ]
                 },
                 {
-                    "value": 4,
+                    "value": 25,
                     "description": "25% chance to dodge",
                     "cost": {
                         "red": 0,

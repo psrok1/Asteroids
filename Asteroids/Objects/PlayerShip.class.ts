@@ -25,6 +25,10 @@
         }
 
         onRocketHit(rocket: Rocket): boolean {
+            if (rocket.headType === RocketHeadingType.EngineBreaker)
+                this.world.view.showFailureNotification("ENGINE FAILURE");
+            if (rocket.headType === RocketHeadingType.GunSilencer)
+                this.world.view.showFailureNotification("GUN FAILURE");
             this.world.view.doDistortion();
             this.world.view.shakeCamera();
             return super.onRocketHit(rocket);
