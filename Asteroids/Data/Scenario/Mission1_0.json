@@ -1,15 +1,31 @@
 ﻿{
-    "numberDescription": "",
-    "majorTitle": "",
-    "minorTitle": "",
-    "introData": [],
+    "numberDescription": "FIRST MISSION",
+    "majorTitle": "BEGINNER",
+    "minorTitle": "this game is too easy to lose",
+    "introData": [
+        {
+            "focusOn": "asteroid",
+            "description": "Your mission: destroy some asteroids to collect crystals.",
+            "duration": 200
+        },
+        {
+            "focusOn": "asteroid",
+            "description": "Use arrow keys for steering and Space for shooting.\nIn further missions you can also use <C> and <M> keys for launching rockets.",
+            "duration": 350
+        },
+        {
+            "focusOn": "asteroid",
+            "description": "Try to find, destroy and collect all of them.\nGood luck!",
+            "duration": 240
+        }
+    ],
     "width": 2e3,
     "height": 2e3,
     "playerPosition": {
         "x": 0,
-        "y": 0
+        "y": -400
     },
-    "target": "",
+    "target": "CollectAll",
     "objects": [ {
         "model": "basicAsteroid",
         "position": {
@@ -37,8 +53,9 @@
             "y": 722
         },
         "velocity": {
-            "x": -0.573,
-            "y": 1.916
-        }
+            "x": 0.573,
+            "y": -1.916
+        },
+        "objectName": "asteroid"
     } ]
 }

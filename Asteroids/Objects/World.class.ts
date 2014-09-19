@@ -197,6 +197,7 @@
                 this.getCrystalsFromWorld();
                 Player.nextMission();
             }
+            Benchmark.setObjectCounter(this.objects.length);
         }
 
         startIntroPhase() {

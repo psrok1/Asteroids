@@ -1,54 +1,66 @@
 ﻿{
-    "numberDescription": "",
-    "majorTitle": "",
-    "minorTitle": "",
-    "introData": [],
+    "numberDescription": "SECOND MISSION",
+    "majorTitle": "BEGINNER",
+    "minorTitle": "the true beginning of your end",
+    "introData": [
+        {
+            "focusOn": "asteroid",
+            "description": "Some of asteroids may be a little harder to crush.",
+            "duration": 160
+        }
+    ],
     "width": 2e3,
     "height": 2e3,
     "playerPosition": {
         "x": 0,
         "y": 0
     },
-    "target": "",
-    "objects": [ {
-        "model": "basicAsteroid",
-        "position": {
-            "x": -314,
-            "y": 592
+    "target": "CollectAll",
+    "objects": [
+        {
+            "model": "basicAsteroid",
+            "position": {
+                "x": -314,
+                "y": 592
+            },
+            "velocity": {
+                "x": -0.536,
+                "y": -1.927
+            }
         },
-        "velocity": {
-            "x": -0.536,
-            "y": -1.927
-        }
-    }, {
-        "model": "basicAsteroid",
-        "position": {
-            "x": 907,
-            "y": -595
+        {
+            "model": "basicAsteroid",
+            "position": {
+                "x": 907,
+                "y": -595
+            },
+            "velocity": {
+                "x": -0.722,
+                "y": 1.865
+            }
         },
-        "velocity": {
-            "x": -0.722,
-            "y": 1.865
-        }
-    }, {
-        "model": "basicHarderAsteroid",
-        "position": {
-            "x": -655,
-            "y": -332
+        {
+            "model": "basicHarderAsteroid",
+            "position": {
+                "x": -655,
+                "y": -332
+            },
+            "velocity": {
+                "x": -0.892,
+                "y": 1.79
+            },
+            "objectName": "asteroid"
         },
-        "velocity": {
-            "x": -0.892,
-            "y": 1.79
+        {
+            "model": "basicHarderAsteroid",
+            "position": {
+                "x": 740,
+                "y": 343
+            },
+            "velocity": {
+                "x": -1.325,
+                "y": 1.498
+            }
         }
-    }, {
-        "model": "basicHarderAsteroid",
-        "position": {
-            "x": 740,
-            "y": 343
-        },
-        "velocity": {
-            "x": -1.325,
-            "y": 1.498
-        }
-    } ]
+    ]
 }

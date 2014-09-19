@@ -1,15 +1,21 @@
 ﻿{
-    "numberDescription": "",
-    "majorTitle": "",
-    "minorTitle": "",
-    "introData": [],
+    "numberDescription": "SEVENTH MISSION",
+    "majorTitle": "BODYGUARDS",
+    "minorTitle": "a friend to all is a friend to none",
+    "introData": [ 
+        {
+            "focusOn": "soldier",
+            "description": "After unsuccessful try to destroy you, thieves hired soldiers to defend",
+            "duration": 250
+        }
+    ],
     "width": 3e3,
     "height": 3e3,
     "playerPosition": {
         "x": 0,
         "y": 0
     },
-    "target": "",
+    "target": "KillAll",
     "objects": [ {
         "model": "harderAsteroid",
         "position": {
@@ -89,6 +95,7 @@
         "velocity": {
             "x": 4.794,
             "y": 1.42
-        }
+        },
+        "objectName": "soldier"
     } ]
 }

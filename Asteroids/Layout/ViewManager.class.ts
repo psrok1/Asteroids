@@ -25,12 +25,12 @@
             this.renderer.view.style.position = "absolute";
             this.rescale();
             window.addEventListener("resize", this.rescale.bind(this), false);
-            requestAnimationFrame(this.render);            
+            requestAnimationFrame(this.render);
             ViewManager.instance = this;
             return this;
         }
 
-        static getInstance():ViewManager {
+        static getInstance(): ViewManager {
             if (ViewManager.instance === null)
                 ViewManager.instance = new ViewManager();
             return ViewManager.instance;
@@ -39,22 +39,33 @@
         render() {
             // Main update loop
             requestAnimationFrame(function () { this.render() }.bind(ViewManager.getInstance()));
-
             var now: any = new Date();
             var interval = 1000 / FRAME_RATE;
             var delta = now - this.lastFrameTime;
             if (!this.currentView || this.currentView.isPaused())
                 return;
-            if (App.DebugPresets.DisableFramerateLimit || delta > interval) {
-                this.currentView.update();
-                this.lastFrameTime = now - (delta % interval);
-                this.applyRatio(this.currentView, this.ratio);
-                this.renderer.render(this.currentView);
-                this.applyRatio(this.currentView, 1 / this.ratio);
+
+            if (!App.DebugPresets.DisableFramerateLimit && delta < interval) {
+                Benchmark.delayedFrameTick();
+                while (!App.DebugPresets.DisableFramerateLimit && delta < interval) {
+                    now = new Date();
+                    delta = now - this.lastFrameTime;
+                }
             }
+            Benchmark.frameTick();
+            Benchmark.startPreprocessing();
+            this.currentView.update();
+            Benchmark.stopPreprocessing();
+            Benchmark.startRender();
+            this.lastFrameTime = now - (delta % interval);
+            this.applyRatio(this.currentView, this.ratio);
+            this.renderer.render(this.currentView);
+            this.applyRatio(this.currentView, 1 / this.ratio);
+            Benchmark.stopRender();
+            Benchmark.update();
         }
 
-        registerView(name: string, view: View, strict: boolean = true):View {
+        registerView(name: string, view: View, strict: boolean = true): View {
             if (strict && this.views[name])
                 return this.views[name];
             this.views[name] = view;

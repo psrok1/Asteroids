@@ -3,6 +3,7 @@
 /// <reference path="Modules/Player.ts" />
 /// <reference path="Modules/Keyboard.ts" />
 /// <reference path="Modules/MissionGenerator.ts" />
+/// <reference path="Modules/Benchmark.ts" />
 /// <reference path="Layout/ViewManager.class.ts" />
 /// <reference path="Layout/View.class.ts" />
 /// <reference path="Layout/StartView.class.ts" />

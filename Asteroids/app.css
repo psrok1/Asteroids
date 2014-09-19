@@ -22,3 +22,10 @@ body
     bottom: 0px;
     left: 0px;
 }
+#benchmark
+{
+    font-family: monospace;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+}

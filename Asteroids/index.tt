@@ -44,6 +44,13 @@
 </head>
 <body>
 <!-- WARNING: Section handled by script! -->
+	<div id="benchmark">
+	FPS = <div id="bFPS" style="display:inline">-</div><br>
+	DLF = <div id="bDLF" style="display:inline">-</div><br>
+	OBJ = <div id="bOBJ" style="display:inline">-</div><br>
+	TRND= <div id="bTRND" style="display:inline">-</div><br>
+	TPRE= <div id="bTPRE" style="display:inline">-</div><br>
+	</div>
     <div id="debug">
 		<!-- REVISION = <#= revisionNumber #> -->
         Asteroids [20140704] v1.0.0.<#= revisionNumber #> DEBUG<br/>

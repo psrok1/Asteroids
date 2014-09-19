@@ -1,15 +1,31 @@
 ﻿{
-    "numberDescription": "",
-    "majorTitle": "",
-    "minorTitle": "",
-    "introData": [],
+    "numberDescription": "FOURTH MISSION",
+    "majorTitle": "THIEF",
+    "minorTitle": "the greatest hazard in life is to risk nothing",
+    "introData": [
+        {
+            "focusOn": "thief",
+            "description": "Suddenly, there are more thieves stealing crystals. They could become a real threat",
+            "duration": 300
+        },
+        {
+            "focusOn": "thief",
+            "description": "Now: your main target is to destroy all ships. For each killed enemy, you can earn \"small\" amount of crystals.",
+            "duration": 300
+        },
+        {
+            "focusOn": "asteroid",
+            "description": "Tip: use crystals as a bait. They attract thieves like a magnet.",
+            "duration": 240
+        }
+    ],
     "width": 3e3,
     "height": 3e3,
     "playerPosition": {
         "x": 0,
         "y": 0
     },
-    "target": "",
+    "target": "KillAll",
     "objects": [ {
         "model": "asteroid",
         "position": {
@@ -19,7 +35,8 @@
         "velocity": {
             "x": -1.257,
             "y": 1.556
-        }
+        },
+        "objectName": "asteroid"
     }, {
         "model": "asteroid",
         "position": {
@@ -69,7 +86,8 @@
         "velocity": {
             "x": 4.248,
             "y": -2.636
-        }
+        },
+        "objectName": "thief"
     }, {
         "model": "thief",
         "position": {

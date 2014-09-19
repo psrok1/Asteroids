@@ -1,7 +1,7 @@
 ﻿{
-    "numberDescription": "",
-    "majorTitle": "",
-    "minorTitle": "",
+    "numberDescription": "SIXTH MISSION",
+    "majorTitle": "TRAP",
+    "minorTitle": "a trap is only a trap\nif you don't know about it",
     "introData": [],
     "width": 3e3,
     "height": 3e3,
@@ -9,7 +9,7 @@
         "x": 0,
         "y": 0
     },
-    "target": "",
+    "target": "KillAll",
     "objects": [ {
         "model": "asteroid",
         "position": {

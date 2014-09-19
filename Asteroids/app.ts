@@ -15,10 +15,28 @@ module App {
         export var ShowObjectRadius: boolean = false;
         export var FocusOnAttacker: boolean = false;
         export var DisableFramerateLimit: boolean = false;
+        export var EnableBenchmark: boolean = false;
+    }
+
+    function getURLSettings() {
+        var vars: any = {};
+        var parts = (<any>window.location.href).replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+            vars[key] = value;
+        });
+        if (vars.ShowObjectRadius || vars.radius)
+            App.DebugPresets.ShowObjectRadius = true;
+        if (vars.DisableFramerateLimit || vars.nofpslimit)
+            App.DebugPresets.DisableFramerateLimit = true;
+        if (vars.EnableBenchmark || vars.benchmark)
+            App.DebugPresets.EnableBenchmark = true;
+
+        if (!App.DebugPresets.EnableBenchmark)
+            document.getElementById("benchmark").style.display = "none";
     }
 
     var viewManager: Layout.ViewManager;
     export function start() {
+        getURLSettings();
         viewManager = Layout.ViewManager.getInstance();
         viewManager.registerView("loader", new Layout.LoaderView());
         viewManager.switchView("loader");

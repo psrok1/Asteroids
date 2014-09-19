@@ -164,6 +164,7 @@
     <TypeScriptCompile Include="Layout\EquipmentSubview.class.ts" />
     <TypeScriptCompile Include="Layout\MissionSubview.class.ts" />
     <TypeScriptCompile Include="Layout\SkillsSubview.class.ts" />
+    <TypeScriptCompile Include="Modules\Benchmark.ts" />
     <TypeScriptCompile Include="Modules\Keyboard.ts" />
     <TypeScriptCompile Include="Layout\GameView.class.ts" />
     <TypeScriptCompile Include="Layout\LoaderView.class.ts" />
