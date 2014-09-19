@@ -1,0 +1,204 @@
+﻿{
+    "numberDescription": "",
+    "majorTitle": "",
+    "minorTitle": "",
+    "introData": [],
+    "width": 4e3,
+    "height": 4e3,
+    "playerPosition": {
+        "x": 0,
+        "y": 0
+    },
+    "target": "",
+    "objects": [ {
+        "model": "chipHarderAsteroid",
+        "position": {
+            "x": -657,
+            "y": 548
+        },
+        "velocity": {
+            "x": -0.403,
+            "y": 1.959
+        }
+    }, {
+        "model": "chipHarderAsteroid",
+        "position": {
+            "x": -832,
+            "y": 1558
+        },
+        "velocity": {
+            "x": -0.743,
+            "y": -1.857
+        }
+    }, {
+        "model": "chipHarderAsteroid",
+        "position": {
+            "x": -1593,
+            "y": 768
+        },
+        "velocity": {
+            "x": -1.744,
+            "y": 0.979
+        }
+    }, {
+        "model": "chipHarderAsteroid",
+        "position": {
+            "x": 819,
+            "y": -1462
+        },
+        "velocity": {
+            "x": 1.965,
+            "y": -0.375
+        }
+    }, {
+        "model": "chipHarderAsteroid",
+        "position": {
+            "x": -720,
+            "y": -1463
+        },
+        "velocity": {
+            "x": 0.112,
+            "y": -1.997
+        }
+    }, {
+        "model": "crystalAsteroid",
+        "position": {
+            "x": 536,
+            "y": -858
+        },
+        "velocity": {
+            "x": -1.275,
+            "y": 1.541
+        }
+    }, {
+        "model": "crystalAsteroid",
+        "position": {
+            "x": 1400,
+            "y": -596
+        },
+        "velocity": {
+            "x": 0.467,
+            "y": 1.945
+        }
+    }, {
+        "model": "crystalAsteroid",
+        "position": {
+            "x": 355,
+            "y": -587
+        },
+        "velocity": {
+            "x": -1.936,
+            "y": 0.5
+        }
+    }, {
+        "model": "crystalAsteroid",
+        "position": {
+            "x": 1515,
+            "y": -1100
+        },
+        "velocity": {
+            "x": -0.199,
+            "y": 1.99
+        }
+    }, {
+        "model": "trapCrystal",
+        "position": {
+            "x": 1878,
+            "y": -1521
+        },
+        "velocity": {
+            "x": 1.609,
+            "y": 1.188
+        }
+    }, {
+        "model": "trapCrystal",
+        "position": {
+            "x": 1925,
+            "y": 1012
+        },
+        "velocity": {
+            "x": -1.977,
+            "y": -0.302
+        }
+    }, {
+        "model": "trapCrystal",
+        "position": {
+            "x": 558,
+            "y": -1832
+        },
+        "velocity": {
+            "x": -1.877,
+            "y": 0.689
+        }
+    }, {
+        "model": "trapCrystal",
+        "position": {
+            "x": 1083,
+            "y": -1269
+        },
+        "velocity": {
+            "x": 1.084,
+            "y": -1.681
+        }
+    }, {
+        "model": "trapCrystal",
+        "position": {
+            "x": -1431,
+            "y": -481
+        },
+        "velocity": {
+            "x": -1.94,
+            "y": 0.488
+        }
+    }, {
+        "model": "trapCrystal",
+        "position": {
+            "x": 461,
+            "y": 1466
+        },
+        "velocity": {
+            "x": 1.007,
+            "y": -1.728
+        }
+    }, {
+        "model": "kamikazeSoldier",
+        "position": {
+            "x": 1499,
+            "y": 662
+        },
+        "velocity": {
+            "x": -4.191,
+            "y": -2.726
+        }
+    }, {
+        "model": "kamikazeSoldier",
+        "position": {
+            "x": -1341,
+            "y": -1838
+        },
+        "velocity": {
+            "x": 4.217,
+            "y": 2.687
+        }
+    }, {
+        "model": "kamikazeSoldier",
+        "position": {
+            "x": 616,
+            "y": -398
+        },
+        "velocity": {
+            "x": 3.215,
+            "y": -3.829
+        }
+    }, {
+        "model": "kamikazeSoldier",
+        "position": {
+            "x": -863,
+            "y": -606
+        },
+        "velocity": {
+            "x": 2.15,
+            "y": -4.514
+        }
+    } ]
+}

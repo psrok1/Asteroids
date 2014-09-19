@@ -1,104 +1,104 @@
 ﻿{
-    "numberDescription": "FIFTH MISSION",
-    "majorTitle": "TRAP",
-    "minorTitle": "a trap is only a trap\nif you don't know about it",
-    "introData": [ ],
-    "width": 2500,
-    "height": 2500,
+    "numberDescription": "",
+    "majorTitle": "",
+    "minorTitle": "",
+    "introData": [],
+    "width": 3e3,
+    "height": 3e3,
     "playerPosition": {
         "x": 0,
         "y": 0
     },
-    "target": "KillAll",
-    "objects": [
-        {
-            "model": "standardAsteroid",
-            "position": {
-                "x": 1240,
-                "y": -1130
-            },
-            "velocity": {
-                "x": 1,
-                "y": 4
-            }
+    "target": "",
+    "objects": [ {
+        "model": "asteroid",
+        "position": {
+            "x": -1426,
+            "y": 984
         },
-        {
-            "model": "standardAsteroid",
-            "position": {
-                "x": 210,
-                "y": 610
-            },
-            "velocity": {
-                "x": -1,
-                "y": 1
-            }
-        },
-        {
-            "model": "standardAsteroid",
-            "position": {
-                "x": 800,
-                "y": -350
-            },
-            "velocity": {
-                "x": -2,
-                "y": -1
-            }
-        },
-        {
-            "model": "standardAsteroid",
-            "position": {
-                "x": -800,
-                "y": -350
-            },
-            "velocity": {
-                "x": 1,
-                "y": -4
-            }
-        },
-        {
-            "model": "thief",
-            "position": {
-                "x": -300,
-                "y": 500
-            },
-            "velocity": {
-                "x": -1,
-                "y": -1
-            },
-            "objectName": "thief"
-        },
-        {
-            "model": "trapThief",
-            "position": {
-                "x": 600,
-                "y": -400
-            },
-            "velocity": {
-                "x": 1,
-                "y": -1
-            }
-        },
-        {
-            "model": "trapThief",
-            "position": {
-                "x": 1600,
-                "y": -200
-            },
-            "velocity": {
-                "x": 1,
-                "y": -1
-            }
-        },
-        {
-            "model": "trapThief",
-            "position": {
-                "x": -100,
-                "y": -400
-            },
-            "velocity": {
-                "x": -1,
-                "y": -1
-            }
+        "velocity": {
+            "x": -1.888,
+            "y": -0.66
         }
-    ]
+    }, {
+        "model": "asteroid",
+        "position": {
+            "x": -308,
+            "y": 694
+        },
+        "velocity": {
+            "x": -1.606,
+            "y": 1.192
+        }
+    }, {
+        "model": "asteroid",
+        "position": {
+            "x": -976,
+            "y": 1358
+        },
+        "velocity": {
+            "x": -1.166,
+            "y": 1.625
+        }
+    }, {
+        "model": "harderAsteroid",
+        "position": {
+            "x": 490,
+            "y": -840
+        },
+        "velocity": {
+            "x": -1.575,
+            "y": 1.232
+        }
+    }, {
+        "model": "harderAsteroid",
+        "position": {
+            "x": 970,
+            "y": 819
+        },
+        "velocity": {
+            "x": -1.003,
+            "y": 1.73
+        }
+    }, {
+        "model": "frightenedThief",
+        "position": {
+            "x": -302,
+            "y": -540
+        },
+        "velocity": {
+            "x": -4.975,
+            "y": -0.497
+        }
+    }, {
+        "model": "frightenedThief",
+        "position": {
+            "x": 1043,
+            "y": -1491
+        },
+        "velocity": {
+            "x": 3.958,
+            "y": 3.055
+        }
+    }, {
+        "model": "frightenedThief",
+        "position": {
+            "x": 1274,
+            "y": -1093
+        },
+        "velocity": {
+            "x": -0.745,
+            "y": 4.944
+        }
+    }, {
+        "model": "frightenedThief",
+        "position": {
+            "x": 1213,
+            "y": -377
+        },
+        "velocity": {
+            "x": 4.715,
+            "y": -1.663
+        }
+    } ]
 }

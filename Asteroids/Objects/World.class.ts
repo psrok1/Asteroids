@@ -71,10 +71,17 @@
                         crystalsMaxType: 3
                     });
                     break;
-                case "standardAsteroid":
+                case "asteroid":
                     gameObject = new Asteroid(this, 11, position, velocity, {
                         hitsToGo: 3,
                         crystalsMaxAmount: 8,
+                        crystalsMaxType: 4
+                    });
+                    break;
+                case "harderAsteroid":
+                    gameObject = new Asteroid(this, 11, position, velocity, {
+                        hitsToGo: 6,
+                        crystalsMaxAmount: 12,
                         crystalsMaxType: 4
                     });
                     break;
@@ -83,9 +90,14 @@
                         propagateAttack: true
                     });
                     break;
-                case "smartThief":
+                case "frightenedThief":
                     gameObject = new ThiefShip(this, position, velocity, {
                         avoidPlayerAfterAttack: true
+                    });
+                    break;
+                case "helperThief":
+                    gameObject = new ThiefShip(this, position, velocity, {
+                        attackPlayer: true
                     });
                     break;
                 case "trapThief":
@@ -122,11 +134,13 @@
             this.objects.splice(this.objects.indexOf(object), 1);
         }
 
-        nearestOnTheRay(rayStart: Point, rayVector: Vector): GameObject {
+        nearestOnTheRay(rayStart: Point, rayVector: Vector, exclude: GameObject): GameObject {
             var nearestObject: GameObject = null;
             var nearestLength: number = null;
             for (var index in this.objects) {
                 var object: GameObject = this.objects[index];
+                if (object === exclude)
+                    continue;
                 if (rayIntersectsObject(rayStart, rayVector, object.getPosition(), object.getRadius())) {
                     var posVector: Vector = object.getPosition().getRelative(rayStart).getPositionVector();
                     if (nearestLength == null || nearestLength > posVector.length) {

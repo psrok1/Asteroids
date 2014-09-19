@@ -1,0 +1,134 @@
+﻿{
+    "numberDescription": "",
+    "majorTitle": "",
+    "minorTitle": "",
+    "introData": [],
+    "width": 4e3,
+    "height": 4e3,
+    "playerPosition": {
+        "x": 0,
+        "y": 0
+    },
+    "target": "",
+    "objects": [ {
+        "model": "chipHarderAsteroid",
+        "position": {
+            "x": -771,
+            "y": -1324
+        },
+        "velocity": {
+            "x": 2,
+            "y": 0.033
+        }
+    }, {
+        "model": "chipHarderAsteroid",
+        "position": {
+            "x": -1759,
+            "y": -1842
+        },
+        "velocity": {
+            "x": -1.711,
+            "y": -1.035
+        }
+    }, {
+        "model": "chipHarderAsteroid",
+        "position": {
+            "x": -850,
+            "y": 466
+        },
+        "velocity": {
+            "x": -1.854,
+            "y": -0.751
+        }
+    }, {
+        "model": "chipHarderAsteroid",
+        "position": {
+            "x": -1751,
+            "y": -1129
+        },
+        "velocity": {
+            "x": -1.341,
+            "y": 1.483
+        }
+    }, {
+        "model": "chipHarderAsteroid",
+        "position": {
+            "x": 1465,
+            "y": 923
+        },
+        "velocity": {
+            "x": 1.447,
+            "y": 1.38
+        }
+    }, {
+        "model": "crystalAsteroid",
+        "position": {
+            "x": -680,
+            "y": 1869
+        },
+        "velocity": {
+            "x": -0.106,
+            "y": -1.997
+        }
+    }, {
+        "model": "crystalAsteroid",
+        "position": {
+            "x": -883,
+            "y": -951
+        },
+        "velocity": {
+            "x": -1.931,
+            "y": 0.52
+        }
+    }, {
+        "model": "crystalAsteroid",
+        "position": {
+            "x": 1029,
+            "y": -392
+        },
+        "velocity": {
+            "x": 0.946,
+            "y": 1.762
+        }
+    }, {
+        "model": "crystalAsteroid",
+        "position": {
+            "x": -1979,
+            "y": 1593
+        },
+        "velocity": {
+            "x": -0.78,
+            "y": -1.841
+        }
+    }, {
+        "model": "kamikazeSoldier",
+        "position": {
+            "x": 1092,
+            "y": 1313
+        },
+        "velocity": {
+            "x": 4.272,
+            "y": -2.599
+        }
+    }, {
+        "model": "kamikazeSoldier",
+        "position": {
+            "x": -1498,
+            "y": -610
+        },
+        "velocity": {
+            "x": 4.138,
+            "y": -2.807
+        }
+    }, {
+        "model": "kamikazeSoldier",
+        "position": {
+            "x": 1694,
+            "y": 1379
+        },
+        "velocity": {
+            "x": -0.949,
+            "y": 4.909
+        }
+    } ]
+}

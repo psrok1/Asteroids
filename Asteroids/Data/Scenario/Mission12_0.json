@@ -1,0 +1,114 @@
+﻿{
+    "numberDescription": "",
+    "majorTitle": "",
+    "minorTitle": "",
+    "introData": [],
+    "width": 3500,
+    "height": 3500,
+    "playerPosition": {
+        "x": 0,
+        "y": 0
+    },
+    "target": "",
+    "objects": [ {
+        "model": "harderAsteroid",
+        "position": {
+            "x": 523,
+            "y": -1203
+        },
+        "velocity": {
+            "x": -1.643,
+            "y": -1.141
+        }
+    }, {
+        "model": "harderAsteroid",
+        "position": {
+            "x": 489,
+            "y": 1105
+        },
+        "velocity": {
+            "x": 1.963,
+            "y": 0.381
+        }
+    }, {
+        "model": "harderAsteroid",
+        "position": {
+            "x": 716,
+            "y": -367
+        },
+        "velocity": {
+            "x": 1.781,
+            "y": -0.91
+        }
+    }, {
+        "model": "hardestAsteroid",
+        "position": {
+            "x": -1659,
+            "y": -1456
+        },
+        "velocity": {
+            "x": -1.679,
+            "y": 1.087
+        }
+    }, {
+        "model": "hardestAsteroid",
+        "position": {
+            "x": 1049,
+            "y": -1580
+        },
+        "velocity": {
+            "x": -0.115,
+            "y": -1.997
+        }
+    }, {
+        "model": "heavySoldier",
+        "position": {
+            "x": -1022,
+            "y": 1077
+        },
+        "velocity": {
+            "x": 2.066,
+            "y": -2.175
+        }
+    }, {
+        "model": "heavySoldier",
+        "position": {
+            "x": 1356,
+            "y": 1649
+        },
+        "velocity": {
+            "x": -2.627,
+            "y": -1.449
+        }
+    }, {
+        "model": "spawnArmedSoldier",
+        "position": {
+            "x": -808,
+            "y": 1330
+        },
+        "velocity": {
+            "x": -4.613,
+            "y": 1.93
+        }
+    }, {
+        "model": "spawnArmedSoldier",
+        "position": {
+            "x": 1342,
+            "y": 984
+        },
+        "velocity": {
+            "x": 3.099,
+            "y": -3.924
+        }
+    }, {
+        "model": "spawnArmedSoldier",
+        "position": {
+            "x": -546,
+            "y": 1589
+        },
+        "velocity": {
+            "x": 0.438,
+            "y": -4.981
+        }
+    } ]
+}

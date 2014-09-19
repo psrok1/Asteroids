@@ -1,0 +1,94 @@
+﻿{
+    "numberDescription": "",
+    "majorTitle": "",
+    "minorTitle": "",
+    "introData": [],
+    "width": 3e3,
+    "height": 3e3,
+    "playerPosition": {
+        "x": 0,
+        "y": 0
+    },
+    "target": "",
+    "objects": [ {
+        "model": "harderAsteroid",
+        "position": {
+            "x": -635,
+            "y": -1267
+        },
+        "velocity": {
+            "x": -1.47,
+            "y": 1.356
+        }
+    }, {
+        "model": "harderAsteroid",
+        "position": {
+            "x": -419,
+            "y": 1410
+        },
+        "velocity": {
+            "x": -1.995,
+            "y": 0.146
+        }
+    }, {
+        "model": "harderAsteroid",
+        "position": {
+            "x": 1423,
+            "y": 773
+        },
+        "velocity": {
+            "x": -1.145,
+            "y": 1.64
+        }
+    }, {
+        "model": "harderAsteroid",
+        "position": {
+            "x": 1465,
+            "y": -1089
+        },
+        "velocity": {
+            "x": 1.845,
+            "y": 0.772
+        }
+    }, {
+        "model": "thief",
+        "position": {
+            "x": 655,
+            "y": 873
+        },
+        "velocity": {
+            "x": -1.04,
+            "y": 4.891
+        }
+    }, {
+        "model": "thief",
+        "position": {
+            "x": -1053,
+            "y": 517
+        },
+        "velocity": {
+            "x": -4.512,
+            "y": 2.154
+        }
+    }, {
+        "model": "soldier",
+        "position": {
+            "x": 898,
+            "y": -436
+        },
+        "velocity": {
+            "x": -1.875,
+            "y": 4.635
+        }
+    }, {
+        "model": "soldier",
+        "position": {
+            "x": 728,
+            "y": -1075
+        },
+        "velocity": {
+            "x": 4.794,
+            "y": 1.42
+        }
+    } ]
+}

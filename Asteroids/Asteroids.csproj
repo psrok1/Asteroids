@@ -171,6 +171,7 @@
     <TypeScriptCompile Include="Layout\StartView.class.ts" />
     <TypeScriptCompile Include="Layout\View.class.ts" />
     <TypeScriptCompile Include="Layout\ViewManager.class.ts" />
+    <TypeScriptCompile Include="Modules\MissionGenerator.ts" />
     <TypeScriptCompile Include="Objects\Asteroid.class.ts" />
     <TypeScriptCompile Include="Objects\Bullet.class.ts" />
     <TypeScriptCompile Include="Objects\CPUShip.class.ts" />
@@ -193,13 +194,31 @@
       <LastGenOutput>index.html</LastGenOutput>
     </Content>
     <Content Include="Data\Resources.json" />
-    <Content Include="Data\Scenario\Mission1_0.json" />
     <Content Include="pixi\pixi.dev.js.map" />
     <Content Include="Fonts\Digital7.ttf" />
     <Content Include="Fonts\Digital7.woff" />
     <Content Include="Fonts\JacintoSans.ttf" />
     <Content Include="Fonts\JacintoSans.woff" />
     <Content Include="Data\Skills.json" />
+    <Content Include="Data\Scenario\Mission7_0.json" />
+    <Content Include="Data\Scenario\Mission10_0.json" />
+    <Content Include="Data\Scenario\Mission11_0.json" />
+    <Content Include="Data\Scenario\Mission12_0.json" />
+    <Content Include="Data\Scenario\Mission13_0.json" />
+    <Content Include="Data\Scenario\Mission14_0.json" />
+    <Content Include="Data\Scenario\Mission15_0.json" />
+    <Content Include="Data\Scenario\Mission16_0.json" />
+    <Content Include="Data\Scenario\Mission17_0.json" />
+    <Content Include="Data\Scenario\Mission18_0.json" />
+    <Content Include="Data\Scenario\Mission19_0.json" />
+    <Content Include="Data\Scenario\Mission20_0.json" />
+    <Content Include="Data\Scenario\Mission21_0.json" />
+    <Content Include="Data\Scenario\Mission22_0.json" />
+    <Content Include="Data\Scenario\Mission23_0.json" />
+    <Content Include="Data\Scenario\Mission24_0.json" />
+    <Content Include="Data\Scenario\Mission8_0.json" />
+    <Content Include="Data\Scenario\Mission9_0.json" />
+    <Content Include="Data\Scenario\Mission1_0.json" />
     <Content Include="Data\Scenario\Mission2_0.json" />
     <Content Include="Data\Scenario\Mission3_0.json" />
     <Content Include="Data\Scenario\Mission4_0.json" />

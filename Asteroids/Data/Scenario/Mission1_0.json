@@ -1,66 +1,44 @@
 ﻿{
-    "numberDescription": "FIRST MISSION",
-    "majorTitle": "BEGINNER",
-    "minorTitle": "this game is too easy to lose",
-    "introData": [
-        {
-            "focusOn": "asteroid",
-            "description": "Your mission is to destroy some asteroids to collect crystals.",
-            "duration": 160
-        },
-        {
-            "focusOn": "asteroid",
-            "description": "Use arrow keys for steering and Space for shooting.\nIn further missions you can also use numeric keys for launching rockets.",
-            "duration": 240
-        },
-        {
-            "focusOn": "asteroid2",
-            "description": "Try to find, destroy and collect all of them.\nGood luck!",
-            "duration": 240
-        }
-    ],
-    "width": 2000,
-    "height": 2000,
+    "numberDescription": "",
+    "majorTitle": "",
+    "minorTitle": "",
+    "introData": [],
+    "width": 2e3,
+    "height": 2e3,
     "playerPosition": {
         "x": 0,
         "y": 0
     },
-    "target": "CollectAll",
-    "objects": [
-        {
-            "model": "basicAsteroid",
-            "position": {
-                "x": 640,
-                "y": 110
-            },
-            "velocity": {
-                "x": 1,
-                "y": 1
-            },
-            "objectName": "asteroid"
+    "target": "",
+    "objects": [ {
+        "model": "basicAsteroid",
+        "position": {
+            "x": 813,
+            "y": -658
         },
-        {
-            "model": "basicAsteroid",
-            "position": {
-                "x": 210,
-                "y": 110
-            },
-            "velocity": {
-                "x": -1,
-                "y": 1
-            }
-        },
-        {
-            "model": "basicAsteroid",
-            "position": {
-                "x": 800,
-                "y": -350
-            },
-            "velocity": {
-                "x": 1,
-                "y": -2
-            },
-            "objectName": "asteroid2"
+        "velocity": {
+            "x": 0.594,
+            "y": 1.91
         }
-    ]
+    }, {
+        "model": "basicAsteroid",
+        "position": {
+            "x": -726,
+            "y": -359
+        },
+        "velocity": {
+            "x": 1.703,
+            "y": 1.049
+        }
+    }, {
+        "model": "basicAsteroid",
+        "position": {
+            "x": 353,
+            "y": 722
+        },
+        "velocity": {
+            "x": -0.573,
+            "y": 1.916
+        }
+    } ]
 }

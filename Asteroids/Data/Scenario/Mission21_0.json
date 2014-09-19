@@ -1,0 +1,164 @@
+﻿{
+    "numberDescription": "",
+    "majorTitle": "",
+    "minorTitle": "",
+    "introData": [],
+    "width": 4e3,
+    "height": 4e3,
+    "playerPosition": {
+        "x": 0,
+        "y": 0
+    },
+    "target": "",
+    "objects": [ {
+        "model": "chipHarderAsteroid",
+        "position": {
+            "x": 412,
+            "y": -725
+        },
+        "velocity": {
+            "x": -1.182,
+            "y": 1.613
+        }
+    }, {
+        "model": "chipHarderAsteroid",
+        "position": {
+            "x": -1131,
+            "y": 589
+        },
+        "velocity": {
+            "x": -0.419,
+            "y": 1.956
+        }
+    }, {
+        "model": "chipHarderAsteroid",
+        "position": {
+            "x": -1449,
+            "y": -1833
+        },
+        "velocity": {
+            "x": -1.811,
+            "y": -0.849
+        }
+    }, {
+        "model": "chipHarderAsteroid",
+        "position": {
+            "x": 359,
+            "y": -1825
+        },
+        "velocity": {
+            "x": 1.815,
+            "y": 0.839
+        }
+    }, {
+        "model": "chipHarderAsteroid",
+        "position": {
+            "x": 922,
+            "y": 780
+        },
+        "velocity": {
+            "x": -1.442,
+            "y": 1.386
+        }
+    }, {
+        "model": "crystalAsteroid",
+        "position": {
+            "x": 827,
+            "y": 1572
+        },
+        "velocity": {
+            "x": 1.121,
+            "y": 1.656
+        }
+    }, {
+        "model": "crystalAsteroid",
+        "position": {
+            "x": 1240,
+            "y": -1935
+        },
+        "velocity": {
+            "x": -1.29,
+            "y": 1.528
+        }
+    }, {
+        "model": "crystalAsteroid",
+        "position": {
+            "x": 1300,
+            "y": 1682
+        },
+        "velocity": {
+            "x": -0.03,
+            "y": 2
+        }
+    }, {
+        "model": "crystalAsteroid",
+        "position": {
+            "x": -303,
+            "y": -1839
+        },
+        "velocity": {
+            "x": 1.881,
+            "y": -0.678
+        }
+    }, {
+        "model": "timeInvulnerable",
+        "position": {
+            "x": 1861,
+            "y": 1579
+        },
+        "velocity": {
+            "x": 4.999,
+            "y": -0.108
+        }
+    }, {
+        "model": "timeInvulnerable",
+        "position": {
+            "x": -1162,
+            "y": 1092
+        },
+        "velocity": {
+            "x": 0.225,
+            "y": -4.995
+        }
+    }, {
+        "model": "timeInvulnerable",
+        "position": {
+            "x": 1896,
+            "y": 578
+        },
+        "velocity": {
+            "x": 4.519,
+            "y": -2.139
+        }
+    }, {
+        "model": "timeInvulnerable",
+        "position": {
+            "x": -1982,
+            "y": -1652
+        },
+        "velocity": {
+            "x": 2.158,
+            "y": 4.51
+        }
+    }, {
+        "model": "spawnArmedSoldiers",
+        "position": {
+            "x": 1502,
+            "y": 789
+        },
+        "velocity": {
+            "x": -1.23,
+            "y": -4.846
+        }
+    }, {
+        "model": "spawnArmedSoldiers",
+        "position": {
+            "x": -1454,
+            "y": 1631
+        },
+        "velocity": {
+            "x": -4.76,
+            "y": -1.53
+        }
+    } ]
+}

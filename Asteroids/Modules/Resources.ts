@@ -134,7 +134,7 @@ declare class SkillRequirements {
     requiredLevel: number;
 }
 
-declare class Mission {
+interface Mission {
     numberDescription: string;
     majorTitle: string;
     minorTitle: string;
@@ -145,14 +145,14 @@ declare class Mission {
     target: string;
     objects: MissionObject[];
 }
-declare class MissionIntro {
+interface MissionIntro {
     focusOn: string;
     description: string;
     duration: number;
 }
-declare class MissionObject {
+interface MissionObject {
     model: string;
     position: IPoint;
     velocity: IVector;
-    objectName: string;
+    objectName?: string;
 }

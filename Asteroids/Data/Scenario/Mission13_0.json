@@ -1,0 +1,94 @@
+﻿{
+    "numberDescription": "",
+    "majorTitle": "",
+    "minorTitle": "",
+    "introData": [],
+    "width": 3500,
+    "height": 3500,
+    "playerPosition": {
+        "x": 0,
+        "y": 0
+    },
+    "target": "",
+    "objects": [ {
+        "model": "chipAsteroid",
+        "position": {
+            "x": 698,
+            "y": 1047
+        },
+        "velocity": {
+            "x": -0.896,
+            "y": -1.788
+        }
+    }, {
+        "model": "chipAsteroid",
+        "position": {
+            "x": -935,
+            "y": -707
+        },
+        "velocity": {
+            "x": 1.374,
+            "y": 1.453
+        }
+    }, {
+        "model": "chipAsteroid",
+        "position": {
+            "x": -1339,
+            "y": -587
+        },
+        "velocity": {
+            "x": -1.983,
+            "y": -0.263
+        }
+    }, {
+        "model": "crystalAsteroid",
+        "position": {
+            "x": -316,
+            "y": -1041
+        },
+        "velocity": {
+            "x": -1.153,
+            "y": 1.634
+        }
+    }, {
+        "model": "crystalAsteroid",
+        "position": {
+            "x": 362,
+            "y": -1155
+        },
+        "velocity": {
+            "x": 0.115,
+            "y": -1.997
+        }
+    }, {
+        "model": "crystalAsteroid",
+        "position": {
+            "x": -814,
+            "y": -1514
+        },
+        "velocity": {
+            "x": -0.932,
+            "y": -1.77
+        }
+    }, {
+        "model": "support",
+        "position": {
+            "x": 1223,
+            "y": 1015
+        },
+        "velocity": {
+            "x": 4.93,
+            "y": -0.834
+        }
+    }, {
+        "model": "support",
+        "position": {
+            "x": 665,
+            "y": -579
+        },
+        "velocity": {
+            "x": 4.954,
+            "y": -0.677
+        }
+    } ]
+}

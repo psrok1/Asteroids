@@ -1,0 +1,144 @@
+﻿{
+    "numberDescription": "",
+    "majorTitle": "",
+    "minorTitle": "",
+    "introData": [],
+    "width": 4e3,
+    "height": 4e3,
+    "playerPosition": {
+        "x": 0,
+        "y": 0
+    },
+    "target": "",
+    "objects": [ {
+        "model": "chipAsteroid",
+        "position": {
+            "x": -1936,
+            "y": 1535
+        },
+        "velocity": {
+            "x": -0.2,
+            "y": -1.99
+        }
+    }, {
+        "model": "chipAsteroid",
+        "position": {
+            "x": 903,
+            "y": 1635
+        },
+        "velocity": {
+            "x": 0.482,
+            "y": 1.941
+        }
+    }, {
+        "model": "chipAsteroid",
+        "position": {
+            "x": 717,
+            "y": 495
+        },
+        "velocity": {
+            "x": 0.965,
+            "y": -1.752
+        }
+    }, {
+        "model": "chipAsteroid",
+        "position": {
+            "x": 1280,
+            "y": -602
+        },
+        "velocity": {
+            "x": -1.993,
+            "y": -0.166
+        }
+    }, {
+        "model": "crystalAsteroid",
+        "position": {
+            "x": -989,
+            "y": 1222
+        },
+        "velocity": {
+            "x": 0.408,
+            "y": -1.958
+        }
+    }, {
+        "model": "crystalAsteroid",
+        "position": {
+            "x": 443,
+            "y": -1157
+        },
+        "velocity": {
+            "x": -1.941,
+            "y": -0.483
+        }
+    }, {
+        "model": "crystalAsteroid",
+        "position": {
+            "x": 506,
+            "y": 1605
+        },
+        "velocity": {
+            "x": 0.011,
+            "y": 2
+        }
+    }, {
+        "model": "crystalAsteroid",
+        "position": {
+            "x": 1404,
+            "y": 1882
+        },
+        "velocity": {
+            "x": 1.59,
+            "y": -1.213
+        }
+    }, {
+        "model": "support",
+        "position": {
+            "x": 1208,
+            "y": 1311
+        },
+        "velocity": {
+            "x": 2.066,
+            "y": -4.553
+        }
+    }, {
+        "model": "support",
+        "position": {
+            "x": 1656,
+            "y": -899
+        },
+        "velocity": {
+            "x": -4.994,
+            "y": -0.253
+        }
+    }, {
+        "model": "support",
+        "position": {
+            "x": -429,
+            "y": -1902
+        },
+        "velocity": {
+            "x": -3.543,
+            "y": 3.528
+        }
+    }, {
+        "model": "support",
+        "position": {
+            "x": 1110,
+            "y": -1537
+        },
+        "velocity": {
+            "x": -2.911,
+            "y": -4.065
+        }
+    }, {
+        "model": "spy",
+        "position": {
+            "x": 1836,
+            "y": -636
+        },
+        "velocity": {
+            "x": 4.513,
+            "y": -2.153
+        }
+    } ]
+}

@@ -1,120 +1,94 @@
 ﻿{
-    "numberDescription": "FOURTH MISSION",
-    "majorTitle": "COMPETITION",
-    "minorTitle": "somebody is in the wrong place",
-    "introData": [
-        {
-            "focusOn": "thief",
-            "description": "Suddenly, there are more thieves than before.",
-            "duration": 200
-        },
-        {
-            "focusOn": "thief",
-            "description": "They may suddenly want to hide... or make a trap for you",
-            "duration": 200
-        },
-        {
-            "focusOn": "thief",
-            "description": "Mission will be completed after you destroy the last ship.\nCollect as much crystals, as you can, destroy some ships and run away",
-            "duration": 240
-        }
-    ],
-    "width": 2500,
-    "height": 2500,
+    "numberDescription": "",
+    "majorTitle": "",
+    "minorTitle": "",
+    "introData": [],
+    "width": 3e3,
+    "height": 3e3,
     "playerPosition": {
         "x": 0,
         "y": 0
     },
-    "target": "KillAll",
-    "objects": [
-        {
-            "model": "standardAsteroid",
-            "position": {
-                "x": 1240,
-                "y": -1130
-            },
-            "velocity": {
-                "x": 1,
-                "y": 4
-            }
+    "target": "",
+    "objects": [ {
+        "model": "asteroid",
+        "position": {
+            "x": -1455,
+            "y": 826
         },
-        {
-            "model": "standardAsteroid",
-            "position": {
-                "x": 210,
-                "y": 610
-            },
-            "velocity": {
-                "x": -1,
-                "y": 1
-            }
-        },
-        {
-            "model": "standardAsteroid",
-            "position": {
-                "x": 800,
-                "y": -350
-            },
-            "velocity": {
-                "x": -2,
-                "y": -1
-            }
-        },
-        {
-            "model": "standardAsteroid",
-            "position": {
-                "x": -800,
-                "y": -350
-            },
-            "velocity": {
-                "x": 1,
-                "y": -4
-            }
-        },
-        {
-            "model": "smartThief",
-            "position": {
-                "x": -300,
-                "y": 500
-            },
-            "velocity": {
-                "x": -1,
-                "y": -1
-            },
-            "objectName": "thief"
-        },
-        {
-            "model": "smartThief",
-            "position": {
-                "x": 600,
-                "y": -400
-            },
-            "velocity": {
-                "x": 1,
-                "y": -1
-            }
-        },
-        {
-            "model": "smartThief",
-            "position": {
-                "x": 1600,
-                "y": -200
-            },
-            "velocity": {
-                "x": 1,
-                "y": -1
-            }
-        },
-        {
-            "model": "smartThief",
-            "position": {
-                "x": -100,
-                "y": -400
-            },
-            "velocity": {
-                "x": -1,
-                "y": -1
-            }
+        "velocity": {
+            "x": -1.257,
+            "y": 1.556
         }
-    ]
+    }, {
+        "model": "asteroid",
+        "position": {
+            "x": 771,
+            "y": 1040
+        },
+        "velocity": {
+            "x": -1.99,
+            "y": 0.198
+        }
+    }, {
+        "model": "asteroid",
+        "position": {
+            "x": -627,
+            "y": 1483
+        },
+        "velocity": {
+            "x": -0.893,
+            "y": 1.79
+        }
+    }, {
+        "model": "harderAsteroid",
+        "position": {
+            "x": -987,
+            "y": 1150
+        },
+        "velocity": {
+            "x": 0.995,
+            "y": 1.735
+        }
+    }, {
+        "model": "harderAsteroid",
+        "position": {
+            "x": -1168,
+            "y": -592
+        },
+        "velocity": {
+            "x": 1.977,
+            "y": -0.301
+        }
+    }, {
+        "model": "thief",
+        "position": {
+            "x": -1278,
+            "y": 424
+        },
+        "velocity": {
+            "x": 4.248,
+            "y": -2.636
+        }
+    }, {
+        "model": "thief",
+        "position": {
+            "x": -475,
+            "y": 877
+        },
+        "velocity": {
+            "x": 0.262,
+            "y": -4.993
+        }
+    }, {
+        "model": "thief",
+        "position": {
+            "x": 786,
+            "y": 366
+        },
+        "velocity": {
+            "x": -1.994,
+            "y": -4.585
+        }
+    } ]
 }

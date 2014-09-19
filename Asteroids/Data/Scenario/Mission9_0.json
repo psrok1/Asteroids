@@ -1,0 +1,124 @@
+﻿{
+    "numberDescription": "",
+    "majorTitle": "",
+    "minorTitle": "",
+    "introData": [],
+    "width": 3e3,
+    "height": 3e3,
+    "playerPosition": {
+        "x": 0,
+        "y": 0
+    },
+    "target": "",
+    "objects": [ {
+        "model": "harderAsteroid",
+        "position": {
+            "x": 417,
+            "y": -935
+        },
+        "velocity": {
+            "x": -1.403,
+            "y": -1.426
+        }
+    }, {
+        "model": "harderAsteroid",
+        "position": {
+            "x": -701,
+            "y": -622
+        },
+        "velocity": {
+            "x": -1.868,
+            "y": -0.716
+        }
+    }, {
+        "model": "harderAsteroid",
+        "position": {
+            "x": -606,
+            "y": -1083
+        },
+        "velocity": {
+            "x": -0.99,
+            "y": -1.738
+        }
+    }, {
+        "model": "harderAsteroid",
+        "position": {
+            "x": -1279,
+            "y": 1405
+        },
+        "velocity": {
+            "x": -1.951,
+            "y": -0.441
+        }
+    }, {
+        "model": "harderAsteroid",
+        "position": {
+            "x": 496,
+            "y": -470
+        },
+        "velocity": {
+            "x": 1.979,
+            "y": -0.287
+        }
+    }, {
+        "model": "helperThief",
+        "position": {
+            "x": -1248,
+            "y": -1226
+        },
+        "velocity": {
+            "x": 4.973,
+            "y": 0.515
+        }
+    }, {
+        "model": "helperThief",
+        "position": {
+            "x": 411,
+            "y": -1409
+        },
+        "velocity": {
+            "x": -0.024,
+            "y": 5
+        }
+    }, {
+        "model": "helperThief",
+        "position": {
+            "x": 784,
+            "y": -736
+        },
+        "velocity": {
+            "x": 4.852,
+            "y": -1.206
+        }
+    }, {
+        "model": "soldier",
+        "position": {
+            "x": -1266,
+            "y": 890
+        },
+        "velocity": {
+            "x": -3.829,
+            "y": 3.216
+        }
+    }, {
+        "model": "soldier",
+        "position": {
+            "x": -495,
+            "y": 696
+        },
+        "velocity": {
+            "x": -3.067,
+            "y": -3.949
+        }
+    }, {
+        "model": "soldier",
+        "position": {
+            "x": 1252,
+            "y": -533
+        },
+        "velocity": {
+            "x": 4.156,
+            "y": 2.78
+        }
+    } ]
+}
