@@ -1,7 +1,7 @@
 ﻿module Objects {
     export class CPUShip extends Ship {
         world: World;
-        private shotDelay: number = 0;
+        shotDelay: number = 0;
         follow: boolean = false;
         targetObject: GameObject = null;
         attackForce: number = 5;
@@ -128,13 +128,8 @@
         attack() {
             // debug
             if (this.shotDelay <= 0) {
-                if (randomFromRange(0, 100) < 20) {
-                    this.rocketShot(RocketHeadingType.Standard);
-                    this.shotDelay = 40;
-                } else {
-                    this.shot();
-                    this.shotDelay = 10;
-                }
+                this.shot();
+                this.shotDelay = 10;                
             }
         }
         attackObject(object: GameObject): boolean {
@@ -271,6 +266,13 @@
             return result;
         }
 
+        attack() {
+            if (this.shotDelay <= 0 && this.settings.explosiveRockets && randomFromRange(0, 100) < 20) {
+                this.rocketShot(RocketHeadingType.Explosive);
+                this.shotDelay = 40;
+            }
+        }
+
         update() {
             if (!this.avoidObstacle() && this.world.isGameMode()) {
                 if (!this.playerInteraction()) {
@@ -310,6 +312,7 @@
         followPlayer?: boolean;
         followPlayerAfterAttack?: boolean;
         propagateAttack?: boolean;
+        explosiveRockets?: boolean;
     }
 
     export class SoldierShip extends CPUShip {
@@ -339,7 +342,26 @@
         attack() {
             if (this.kamikazeClock > 0)
                 this.kamikazeClock--;
+            if (this.shotDelay <= 0 && randomFromRange(0, 100) < 20) {
+                var type: RocketHeadingType = RocketHeadingType.Standard;
+                if (this.settings.EMPClassRockets && randomFromRange(0, 100) < 50)
+                    type = (randomFromRange(0, 100) < 50
+                        ? RocketHeadingType.EngineBreaker
+                        : RocketHeadingType.GunSilencer);
+                this.rocketShot(type);
+                this.shotDelay = 40;
+            }
+
             super.attack();
+        }
+
+        onDestroy() {
+            if (this.settings.spawn) {
+                // spawn
+                new SoldierShip(this.world, this.world.bestSpawnPosition(),
+                    new PolarVector(randomFromRange(0, 2 * Math.PI), 5), this.settings);
+            }
+            super.onDestroy();
         }
 
         update() {
@@ -362,6 +384,8 @@
         ignorePlayer?: boolean;
         invulnerable?: boolean;
         kamikazeMode?: boolean;
+        EMPClassRockets?: boolean;
+        spawn?: boolean;
     }
 
     export class SupportShip extends CPUShip {
@@ -370,6 +394,7 @@
         armorMaximum: number = 80;
         settings: SupportShipSettings;
         target: Ship = null;
+        playerAttack: number = 30;
 
         constructor(
             world: World,
@@ -392,6 +417,21 @@
         onCrystalHit(crystal: Crystal) {
             var valueArray = [1, 2, 3, 5, 8];
             this.world.crystalsAmount[crystal.type] += valueArray[crystal.sizeClass];
+        }
+
+        onPlayerAttack(force: number) {
+            this.playerAttack -= force;
+            if (this.playerAttack <= 0)
+                this.world.spawnSupportSoldiers((this.settings.playerAttacker ? false : true));
+        }
+
+        onDestroy() {
+            if (this.settings.soldier) {
+                // spawn
+                new SupportShip(this.world, this.world.bestSpawnPosition(),
+                    new PolarVector(randomFromRange(0, 2 * Math.PI), 5), this.settings);
+            }
+            super.onDestroy();
         }
 
         update() {

@@ -29,9 +29,10 @@
     <Content Include="Sprites\Asteroids\asteroid1_0.png" />
     <Content Include="Sprites\Asteroids\asteroid1_1.png" />
     <Content Include="Sprites\Asteroids\asteroid1_2.png" />
-    <Content Include="Sprites\Asteroids\asteroid2_0.png" />
-    <Content Include="Sprites\Asteroids\asteroid2_1.png" />
-    <Content Include="Sprites\Asteroids\asteroid2_2.png" />
+    <Content Include="Sprites\Asteroids\asteroid1_3.png" />
+    <Content Include="Sprites\Asteroids\asteroid1_4.png" />
+    <Content Include="Sprites\Asteroids\asteroid1_5.png" />
+    <Content Include="Sprites\Asteroids\asteroid1_6.png" />
     <Content Include="Sprites\bglayer_0.jpg" />
     <Content Include="Sprites\bglayer_1.png" />
     <Content Include="Sprites\Bullets\bullet1_0.png" />

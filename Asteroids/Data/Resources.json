@@ -20,8 +20,8 @@
             "path": "Sprites/Asteroids",
             "fileGroup": "asteroid",
             "extension": "png",
-            "groups": 2,
-            "subgroups": 3
+            "groups": 1,
+            "subgroups": 7
         },
         "crystal": {
             "type": "texture",

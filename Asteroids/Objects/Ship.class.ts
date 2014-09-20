@@ -20,6 +20,7 @@
             super.onDestroy();
             destroyObjectToFragments(this);
         }
+        onPlayerAttack(force: number) { }
         onBulletHit(bullet: Bullet): boolean {
             this.doExplosion();
             if (!this.invulnerable) {
@@ -31,6 +32,7 @@
                     var chance = 100 * (1 / ((1.25 - value) * 8 + 6));
                     if (randomFromRange(0, 100) < chance)
                         attackForce *= 1 + value;
+                    this.onPlayerAttack(attackForce);
                 }
                 if (this instanceof PlayerShip && Player.getSkillLevel(15) > 0) {
                     // Dodge
@@ -50,6 +52,7 @@
                 if (rocket.source === this.world.player && Player.getSkillLevel(3) > 0) {
                     // Rocket launcher
                     attackForce *= 1 + (Player.getSkillValue(3) / 100);
+                    this.onPlayerAttack(attackForce);
                 }
                 var sideEffectsTime = 200;
                 // Endurance skill

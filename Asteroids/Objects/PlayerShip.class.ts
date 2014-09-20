@@ -31,7 +31,10 @@
                 this.world.view.showFailureNotification("GUN FAILURE");
             else if (rocket.headType === RocketHeadingType.Flashbang)
                 this.world.view.showFailureNotification("STUNNED");
-            this.world.view.doDistortion();
+            if (rocket.headType > RocketHeadingType.Explosive)
+                this.world.view.doDistortion();
+            else
+                this.world.view.doCriticalBlur();
             this.world.view.shakeCamera();
             return super.onRocketHit(rocket);
         }

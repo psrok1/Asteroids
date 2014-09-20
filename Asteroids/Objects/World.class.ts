@@ -11,6 +11,8 @@
         private mission: Mission;
         private gameMode: boolean = false;
         private paused: boolean = true;
+        unreachableTarget: boolean = false;
+        spawnedSupportSoldiers: boolean = false;
 
         constructor(view: Layout.GameView, mission: Mission) {
             this.mission = mission;
@@ -29,6 +31,8 @@
         }
 
         checkTargetCondition(): boolean {
+            if (this.unreachableTarget)
+                return false;
             switch (this.mission.target) {
                 case "CollectAll":
                     if (this.objects.length <= this.CPUobjects.length + 1) {
@@ -58,28 +62,29 @@
             var gameObject: GameObject = null;
             switch (object.model) {
                 case "basicAsteroid":
-                    gameObject = new Asteroid(this, 10, position, velocity, {
+                    gameObject = new StandardAsteroid(this, position, velocity, {
                         hitsToGo: 1,
                         crystalsMaxAmount: 5,
                         crystalsMaxType: 3
                     });
                     break;
                 case "basicHarderAsteroid":
-                    gameObject = new Asteroid(this, 10, position, velocity, {
+                    // debug
+                    gameObject = new StandardAsteroid(this, position, velocity, {
                         hitsToGo: 4,
                         crystalsMaxAmount: 8,
                         crystalsMaxType: 3
                     });
                     break;
-                case "asteroid":
-                    gameObject = new Asteroid(this, 11, position, velocity, {
+                case "asteroid":                    
+                    gameObject = new StandardAsteroid(this, position, velocity, {
                         hitsToGo: 3,
                         crystalsMaxAmount: 8,
                         crystalsMaxType: 4
                     });
                     break;
                 case "harderAsteroid":
-                    gameObject = new Asteroid(this, 11, position, velocity, {
+                    gameObject = new StandardAsteroid(this, position, velocity, {
                         hitsToGo: 6,
                         crystalsMaxAmount: 12,
                         crystalsMaxType: 4
@@ -214,6 +219,51 @@
 
         isIntroPhase() {
             return this.introPhase;
+        }
+
+        bestSpawnPosition() {
+            var getRandomPosition = (world: World): TorusPoint => {
+                var x = randomFromRange(-world.width / 2, world.width / 2);
+                var y = randomFromRange(-world.height / 2, world.height / 2);
+                return new TorusPoint(x, y, world.width, world.height);
+            }
+            var getMinimumDistance = (world: World, position: TorusPoint): number => {
+                var dist: number = Infinity;
+                for (var i = 0; i < world.objects.length; i++) {
+                    var object = world.objects[i];
+                    if (object instanceof Crystal)
+                        continue;
+                    var posVector = object.getPosition().getRelative(position).getPositionVector();
+                    if (dist === Infinity || dist > posVector.length)
+                        dist = posVector.length;
+                }
+                return dist;
+            }
+            var bestPoint: TorusPoint = null;
+            var bestPointDistance: number = null;
+            for (var i = 0; i < 50; i++) {
+                var point = getRandomPosition(this);
+                var distance = getMinimumDistance(this, point);
+                if (distance === Infinity || distance > 300)
+                    return point;
+                else
+                    if (bestPointDistance === null || bestPointDistance > distance) {
+                        bestPoint = point;
+                        bestPointDistance = distance;
+                    }
+            }
+            return bestPoint;
+        }
+
+        spawnSupportSoldiers(unreachableTarget: boolean) {
+            if (this.spawnedSupportSoldiers)
+                return;
+            if(unreachableTarget)
+                this.unreachableTarget = true;
+            for (var i = 0; i < 4; i++) {
+                new SupportShip(this, this.bestSpawnPosition(),
+                    new PolarVector(randomFromRange(0, 2 * Math.PI), 5), { soldier: true });
+            }
         }
     }
 } 
