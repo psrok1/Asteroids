@@ -481,4 +481,69 @@
         soldier?: boolean;
         reward?: number;
     }
+
+    export class InvulnerableShip extends CPUShip { // type 2
+        world: World;
+        armor: number = 240;
+        armorMaximum: number = 240;
+        attackForce: number = 40;
+        settings: InvulnerableShipSettings
+        invulnerableTimer: number = 0;
+
+        constructor(
+            world: World,
+            position: Point,
+            velocity: Vector,
+            settings: InvulnerableShipSettings = {}) {
+            super(world, 2, position, velocity, 32, 5);
+            
+            this.settings = settings;
+            this.invulnerableTimer = 600;
+            if (settings.reward)
+                this.reward = settings.reward;
+        }
+
+        onCrystalHit(crystal: Crystal) {
+            if (this.settings.crystalInvulnerable)
+                this.invulnerableTimer = 600;
+        }
+
+        update() {
+            if (!this.avoidObstacle() && this.world.isGameMode()) {
+                if (this.invulnerableTimer > 0) {
+                    this.invulnerable = true;
+                    this.invulnerableTimer--;
+                    this.followObject(this.world.player);
+                    this.attackObject(this.world.player);
+                } else if (this.settings.crystalInvulnerable) {
+                    if (this.targetObject === null)
+                        this.targetObject = this.findNearestTarget(Crystal);
+                    if (this.targetObject === null)
+                        this.targetObject = this.findNearestTarget(Asteroid);
+                    if (this.targetObject !== null) {
+                        if (this.targetObject instanceof Crystal)
+                            this.collectObject(this.targetObject);
+                        else {
+                            this.followObject(this.targetObject);
+                            this.attackObject(this.targetObject);
+                        }
+                        if (this.targetObject.destroyed)
+                            this.targetObject = null;
+                    }
+                } else {
+                    this.escapeObject(this.world.player);
+                    this.invulnerableTimer--;
+                    if (this.invulnerableTimer < -480)
+                        this.invulnerableTimer = 600;
+                }
+            } else
+                this.follow = false;
+            super.update();
+        }
+    }
+
+    export interface InvulnerableShipSettings {
+        crystalInvulnerable?: boolean;
+        reward?: number;
+    }
 }

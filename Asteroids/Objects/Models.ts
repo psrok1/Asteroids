@@ -102,11 +102,19 @@
             reward: 150
         }),
         support: objectModel.bind(SupportShip, {}),
-        clockBombSupport: objectModel.bind(SupportShip, {}),
-        spy: objectModel.bind(SupportShip, {}),
-        pseudoSupport: objectModel.bind(SupportShip, {})
-        // timeInvulnerable
-        // crystalInvulnerable
+        clockBombSupport: objectModel.bind(SupportShip, { /*TODO*/ }),
+        spy: objectModel.bind(SupportShip, { /*TODO*/ }),
+        pseudoSupport: objectModel.bind(SupportShip, {
+            playerAttacker: true,
+            reward: 180
+        }),
+        timeInvulnerable: objectModel.bind(InvulnerableShip, { 
+            reward: 200
+        }),
+        crystalInvulnerable: objectModel.bind(InvulnerableShip, {
+            crystalInvulnerable: true,
+            reward: 200
+        })
     };
 
     function objectModel(settings: any, world: World, position: Point, velocity: Vector): GameObject {
