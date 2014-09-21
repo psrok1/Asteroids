@@ -92,17 +92,20 @@
                     break;
                 case "thief":
                     gameObject = new ThiefShip(this, position, velocity, {
-                        propagateAttack: true
+                        propagateAttack: true,
+                        reward: 20
                     });
                     break;
                 case "frightenedThief":
                     gameObject = new ThiefShip(this, position, velocity, {
-                        avoidPlayerAfterAttack: true
+                        avoidPlayerAfterAttack: true,
+                        reward: 30
                     });
                     break;
                 case "helperThief":
                     gameObject = new ThiefShip(this, position, velocity, {
-                        attackPlayer: true
+                        attackPlayer: true,
+                        reward: 40
                     });
                     break;
                 case "trapThief":
@@ -110,11 +113,12 @@
                         avoidPlayerBeforeAttack: true,
                         followPlayerAfterAttack: true,
                         attackPlayerAfterAttack: true,
-                        propagateAttack: true
+                        propagateAttack: true,
+                        reward: 60
                     });
                     break;
                 case "soldier":
-                    gameObject = new SoldierShip(this, position, velocity);
+                    gameObject = new SoldierShip(this, position, velocity, { reward: 80 });
                     break;
                 case "support":
                     gameObject = new SupportShip(this, position, velocity, {soldier:true});

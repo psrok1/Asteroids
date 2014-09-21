@@ -5,6 +5,7 @@
         follow: boolean = false;
         targetObject: GameObject = null;
         attackForce: number = 5;
+        reward: number = 0;
 
         armor: number;
         armorMaximum: number;
@@ -193,7 +194,11 @@
         }
 
         onDestroy() {
-            this.world.CPUobjects.splice(this.world.CPUobjects.indexOf(this),1);
+            this.world.CPUobjects.splice(this.world.CPUobjects.indexOf(this), 1);
+            if (this.reward > 0) {
+                for (var i = 0; i < 4; i++)
+                    this.world.crystalsAmount[i] += Math.floor(randomFromRange(0.75 * this.reward, 1.25 * this.reward));
+            }
             super.onDestroy();
         }
 
@@ -235,6 +240,8 @@
             // type = 1, radius = 32, maxVelocity = 5
             super(world, 1, position, velocity, 32, 5);
             this.settings = settings;
+            if (settings.reward)
+                this.reward = settings.reward;
         }
 
         private propagateAttack() {
@@ -271,6 +278,7 @@
                 this.rocketShot(RocketHeadingType.Explosive);
                 this.shotDelay = 40;
             }
+            super.attack();
         }
 
         update() {
@@ -313,6 +321,7 @@
         followPlayerAfterAttack?: boolean;
         propagateAttack?: boolean;
         explosiveRockets?: boolean;
+        reward?: number;
     }
 
     export class SoldierShip extends CPUShip {
@@ -337,6 +346,8 @@
             if (settings.invulnerable)
                 this.invulnerable = true;
             this.settings = settings;
+            if (settings.reward)
+                this.reward = settings.reward;
         }
 
         attack() {
@@ -386,6 +397,7 @@
         kamikazeMode?: boolean;
         EMPClassRockets?: boolean;
         spawn?: boolean;
+        reward?: number;
     }
 
     export class SupportShip extends CPUShip {
@@ -412,6 +424,8 @@
                 this.attackForce = 100;
             }
             this.settings = settings;
+            if (settings.reward)
+                this.reward = settings.reward;
         }
 
         onCrystalHit(crystal: Crystal) {
@@ -473,5 +487,6 @@
     export interface SupportShipSettings {
         playerAttacker?: boolean;
         soldier?: boolean;
+        reward?: number;
     }
 }
