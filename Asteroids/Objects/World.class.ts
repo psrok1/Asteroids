@@ -59,73 +59,7 @@
         createObject(object: MissionObject): GameObject {
             var position: Point = new Point(object.position.x, object.position.y);
             var velocity: Vector = new Vector(object.velocity.x, object.velocity.y);
-            var gameObject: GameObject = null;
-            switch (object.model) {
-                case "basicAsteroid":
-                    gameObject = new StandardAsteroid(this, position, velocity, {
-                        hitsToGo: 1,
-                        crystalsMaxAmount: 5,
-                        crystalsMaxType: 3
-                    });
-                    break;
-                case "basicHarderAsteroid":
-                    // debug
-                    gameObject = new StandardAsteroid(this, position, velocity, {
-                        hitsToGo: 4,
-                        crystalsMaxAmount: 8,
-                        crystalsMaxType: 3
-                    });
-                    break;
-                case "asteroid":                    
-                    gameObject = new StandardAsteroid(this, position, velocity, {
-                        hitsToGo: 3,
-                        crystalsMaxAmount: 8,
-                        crystalsMaxType: 4
-                    });
-                    break;
-                case "harderAsteroid":
-                    gameObject = new StandardAsteroid(this, position, velocity, {
-                        hitsToGo: 6,
-                        crystalsMaxAmount: 12,
-                        crystalsMaxType: 4
-                    });
-                    break;
-                case "thief":
-                    gameObject = new ThiefShip(this, position, velocity, {
-                        propagateAttack: true,
-                        reward: 20
-                    });
-                    break;
-                case "frightenedThief":
-                    gameObject = new ThiefShip(this, position, velocity, {
-                        avoidPlayerAfterAttack: true,
-                        reward: 30
-                    });
-                    break;
-                case "helperThief":
-                    gameObject = new ThiefShip(this, position, velocity, {
-                        attackPlayer: true,
-                        reward: 40
-                    });
-                    break;
-                case "trapThief":
-                    gameObject = new ThiefShip(this, position, velocity, {
-                        avoidPlayerBeforeAttack: true,
-                        followPlayerAfterAttack: true,
-                        attackPlayerAfterAttack: true,
-                        propagateAttack: true,
-                        reward: 60
-                    });
-                    break;
-                case "soldier":
-                    gameObject = new SoldierShip(this, position, velocity, { reward: 80 });
-                    break;
-                case "support":
-                    gameObject = new SupportShip(this, position, velocity, {soldier:true});
-                    break;
-                default:
-                    throw new Error("Error: World.createObject failed. Unknown model of object '" + object.model + "'");
-            }
+            var gameObject: GameObject = createObjectFromModel(object.model, this, position, velocity);
             if (gameObject && object.objectName)
                 gameObject.name = object.objectName;
             return gameObject;
@@ -262,6 +196,7 @@
         spawnSupportSoldiers(unreachableTarget: boolean) {
             if (this.spawnedSupportSoldiers)
                 return;
+            this.spawnedSupportSoldiers = true;
             if(unreachableTarget)
                 this.unreachableTarget = true;
             for (var i = 0; i < 4; i++) {

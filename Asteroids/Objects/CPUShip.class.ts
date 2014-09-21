@@ -416,12 +416,12 @@
             // Standard: type = 3, radius = 32, maxVelocity = 5
             // Soldier:  type = 5, radius = 32, maxVelocity = 6
             super(world,
-                (settings.playerAttacker ? 5 : 3),
+                (settings.soldier ? 5 : 3),
                 position, velocity, 32,
-                (settings.playerAttacker ? 6 : 5));
-            if (settings.playerAttacker) {
+                (settings.soldier ? 6 : 5));
+            if (settings.soldier) {
                 this.invulnerable = true;
-                this.attackForce = 100;
+                this.attackForce = 50;
             }
             this.settings = settings;
             if (settings.reward)
@@ -434,8 +434,9 @@
         }
 
         onPlayerAttack(force: number) {
+            console.log(force);
             this.playerAttack -= force;
-            if (this.playerAttack <= 0)
+            if (this.playerAttack <= 0 && !this.world.spawnedSupportSoldiers && !this.settings.soldier)
                 this.world.spawnSupportSoldiers((this.settings.playerAttacker ? false : true));
         }
 
@@ -450,11 +451,7 @@
 
         update() {
             if (!this.avoidObstacle() && this.world.isGameMode()) {
-                if (!this.settings.playerAttacker) {
-                    if (this.targetObject === null && this.settings.soldier)
-                        this.targetObject = this.findNearestTarget(ThiefShip, 512);
-                    if (this.targetObject === null && this.settings.soldier)
-                        this.targetObject = this.findNearestTarget(SoldierShip, 512);
+                if (!this.settings.soldier && !this.settings.playerAttacker) {
                     if (this.targetObject === null)
                         this.targetObject = this.findNearestTarget(Crystal);
                     if (this.targetObject === null)
@@ -468,11 +465,6 @@
                         }
                         if (this.targetObject.destroyed)
                             this.targetObject = null;
-                    }
-                    if (this.settings.soldier) {
-                        for (var i = 0; i < this.world.CPUobjects.length; i++)
-                            if (!(this.world.CPUobjects[i] instanceof SupportShip))
-                                this.attackObject(this.world.CPUobjects[i]);
                     }
                 } else {
                     this.followObject(this.world.player);

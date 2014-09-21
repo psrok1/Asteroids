@@ -23,3 +23,4 @@
 /// <reference path="Objects/Bullet.class.ts" />
 /// <reference path="Objects/Crystal.class.ts" />
 /// <reference path="Objects/Rocket.class.ts" />
+/// <reference path="Objects/Models.ts" />

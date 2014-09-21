@@ -32,8 +32,9 @@
                     var chance = 100 * (1 / ((1.25 - value) * 8 + 6));
                     if (randomFromRange(0, 100) < chance)
                         attackForce *= 1 + value;
-                    this.onPlayerAttack(attackForce);
                 }
+                if (bullet.source === this.world.player)
+                    this.onPlayerAttack(attackForce);
                 if (this instanceof PlayerShip && Player.getSkillLevel(15) > 0) {
                     // Dodge
                     if (randomFromRange(0, 100) < Player.getSkillValue(15))
@@ -42,7 +43,7 @@
                 this.armor -= evaluateDamage(this, bullet, attackForce);
                 return true;
             }
-            return false;
+            return true;
         }
 
         onRocketHit(rocket: Rocket): boolean {
@@ -69,7 +70,7 @@
                 this.armor -= evaluateDamage(this, rocket, attackForce);
                 return true;
             }
-            return false;
+            return true;
         }
 
         onAsteroidHit(asteroid: Asteroid): boolean { return false; }

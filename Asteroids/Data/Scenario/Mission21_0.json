@@ -141,7 +141,7 @@
             "y": 4.51
         }
     }, {
-        "model": "spawnArmedSoldiers",
+        "model": "spawnArmedSoldier",
         "position": {
             "x": 1502,
             "y": 789
@@ -151,7 +151,7 @@
             "y": -4.846
         }
     }, {
-        "model": "spawnArmedSoldiers",
+        "model": "spawnArmedSoldier",
         "position": {
             "x": -1454,
             "y": 1631

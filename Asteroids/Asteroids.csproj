@@ -179,6 +179,7 @@
     <TypeScriptCompile Include="Objects\CPUShip.class.ts" />
     <TypeScriptCompile Include="Objects\Crystal.class.ts" />
     <TypeScriptCompile Include="Objects\GameObject.class.ts" />
+    <TypeScriptCompile Include="Objects\Models.ts" />
     <TypeScriptCompile Include="Objects\ObjectFragment.class.ts" />
     <TypeScriptCompile Include="Objects\PlayerShip.class.ts" />
     <TypeScriptCompile Include="Objects\Rocket.class.ts" />
