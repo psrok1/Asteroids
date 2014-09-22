@@ -1,6 +1,6 @@
 ﻿{
-    "numberDescription": "",
-    "majorTitle": "",
+    "numberDescription": "SEVENTEENTH MISSION",
+    "majorTitle": "SABOTAGE",
     "minorTitle": "",
     "introData": [],
     "width": 4e3,
@@ -9,7 +9,7 @@
         "x": 0,
         "y": 0
     },
-    "target": "",
+    "target": "KillAll",
     "objects": [ {
         "model": "chipAsteroid",
         "position": {

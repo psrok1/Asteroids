@@ -30,7 +30,7 @@
                 Player.setCrystalAmount(i, Player.getCrystalAmount(i) + this.crystalsAmount[i]);
         }
 
-        checkTargetCondition(): boolean {
+        checkTargetCondition(): boolean {            
             if (this.unreachableTarget)
                 return false;
             switch (this.mission.target) {
@@ -48,9 +48,16 @@
                     }
                     break;
                 case "KillAll":
-                    for (var i = 0; i < this.CPUobjects.length; i++)
+                    for (var i = 0; i < this.CPUobjects.length; i++) {
+                        if (this.CPUobjects[i] instanceof SoldierShip &&
+                            (<SoldierShip>this.CPUobjects[i]).settings.spawn)
+                            continue;
+                        if (this.CPUobjects[i] instanceof SupportShip &&
+                            (<SupportShip>this.CPUobjects[i]).settings.soldier)
+                            continue;
                         if (!(this.CPUobjects[i] instanceof SupportShip))
                             return false;
+                    }
                     return true;
             }
             return false;

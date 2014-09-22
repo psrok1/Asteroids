@@ -130,11 +130,11 @@
                 return;
             if (player.engineFailure > 0)
                 return;
-            if (Keyboard.getState(Keyboard.Key.Left))
+            if (Keyboard.getState(Keyboard.Key.Left) || Keyboard.getState(Keyboard.Key.AKey))
                 player.rotate(-Math.PI / 36);
-            if (Keyboard.getState(Keyboard.Key.Right))
+            if (Keyboard.getState(Keyboard.Key.Right) || Keyboard.getState(Keyboard.Key.DKey))
                 player.rotate(Math.PI / 36);
-            if (Keyboard.getState(Keyboard.Key.Up)) {
+            if (Keyboard.getState(Keyboard.Key.Up) || Keyboard.getState(Keyboard.Key.WKey)) {
                 var accelerationForce: Vector = new PolarVector(player.getRotation(), 0.25);
                 player.applyForce(accelerationForce);
             }

@@ -1,6 +1,6 @@
 ﻿{
-    "numberDescription": "",
-    "majorTitle": "",
+    "numberDescription": "TWENTY-THIRD MISSION",
+    "majorTitle": "INDESTRUCTIBLE",
     "minorTitle": "",
     "introData": [],
     "width": 5e3,
@@ -9,7 +9,7 @@
         "x": 0,
         "y": 0
     },
-    "target": "",
+    "target": "KillAll",
     "objects": [ {
         "model": "crystalHarderAsteroid",
         "position": {

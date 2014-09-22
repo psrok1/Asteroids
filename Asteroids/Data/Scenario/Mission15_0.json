@@ -1,7 +1,7 @@
 ﻿{
-    "numberDescription": "",
-    "majorTitle": "",
-    "minorTitle": "",
+    "numberDescription": "FIFTEENTH MISSION",
+    "majorTitle": "SABOTAGE",
+    "minorTitle": "the more hidden the venom\nthe more dangerous it is",
     "introData": [],
     "width": 4e3,
     "height": 4e3,
@@ -9,7 +9,7 @@
         "x": 0,
         "y": 0
     },
-    "target": "",
+    "target": "KillAndProtect",
     "objects": [ {
         "model": "chipAsteroid",
         "position": {

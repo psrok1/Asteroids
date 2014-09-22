@@ -58,6 +58,9 @@
         Tab = 9,
         Escape = 27,
         MKey = 77,
-        CKey = 67
+        CKey = 67,
+        WKey = 87,
+        AKey = 65,
+        DKey = 68
     }
 }

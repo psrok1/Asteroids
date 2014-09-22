@@ -1,15 +1,26 @@
 ﻿{
-    "numberDescription": "",
-    "majorTitle": "",
+    "numberDescription": "EIGHTEENTH MISSION",
+    "majorTitle": "DESPERATION",
     "minorTitle": "",
-    "introData": [],
+    "introData": [
+        {
+            "focusOn": "soldier",
+            "description": "Your rivals can't collect crystals. It slowly makes them unable to fight",
+            "duration": 250
+        },
+        {
+            "focusOn": "soldier",
+            "description": "Now, soldiers have only small amount of laser ammunition. ",
+            "duration": 250
+        }
+    ],
     "width": 4e3,
     "height": 4e3,
     "playerPosition": {
         "x": 0,
         "y": 0
     },
-    "target": "",
+    "target": "KillAll",
     "objects": [ {
         "model": "chipHarderAsteroid",
         "position": {

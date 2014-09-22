@@ -1,7 +1,7 @@
 ﻿{
-    "numberDescription": "",
-    "majorTitle": "",
-    "minorTitle": "",
+    "numberDescription": "ELEVENTH MISSION",
+    "majorTitle": "WAR",
+    "minorTitle": "patience is not simply the ability to wait\nit's how we behave while we're waiting",
     "introData": [],
     "width": 3500,
     "height": 3500,
@@ -9,7 +9,7 @@
         "x": 0,
         "y": 0
     },
-    "target": "",
+    "target": "KillExceptInvulnerable",
     "objects": [ {
         "model": "harderAsteroid",
         "position": {

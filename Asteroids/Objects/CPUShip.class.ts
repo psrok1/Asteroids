@@ -304,10 +304,8 @@
             super.update();
         }
 
-        onBulletHit(bullet: Bullet): boolean {
-            if(bullet.source === this.world.player)
-                this.setAsAttacked();
-            return super.onBulletHit(bullet);
+        onPlayerAttack(force: number) {
+            this.setAsAttacked();
         }
     }
 

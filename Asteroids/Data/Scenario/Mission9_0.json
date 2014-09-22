@@ -1,7 +1,7 @@
 ﻿{
-    "numberDescription": "",
-    "majorTitle": "",
-    "minorTitle": "",
+    "numberDescription": "NINTH MISSION",
+    "majorTitle": "BODYGUARDS",
+    "minorTitle": "all things are difficult before they become easy",
     "introData": [],
     "width": 3e3,
     "height": 3e3,
@@ -9,7 +9,7 @@
         "x": 0,
         "y": 0
     },
-    "target": "",
+    "target": "KillAll",
     "objects": [ {
         "model": "harderAsteroid",
         "position": {

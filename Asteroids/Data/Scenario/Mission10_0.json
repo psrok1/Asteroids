@@ -1,15 +1,21 @@
 ﻿{
-    "numberDescription": "",
-    "majorTitle": "",
-    "minorTitle": "",
-    "introData": [],
+    "numberDescription": "TENTH MISSION",
+    "majorTitle": "WAR",
+    "minorTitle": "this game never becomes easy",
+    "introData": [ 
+        {
+            "focusOn": "soldier",
+            "description": "Beware: soldiers have new weapon, which makes you unable to move or shoot for a moment.",
+            "duration": 250
+        }
+    ],
     "width": 3500,
     "height": 3500,
     "playerPosition": {
         "x": 0,
         "y": 0
     },
-    "target": "",
+    "target": "KillAll",
     "objects": [ {
         "model": "harderAsteroid",
         "position": {
@@ -79,7 +85,8 @@
         "velocity": {
             "x": 2.844,
             "y": 4.113
-        }
+        },
+        "objectName": "thief"
     }, {
         "model": "soldier",
         "position": {
@@ -109,7 +116,8 @@
         "velocity": {
             "x": -2.7,
             "y": -4.208
-        }
+        },
+        "objectName": "soldier"
     }, {
         "model": "armedSoldier",
         "position": {
