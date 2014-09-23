@@ -70,7 +70,7 @@
         for (var i = 0; i < skillOtherRequirements.length; i++) {
             var skillID = getSkillIdByName(skillOtherRequirements[i].skill);
             if (skillID == -1)
-                throw new Error("Error: Skill with name '" + skillOtherRequirements[i].skill + "' doesn't exist");
+                throw new Error("Skill with name '" + skillOtherRequirements[i].skill + "' doesn't exist");
             if (playerData.skillsLevel[skillID] < skillOtherRequirements[i].requiredLevel)
                 return false;
         }

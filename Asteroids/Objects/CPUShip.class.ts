@@ -237,8 +237,9 @@
             position: Point,
             velocity: Vector,
             settings: ThiefShipSettings = { }) {
-            // type = 1, radius = 32, maxVelocity = 5
-            super(world, 1, position, velocity, 32, 5);
+            // Thief:type = 1, radius = 32, maxVelocity = 5
+            // Spy:  type = 3, radius = 32, maxVelocity = 5            
+            super(world, (settings.spy ? 3 : 1), position, velocity, 32, 5);
             this.settings = settings;
             if (settings.reward)
                 this.reward = settings.reward;
@@ -319,6 +320,7 @@
         followPlayerAfterAttack?: boolean;
         propagateAttack?: boolean;
         explosiveRockets?: boolean;
+        spy?: boolean;
         reward?: number;
     }
 
@@ -371,6 +373,7 @@
                     new PolarVector(randomFromRange(0, 2 * Math.PI), 5), this.settings);
             }
             super.onDestroy();
+            this.world.checkProtectionCondition();
         }
 
         update() {
@@ -405,6 +408,7 @@
         settings: SupportShipSettings;
         target: Ship = null;
         playerAttack: number = 30;
+        clockBomb: number = randomFromRange(5400, 7200); 
 
         constructor(
             world: World,
@@ -471,6 +475,8 @@
             } else
                 this.follow = false;
             super.update();
+            if (this.settings.clockBomb && this.clockBomb-- < 0)
+                this.world.destroyObject(this);
         }
     }
 
@@ -478,6 +484,7 @@
         playerAttacker?: boolean;
         soldier?: boolean;
         reward?: number;
+        clockBomb?: number;
     }
 
     export class InvulnerableShip extends CPUShip { // type 2

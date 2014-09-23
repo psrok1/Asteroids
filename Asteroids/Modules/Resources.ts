@@ -91,7 +91,7 @@
                         dataLoader(resources[e].name, resources[e].file);
                         break;
                     default:
-                        throw new Error("Error: Unknown resource type '"+resources[e].type+"'");
+                        throw new Error("Unknown resource type '"+resources[e].type+"'");
                 }
         });
         jsonLoader.load();

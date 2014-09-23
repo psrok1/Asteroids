@@ -217,18 +217,18 @@
         update() { }
         registerObject(name: string, obj: PIXI.DisplayObject) {
             if (this.layoutObjects[name])
-                throw new Error("Error: Subview object "+name+" is duplicated");
+                throw new Error("registerObject failed. Subview object "+name+" is duplicated");
             this.layoutObjects[name] = obj;
             this.parentView.addChild(obj);
         }
         getObject(name: string): PIXI.DisplayObject {
             if (!this.layoutObjects[name])
-                throw new Error("Error: Reference to subview object " + name + " which doesn't exist");
+                throw new Error("getObject failed. Reference to subview object " + name + " which doesn't exist");
             return this.layoutObjects[name];
         }
         setObject(name: string, obj: PIXI.DisplayObject, strict: boolean = true) {
             if (!this.layoutObjects[name])
-                throw new Error("Error: Reference to subview object " + name + " which doesn't exist");
+                throw new Error("setObject failed. Reference to subview object " + name + " which doesn't exist");
             this.parentView.removeChild(this.layoutObjects[name]);
             this.layoutObjects[name] = obj;
             this.parentView.addChild(obj);
@@ -236,7 +236,7 @@
         removeObject(name: string, strict: boolean = true) {
             if (!this.layoutObjects[name])
                 if (strict)
-                    throw new Error("Error: Reference to subview object " + name + " which doesn't exist");
+                    throw new Error("removeObject failed. Reference to subview object " + name + " which doesn't exist");
                 else
                     return;
             this.parentView.removeChild(this.layoutObjects[name]);

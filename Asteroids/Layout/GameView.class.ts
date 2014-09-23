@@ -72,7 +72,7 @@
 
         private registerEffect(name: string, effect: GameViewEffect) {
             if (this.effects[name])
-                throw new Error("Error: GameViewEffect "+name+" duplicated");
+                throw new Error("registerEffect failed. GameViewEffect "+name+" duplicated");
             this.effects[name] = effect;
         }
         private updateEffects() {

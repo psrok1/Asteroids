@@ -102,8 +102,15 @@
             reward: 150
         }),
         support: objectModel.bind(SupportShip, {}),
-        clockBombSupport: objectModel.bind(SupportShip, { /*TODO*/ }),
-        spy: objectModel.bind(SupportShip, { /*TODO*/ }),
+        clockBombSupport: objectModel.bind(SupportShip, {
+            clockBomb: true
+        }),
+        spy: objectModel.bind(ThiefShip, {
+            followPlayerAfterAttack: true,
+            attackPlayerAfterAttack: true,
+            spy: true,
+            reward: 100
+        }),
         pseudoSupport: objectModel.bind(SupportShip, {
             playerAttacker: true,
             reward: 180
@@ -123,7 +130,7 @@
 
     export function createObjectFromModel(model: string, world: World, position: Point, velocity: Vector): GameObject {
         if(!models[model])
-            throw new Error("Error: World.createObject failed. Unknown model of object '" + model + "'");
+            throw new Error("World.createObject failed. Unknown model of object '" + model + "'");
         return models[model](world, position, velocity);
     }
 } 

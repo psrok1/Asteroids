@@ -16,7 +16,7 @@
 
         constructor() {
             if (ViewManager.instance) {
-                throw new Error("Error: ViewManager is a singleton. Instantiation failed");
+                throw new Error("ViewManager is a singleton. Instantiation failed");
             }
             this.renderer = PIXI.autoDetectRenderer(this.defaultWidth, this.defaultHeight);
             this.width = this.defaultWidth;

@@ -60,7 +60,7 @@
             var posVector = pos.getRelative(objPosition).getPositionVector();
             var radius = findObjectRadius(missionObjects[i]);
             if (radius < 0)
-                throw new Error("Error: Model '"+missionObjects[i].model+"' isn't pushed to generator.");
+                throw new Error("Model '"+missionObjects[i].model+"' isn't pushed to generator.");
             if (rayIntersectsObject({ x: 0, y: 0 }, vel, objPosition, radius))
                 if (nearest === null || nearest > posVector.length)
                     nearest = posVector.length;

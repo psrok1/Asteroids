@@ -47,20 +47,43 @@
                         return true;
                     }
                     break;
-                case "KillAll":
-                    for (var i = 0; i < this.CPUobjects.length; i++) {
+                case "KillExceptInvulnerable":
+                case "KillAndProtect":
+                case "KillAll":                   
+                    for (var i = 0; i < this.CPUobjects.length; i++) {                        
                         if (this.CPUobjects[i] instanceof SoldierShip &&
                             (<SoldierShip>this.CPUobjects[i]).settings.spawn)
                             continue;
                         if (this.CPUobjects[i] instanceof SupportShip &&
                             (<SupportShip>this.CPUobjects[i]).settings.soldier)
                             continue;
+                        if (this.mission.target === "KillExceptInvulnerable" &&
+                            this.CPUobjects[i].invulnerable)
+                            continue;
+                        if ((this.CPUobjects[i] instanceof SupportShip) &&
+                            (<SupportShip>this.CPUobjects[i]).settings.playerAttacker)
+                            return false;
                         if (!(this.CPUobjects[i] instanceof SupportShip))
                             return false;
                     }
                     return true;
+                case "":
+                    return false;
+                default:
+                    throw new Error("Objects.World.checkTargetCondition failed. Unknown target: '"+this.mission.target+"'");
             }
             return false;
+        }
+
+        checkProtectionCondition() {
+            var isSupportPresent = function (): boolean {
+                for (var i = 0; i < this.CPUobjects.length; i++)
+                    if (this.CPUobjects[i] instanceof SupportShip)
+                        return true;
+                return false;
+            }
+            if (this.mission.target === "KillAndProtect" && isSupportPresent() === false)
+                this.view.onGameOver();
         }
 
         createObject(object: MissionObject): GameObject {

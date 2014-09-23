@@ -6,7 +6,7 @@
         hitsToGo: number;
         hitsToChip: number;
 
-        _abstract() { throw new Error("Error: Asteroid is an abstract class. "); }
+        _abstract() { throw new Error("Asteroid is an abstract class."); }
 
         constructor(world: World,
             type: number,

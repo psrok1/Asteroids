@@ -9,7 +9,7 @@
         "x": 0,
         "y": 0
     },
-    "target": "DestroySpy",
+    "target": "KillAndProtect",
     "objects": [ {
         "model": "chipAsteroid",
         "position": {
