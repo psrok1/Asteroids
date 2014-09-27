@@ -57,6 +57,12 @@
             avoidPlayerAfterAttack: true,
             reward: 30
         }),
+        baitThief: objectModel.bind(ThiefShip, {
+            followPlayerAfterAttack: true,
+            attackPlayerAfterAttack: true,
+            propagateAttack: true,
+            reward: 60
+        }),
         trapThief: objectModel.bind(ThiefShip, {
             avoidPlayerBeforeAttack: true,
             followPlayerAfterAttack: true,

@@ -59,16 +59,6 @@
     }, {
         "model": "thief",
         "position": {
-            "x": 655,
-            "y": 873
-        },
-        "velocity": {
-            "x": -1.04,
-            "y": 4.891
-        }
-    }, {
-        "model": "thief",
-        "position": {
             "x": -1053,
             "y": 517
         },

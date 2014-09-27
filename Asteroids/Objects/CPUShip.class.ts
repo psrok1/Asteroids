@@ -261,7 +261,7 @@
             var result: boolean = false;
             if (this.settings.avoidPlayer || (this.settings.avoidPlayerAfterAttack && this.attacked) ||
                 (this.settings.avoidPlayerBeforeAttack && !this.attacked))
-                if (this.escapeObject(this.world.player, 400)) {
+                if (this.escapeObject(this.world.player, 300)) {
                     this.targetObject = null;
                     result = true;
                 }
