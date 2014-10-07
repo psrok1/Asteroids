@@ -194,7 +194,7 @@
         }
 
         showFailureNotification(message: string) {
-            this.showNotification("ENGINE FAILURE");
+            this.showNotification(message);
             this.gameNotification.setStyle({
                 font: "32px Digital-7",
                 fill: "red"

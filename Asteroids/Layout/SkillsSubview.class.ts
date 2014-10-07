@@ -45,8 +45,8 @@
             skillSprite.mouseover = function (e: PIXI.InteractionData) {
                 var _this: SkillsSubview = this._this;
                 var position: PIXI.Point = e.getLocalPosition(_this.parentView).clone();
-                if (position.x > 500)
-                    position.x = 500;
+                if (position.x > 432)
+                    position.x = 432;
                 _this.skillInfobox.show(position, this.whichSkill);
             }.bind({
                     _this: this,
@@ -85,6 +85,7 @@
         private box: PIXI.Graphics;
         private showed: boolean = false;
         private currentSkill: number = 0;
+        private width: number = 200;
 
         private skillName: PIXI.Text;
         private currentLevel: PIXI.Text;
@@ -104,13 +105,13 @@
             this.parent = parent;
 
             this.box = new PIXI.Graphics();
-            this.redrawBox(180, 200);
+            this.redrawBox(this.width, 200);
 
             this.skillName = new PIXI.Text("SKILL NAME", {
                 font: "bold 12px monospace",
                 fill: "white"
             });
-            this.skillName.position = new PIXI.Point(90, 16);
+            this.skillName.position = new PIXI.Point(this.width/2, 16);
             this.skillName.anchor = new PIXI.Point(0.5, 0.5);
             this.box.addChild(this.skillName);
 
@@ -118,7 +119,7 @@
                 font: "bold 10px monospace",
                 fill: "yellow"
             });
-            this.currentLevel.position = new PIXI.Point(90, 32);
+            this.currentLevel.position = new PIXI.Point(this.width / 2, 32);
             this.currentLevel.anchor = new PIXI.Point(0.5, 0.5);
             this.box.addChild(this.currentLevel);
 
@@ -134,7 +135,7 @@
                 font: "bold 10px monospace",
                 fill: "lime"
             });
-            this.nextLevel.position = new PIXI.Point(90, 64);
+            this.nextLevel.position = new PIXI.Point(this.width / 2, 64);
             this.nextLevel.anchor = new PIXI.Point(0.5, 0.5);
             this.box.addChild(this.nextLevel);
 
@@ -142,7 +143,7 @@
                 font: "8px monospace",
                 fill: "lime"
             });
-            this.nextUpgradeInfo.position = new PIXI.Point(90, 76);
+            this.nextUpgradeInfo.position = new PIXI.Point(this.width / 2, 76);
             this.nextUpgradeInfo.anchor = new PIXI.Point(0.5, 0.5);
             this.box.addChild(this.nextUpgradeInfo);
 
@@ -158,7 +159,7 @@
                 font: "8px monospace",
                 fill: "white"
             });
-            this.requirementsLabel.position = new PIXI.Point(90, 106);
+            this.requirementsLabel.position = new PIXI.Point(this.width / 2, 106);
             this.requirementsLabel.anchor = new PIXI.Point(0.5, 0.5);
             this.box.addChild(this.requirementsLabel);
 
@@ -316,14 +317,14 @@
             if (currentSkillLevel == 3) {
                 this.nextLevel.setText("Maximum level reached");
                 this.hideUpgradeRequirements();
-                this.redrawBox(180, this.nextLevel.position.y + 16);
+                this.redrawBox(this.width, this.nextLevel.position.y + 16);
             } else {
                 this.showUpgradeRequirements();
                 this.nextLevel.setText("Level " + nextSkillLevel);
                 this.nextDescription.setText(nextSkillLevelInformation.description);
                 this.updateCrystalRequirements(nextSkillLevelInformation.cost);
                 var lastReq = this.updateSkillRequirements(nextSkillLevelInformation.skillRequirements);
-                this.redrawBox(180, this.crystalSprites[0].position.y + 16 * lastReq + 16);
+                this.redrawBox(this.width, this.crystalSprites[0].position.y + 16 * lastReq + 16);
                 if (Player.checkSkillRequirements(which)) {
                     this.nextUpgradeInfo.visible = true;
                     this.nextLevel.setStyle({

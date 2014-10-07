@@ -48,28 +48,26 @@
 
         onRocketHit(rocket: Rocket): boolean {
             this.doLightning();
-            if (!this.invulnerable) {
-                var attackForce = rocket.source.attackForce * 4;
-                if (rocket.source === this.world.player && Player.getSkillLevel(3) > 0) {
-                    // Rocket launcher
-                    attackForce *= 1 + (Player.getSkillValue(3) / 100);
-                    this.onPlayerAttack(attackForce);
-                }
-                var sideEffectsTime = 200;
-                // Endurance skill
-                if (this === this.world.player && Player.getSkillLevel(10) > 0)
-                    sideEffectsTime *= (1 - Player.getSkillValue(10) / 100);
-                if (this === this.world.player && Player.getSkillLevel(12) > 0)
-                    sideEffectsTime *= (1 - Player.getSkillValue(12) / 100);
-                if (rocket.headType == RocketHeadingType.EngineBreaker ||
-                    rocket.headType == RocketHeadingType.Flashbang)
-                    this.engineFailure = sideEffectsTime;
-                if (rocket.headType == RocketHeadingType.GunSilencer ||
-                    rocket.headType == RocketHeadingType.Flashbang)
-                    this.gunFailure = sideEffectsTime;
-                this.armor -= evaluateDamage(this, rocket, attackForce);
-                return true;
+            var attackForce = rocket.source.attackForce * 4;
+            if (rocket.source === this.world.player && Player.getSkillLevel(3) > 0) {
+                // Rocket launcher
+                attackForce *= 1 + (Player.getSkillValue(3) / 100);
+                this.onPlayerAttack(attackForce);
             }
+            var sideEffectsTime = 200;
+            // Endurance skill
+            if (this === this.world.player && Player.getSkillLevel(10) > 0)
+                sideEffectsTime *= (1 - Player.getSkillValue(10) / 100);
+            if (this === this.world.player && Player.getSkillLevel(12) > 0)
+                sideEffectsTime *= (1 - Player.getSkillValue(12) / 100);
+            if (rocket.headType == RocketHeadingType.EngineBreaker ||
+                rocket.headType == RocketHeadingType.Flashbang)
+                this.engineFailure = sideEffectsTime;
+            if (rocket.headType == RocketHeadingType.GunSilencer ||
+                rocket.headType == RocketHeadingType.Flashbang)
+                this.gunFailure = sideEffectsTime;
+            if(!this.invulnerable)
+                this.armor -= evaluateDamage(this, rocket, attackForce);
             return true;
         }
 
