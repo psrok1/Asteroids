@@ -143,6 +143,8 @@
                 amountArray = [3, 2, 1, 1, 1, 1];
                 break;
         }
+        if (type === -1)
+            return;
         playerData.rocketsStorage[which] = type;
         playerData.rocketsAmount[which] = amountArray[type];
         save();

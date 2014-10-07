@@ -46,6 +46,9 @@
             this.world.pause();
             for (var objectID in this.world.objects)
                 this.removeChild(this.world.objects[objectID].renderObject);
+            // reload rockets
+            for(var i = 0; i < 2; i++)
+                Player.loadRocketSlot(i, Player.getRocketSlot(i).type);
         }
 
         nextIntroStep() {

@@ -16,6 +16,7 @@ module App {
         export var FocusOnAttacker: boolean = false;
         export var DisableFramerateLimit: boolean = false;
         export var EnableBenchmark: boolean = false;
+        export var InvulnerablePlayer: boolean = false;
     }
 
     function getURLSettings() {
@@ -29,7 +30,8 @@ module App {
             App.DebugPresets.DisableFramerateLimit = true;
         if (vars.EnableBenchmark || vars.benchmark)
             App.DebugPresets.EnableBenchmark = true;
-
+        if (vars.EnableBenchmark || vars.invulnerable)
+            App.DebugPresets.InvulnerablePlayer = true;
         if (!App.DebugPresets.EnableBenchmark)
             document.getElementById("benchmark").style.display = "none";
     }

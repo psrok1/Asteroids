@@ -5,9 +5,13 @@
         distance: number;
 
         constructor(world: World, source: Ship) {
-            var resID: string = (source instanceof PlayerShip || source instanceof SupportShip
+            var resID: string;
+            if (source instanceof PlayerShip) {
+                resID = (Player.getSkillLevel(7) > 0 ? "bullet21" : "bullet20");
+            } else
+                resID = (source instanceof SupportShip
                 || (source instanceof ThiefShip && (<ThiefShip>source).settings.spy)
-                ? "bullet2" : "bullet1");
+                ? "bullet20" : "bullet10");
             var sprite: PIXI.Sprite = new PIXI.Sprite(Resources.getObject(resID));
             var position: TorusPoint = source.getPosition().clone();
             var velocity: Vector = new PolarVector(source.getRotation(), 20);

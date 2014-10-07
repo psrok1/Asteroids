@@ -76,7 +76,8 @@
             "path": "Sprites/Bullets",
             "fileGroup": "bullet",
             "extension": "png",
-            "groups": 2
+            "groups": 2,
+            "subgroups": 2
         },
         "skillStar": {
             "type": "texture",

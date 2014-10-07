@@ -10,12 +10,14 @@
             super(world, 3, position, new Vector(), 32, 5);
             this.armor = this.armorMaximum = Player.evaluatePlayerArmor();
             this.attackForce = Player.evaluatePlayerAttack();
+            this.invulnerable = App.DebugPresets.InvulnerablePlayer;
         }
 
         onShipHit(ship: Ship): boolean {
             this.world.view.doCriticalBlur();
             this.world.view.shakeCamera();
-            this.armor -= evaluateDamage(this, ship, this.armorMaximum);
+            if (!this.invulnerable)
+                this.armor -= evaluateDamage(this, ship, this.armorMaximum);
             return true;
         }
 
@@ -44,7 +46,8 @@
             this.world.view.shakeCamera();
             // Daredevil skill
             var scratchForce = this.armorMaximum * (1 - Player.getSkillValue(9) / 100);
-            this.armor -= evaluateDamage(this, asteroid, scratchForce);
+            if(!this.invulnerable)
+                this.armor -= evaluateDamage(this, asteroid, scratchForce);
             return true;
         }
 
