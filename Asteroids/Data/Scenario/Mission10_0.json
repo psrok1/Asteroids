@@ -78,7 +78,7 @@
             "y": -4.662
         }
     }, {
-        "model": "soldier",
+        "model": "strongerSoldier",
         "position": {
             "x": -1231,
             "y": 1604

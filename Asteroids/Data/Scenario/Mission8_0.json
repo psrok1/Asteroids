@@ -2,7 +2,13 @@
     "numberDescription": "EIGHTH MISSION",
     "majorTitle": "BODYGUARDS",
     "minorTitle": "the keystone of successful business is cooperation",
-    "introData": [],
+    "introData": [ 
+        {
+            "focusOn": "thief",
+            "description": "Thieves may want to help soldiers and attack you.",
+            "duration": 250
+        }
+    ],
     "width": 3e3,
     "height": 3e3,
     "playerPosition": {
@@ -66,7 +72,8 @@
         "velocity": {
             "x": 2.488,
             "y": -4.337
-        }
+        },
+        "objectName": "thief"
     }, {
         "model": "helperThief",
         "position": {
@@ -88,7 +95,7 @@
             "y": -4.496
         }
     }, {
-        "model": "soldier",
+        "model": "strongerSoldier",
         "position": {
             "x": 1356,
             "y": 930
@@ -98,7 +105,7 @@
             "y": -4.999
         }
     }, {
-        "model": "soldier",
+        "model": "strongerSoldier",
         "position": {
             "x": -748,
             "y": -1391

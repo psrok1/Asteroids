@@ -151,8 +151,11 @@
                 var object: GameObject = this.objects[index];
                 if (object === exclude)
                     continue;
-                if (rayIntersectsObject(rayStart, rayVector, object.getPosition(), object.getRadius())) {
-                    var posVector: Vector = object.getPosition().getRelative(rayStart).getPositionVector();
+                if (object instanceof Crystal || object instanceof Bullet || object instanceof Rocket)
+                    continue;
+                var relPosition = object.getPosition().getRelative(rayStart);
+                if (rayIntersectsObject(new Point(0,0), rayVector, relPosition, object.getRadius())) {
+                    var posVector: Vector = relPosition.getPositionVector();
                     if (nearestLength == null || nearestLength > posVector.length) {
                         nearestLength = posVector.length;
                         nearestObject = object;

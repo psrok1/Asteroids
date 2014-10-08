@@ -62,7 +62,7 @@
             followPlayerAfterAttack: true,
             attackPlayerAfterAttack: true,
             propagateAttack: true,
-            reward: 60
+            reward: 40
         }),
         trapThief: objectModel.bind(ThiefShip, {
             // higher armor
@@ -70,7 +70,7 @@
             followPlayerAfterAttack: true,
             attackPlayerAfterAttack: true,
             propagateAttack: true,
-            reward: 60
+            reward: 40
         }),
         helperThief: objectModel.bind(ThiefShip, {
             attackPlayer: true,
@@ -84,9 +84,16 @@
             reward: 75
         }),
         soldier: objectModel.bind(SoldierShip, {
-            reward: 80
+            reward: 70
+        }),
+        strongerSoldier: objectModel.bind(SoldierShip, {
+            attack: 17,
+            armor: 150,
+            reward: 75
         }),
         armedSoldier: objectModel.bind(SoldierShip, {
+            attack: 23,
+            armor: 240,
             EMPClassRockets: true,
             reward: 90
         }),
@@ -98,12 +105,16 @@
         heavySoldier: objectModel.bind(SoldierShip, {
             heavyBattleship: true,
             EMPClassRockets: true,
+            armor: 400,
+            attack: 30,
             reward: 150
         }),
         spawnArmedSoldier: objectModel.bind(SoldierShip, {
             spawn: true,
             EMPClassRockets: true,
-            reward: 45
+            attack: 20,
+            armor: 220,
+            reward: 20
         }),
         kamikazeSoldier: objectModel.bind(SoldierShip, {
             kamikazeMode: true,

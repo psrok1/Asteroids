@@ -98,7 +98,7 @@
             "y": -1.206
         }
     }, {
-        "model": "soldier",
+        "model": "strongerSoldier",
         "position": {
             "x": -1266,
             "y": 890
@@ -108,7 +108,7 @@
             "y": 3.216
         }
     }, {
-        "model": "soldier",
+        "model": "strongerSoldier",
         "position": {
             "x": -495,
             "y": 696
@@ -118,7 +118,7 @@
             "y": -3.949
         }
     }, {
-        "model": "soldier",
+        "model": "strongerSoldier",
         "position": {
             "x": 1252,
             "y": -533

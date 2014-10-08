@@ -93,16 +93,6 @@
     }, {
         "model": "spawnArmedSoldier",
         "position": {
-            "x": 1342,
-            "y": 984
-        },
-        "velocity": {
-            "x": 3.099,
-            "y": -3.924
-        }
-    }, {
-        "model": "spawnArmedSoldier",
-        "position": {
             "x": -546,
             "y": 1589
         },

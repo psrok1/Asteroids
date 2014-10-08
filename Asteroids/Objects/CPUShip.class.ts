@@ -139,7 +139,11 @@
             var ahead: Vector = this.getVelocity().clone();
             ahead.length = 512;
             if (rayIntersectsObject(ray, ahead, position, object.getRadius())) {
-                this.attack();
+                var nearest = this.world.nearestOnTheRay(this.getPosition(), ahead, this);
+                if (nearest === object)
+                    this.attack();
+                else if(nearest)
+                    this.escapeObject(nearest);
                 return true;
             } else
                 return false;
@@ -244,6 +248,10 @@
             this.world.increaseCounter("Thief");
             if (settings.reward)
                 this.reward = settings.reward;
+            if (settings.attack)
+                this.attackForce = settings.attack;
+            if (settings.armor)
+                this.armor = this.armorMaximum = settings.armor;
         }
 
         private propagateAttack() {
@@ -328,13 +336,15 @@
         explosiveRockets?: boolean;
         spy?: boolean;
         reward?: number;
+        attack?: number;
+        armor?: number;
     }
 
     export class SoldierShip extends CPUShip {
         world: World;
-        armor: number = 100;
-        armorMaximum: number = 100;
-        kamikazeClock: number = 20;
+        armor: number = 120;
+        armorMaximum: number = 120;
+        kamikazeClock: number = 15;
         attackForce: number = 15;
         settings: SoldierShipSettings;
 
@@ -344,16 +354,20 @@
             velocity: Vector,
             settings: SoldierShipSettings = {}) {
             // Standard: type = 7, radius = 32, maxVelocity = 5
-            // Heavy:    type = 6, radius = 32, maxVelocity = 3
+            // Heavy:    type = 6, radius = 32, maxVelocity = 4
             super(world,
                 (settings.heavyBattleship ? 6 : 7),
                 position, velocity, 32,
-                (settings.heavyBattleship ? 3 : 5));
+                (settings.heavyBattleship ? 4 : 5));
             if (settings.invulnerable)
                 this.invulnerable = true;
             this.settings = settings;
             if (settings.reward)
                 this.reward = settings.reward;
+            if (settings.attack)
+                this.attackForce = settings.attack;
+            if (settings.armor)
+                this.armor = this.armorMaximum = settings.armor;
             if (!settings.invulnerable && !settings.spawn)
                 this.world.increaseCounter("Soldier");
         }
@@ -409,6 +423,8 @@
         EMPClassRockets?: boolean;
         spawn?: boolean;
         reward?: number;
+        attack?: number;
+        armor?: number;
     }
 
     export class SupportShip extends CPUShip {
