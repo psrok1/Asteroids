@@ -13,7 +13,8 @@
             var sprite: PIXI.Sprite = new PIXI.Sprite(Resources.getObject(resID));
             var velocity: Vector = new PolarVector(randomFromRange(0, 2 * Math.PI), randomFromRange(2, 6));
             this.sizeClass = type % 10; 
-            this.type = Math.floor(type / 10)-1;
+            this.type = Math.floor(type / 10) - 1;
+            world.increaseCounter("Crystal");
             super(world, sprite, position, velocity, radius, 6);
         }
 
@@ -33,6 +34,11 @@
                 velLen = 0;
             velocity.length = velLen;
             super.update();
+        }
+
+        onDestroy() {
+            this.world.decreaseCounter("Crystal");
+            super.onDestroy();
         }
 
         onCollide(which: GameObject) {

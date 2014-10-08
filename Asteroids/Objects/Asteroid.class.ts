@@ -26,9 +26,11 @@
             this.settings = settings;
             this.hitsToGo = this.settings.hitsToGo;
             this.hitsToChip = this.settings.hitsToChip;
+            world.increaseCounter("Asteroid");
             super(world, sprite, position, velocity, 64 / (1 << generation), maxVelocity);
         }
         onDestroy() {
+            this.world.decreaseCounter("Asteroid");
             super.onDestroy();
         }
 

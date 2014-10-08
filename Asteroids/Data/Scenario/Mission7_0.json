@@ -2,11 +2,18 @@
     "numberDescription": "SEVENTH MISSION",
     "majorTitle": "BODYGUARDS",
     "minorTitle": "a friend to all is a friend to none",
-    "introData": [ 
+    "introData": [
         {
             "focusOn": "soldier",
             "description": "After unsuccessful try to destroy you, thieves hired soldiers to defend",
             "duration": 250
+        }
+    ],
+    "notifications": [ 
+        {
+            "condition": "SoldiersDestroyed",
+            "message": "All soldiers are defeated!\nNow destroy all thieves.",
+            "duration": 240
         }
     ],
     "width": 3e3,

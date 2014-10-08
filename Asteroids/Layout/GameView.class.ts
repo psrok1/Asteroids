@@ -12,6 +12,7 @@
         private introStep: number;
         private introClock: number;
         private failureMessage: boolean;
+        private midGameNotificationEnabled: boolean = false;
 
         private gameNotification: PIXI.Text;
         
@@ -52,7 +53,6 @@
         }
 
         nextIntroStep() {
-            this.introClock = 0;
             if (++this.introStep >= this.currentMission.introData.length) {
                 this.world.endIntroPhase();
                 this.camera.setFocus(App.DebugPresets.FocusOnAttacker ?
@@ -61,15 +61,39 @@
                 return;
             }
             var introData = this.currentMission.introData[this.introStep];
+            this.introClock = introData.duration;
             this.introNotification.setMessage(introData.description);
             this.camera.setFocus(this.world.getObjectByName(introData.focusOn));
         }
 
         private introUpdate() {
             if (this.world.isIntroPhase()) {
-                this.introClock++;
-                if (this.introClock >= this.currentMission.introData[this.introStep].duration)
+                this.introClock--;
+                if (this.introClock <= 0)
                     this.nextIntroStep();
+            }
+        }
+
+        midGameNotification(message: string, duration: number) {
+            if (!this.midGameNotificationEnabled)
+                this.introNotification = new IntroNotification(this, false);
+            this.introClock = duration;   
+            this.introNotification.setMessage(message);
+            this.midGameNotificationEnabled = true;
+        }
+
+        private midGameNotificationUpdate() {
+            if (this.midGameNotificationEnabled) {
+                this.introClock--;
+                if (this.introClock <= 0)
+                    this.midGameNotificationHide();
+            }
+        }
+
+        private midGameNotificationHide() {
+            if (this.midGameNotificationEnabled) {
+                this.midGameNotificationEnabled = false;
+                this.introNotification.hide();
             }
         }
 
@@ -78,10 +102,12 @@
                 throw new Error("registerEffect failed. GameViewEffect "+name+" duplicated");
             this.effects[name] = effect;
         }
+
         private updateEffects() {
             for (var effectName in this.effects)
                 this.effects[effectName].update();
         }
+
         private resetEffects() {
             for (var effectName in this.effects)
                 this.effects[effectName].reset();
@@ -127,6 +153,7 @@
             if (key == Keyboard.Key.MKey)
                 Keyboard.unlockKey(Keyboard.Key.MKey);
         }
+
         updatePlayerSteering() {
             var player = this.world.player;
             if (!this.world.isGameMode())
@@ -142,12 +169,14 @@
                 player.applyForce(accelerationForce);
             }
         }
+
         update() {
             this.updatePlayerSteering();
             this.world.update();
             this.camera.update();
             this.updateEffects();
             this.introUpdate();
+            this.midGameNotificationUpdate();
             if (this.failureMessage && this.world.player.gunFailure == 0 && this.world.player.engineFailure == 0)
                 this.hideFailureNotification();
         }
@@ -215,6 +244,7 @@
             super.pause();
             this.endMission();            
             this.hideFailureNotification();
+            this.midGameNotificationHide();
         }
     }
 
@@ -470,7 +500,7 @@
         private message: PIXI.Text;
         private skip: PIXI.Text;
 
-        constructor(parent: GameView) {
+        constructor(parent: GameView, skipEnabled: boolean = true) {
             this.parentView = parent;
             this.box = new PIXI.Graphics();
             this.box.beginFill(0x000020, 0.6);
@@ -491,14 +521,17 @@
             this.message.position = new PIXI.Point(268, 34);
             this.box.addChild(this.message);
 
-            this.skip = new PIXI.Text("SKIP >>>", {
-                font: "12px Digital-7",
-                fill: "white"
-            });
-            this.skip.interactive = true;
-            this.skip.mousedown = this.skip.touchstart = this.parentView.nextIntroStep.bind(this.parentView);
-            this.skip.position = new PIXI.Point(490, 60);
-            this.box.addChild(this.skip);
+            if (skipEnabled) {
+                this.skip = new PIXI.Text("SKIP >>>", {
+                    font: "12px Digital-7",
+                    fill: "white"
+                });
+                this.skip.interactive = true;
+                this.skip.mousedown = this.skip.touchstart = this.parentView.nextIntroStep.bind(this.parentView);
+                this.skip.position = new PIXI.Point(490, 60);
+                this.box.addChild(this.skip);
+            } else
+                this.skip = null;
             this.parentView.addChild(this.box);
         }
 
@@ -507,7 +540,8 @@
         }
 
         hide() {
-            this.skip.mousedown = this.skip.touchstart = null;
+            if(this.skip)
+                this.skip.mousedown = this.skip.touchstart = null;
             this.parentView.removeChild(this.box);
         }
     }

@@ -139,6 +139,7 @@ interface Mission {
     majorTitle: string;
     minorTitle: string;
     introData: MissionIntro[];
+    notifications: MissionNotification[];
     width: number;
     height: number;
     playerPosition: IPoint;
@@ -155,4 +156,10 @@ interface MissionObject {
     position: IPoint;
     velocity: IVector;
     objectName?: string;
+}
+interface MissionNotification {
+    condition: string;
+    message: string;
+    duration: number;
+    fired?: boolean;
 }

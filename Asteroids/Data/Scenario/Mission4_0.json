@@ -19,6 +19,13 @@
             "duration": 240
         }
     ],
+    "notifications": [ 
+        {
+            "condition": "OnlyOneThiefLeft",
+            "message": "Only one thief left.\nTry to find and destroy him!",
+            "duration": 240
+        }
+    ],
     "width": 3e3,
     "height": 3e3,
     "playerPosition": {

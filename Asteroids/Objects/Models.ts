@@ -54,7 +54,8 @@
             reward: 20
         }),
         frightenedThief: objectModel.bind(ThiefShip, {
-            avoidPlayerAfterAttack: true,
+            followPlayerAfterAttack: true,
+            attackPlayerAfterAttack: true,
             reward: 30
         }),
         baitThief: objectModel.bind(ThiefShip, {
@@ -64,6 +65,7 @@
             reward: 60
         }),
         trapThief: objectModel.bind(ThiefShip, {
+            // higher armor
             avoidPlayerBeforeAttack: true,
             followPlayerAfterAttack: true,
             attackPlayerAfterAttack: true,

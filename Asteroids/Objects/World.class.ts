@@ -4,6 +4,7 @@
         objects: GameObject[] = new Array();
         CPUobjects: CPUShip[] = new Array();
         crystalsAmount: number[] = [0, 0, 0, 0];
+        objectCounter: { [id: string]: number; } = {};
         width: number;
         height: number;
         player: PlayerShip;
@@ -30,60 +31,96 @@
                 Player.setCrystalAmount(i, Player.getCrystalAmount(i) + this.crystalsAmount[i]);
         }
 
-        checkTargetCondition(): boolean {            
+        /*** OBJECT COUNTERS ***/
+
+        increaseCounter(counterType: string) {
+            if (this.objectCounter[counterType])
+                this.objectCounter[counterType]++;
+            else
+                this.objectCounter[counterType] = 1;
+        }
+
+        decreaseCounter(counterType: string) {
+            if (this.objectCounter[counterType] && this.objectCounter[counterType] > 0)
+                this.objectCounter[counterType]--;
+            else
+                throw new Error("Object counter '" + counterType + "' is less than zero");
+        }
+
+        getCounter(counterType: string): number {
+            return (this.objectCounter[counterType] ? this.objectCounter[counterType] : 0);
+        }
+
+        checkCondition(condition: string): boolean {
+            switch (condition) {
+                case "CrystalsLeft":
+                    return this.getCounter("Crystal") > 0;
+                case "AsteroidsLeft":
+                    return this.getCounter("Asteroid") > 0;
+                case "ThievesLeft":
+                    return this.getCounter("Thief") > 0;
+                case "OnlyOneThiefLeft":
+                    return this.getCounter("Thief") == 1;
+                case "NoThievesLeft":
+                    return this.getCounter("Thief") == 0;
+                case "SoldiersLeft":
+                    return this.getCounter("Soldier") > 0;
+                case "PseudoSupportLeft":
+                    return this.getCounter("PseudoSupport") > 0;
+                case "SupportLeft":
+                    return this.getCounter("Support") > 0;
+                case "InvulnerableLeft":
+                    return this.getCounter("Invulnerable") > 0;
+                case "SoldiersDestroyed":
+                    return (
+                        !this.checkCondition("SoldiersLeft") &&
+                        this.checkCondition("ThievesLeft")
+                        );
+                case "OnlyCrystalsLeft":
+                    return (
+                        this.checkCondition("CrystalsLeft") &&
+                        !this.checkCondition("AsteroidsLeft") &&
+                        !this.checkCondition("ThievesLeft")
+                        );
+                case "CollectAll":
+                    return (
+                        !this.checkCondition("CrystalsLeft") &&
+                        !this.checkCondition("AsteroidsLeft") &&
+                        !this.checkCondition("ThievesLeft")
+                        );
+                case "KillAndProtect":
+                case "KillAll":
+                    return (
+                        !this.checkCondition("ThievesLeft") &&
+                        !this.checkCondition("SoldiersLeft") &&
+                        !this.checkCondition("PseudoSupportLeft") &&
+                        !this.checkCondition("InvulnerableLeft")
+                        );
+            }
+            throw new Error("Undefined condition '"+condition+"'");
+        }
+
+        checkTargetCondition(): boolean {
             if (this.unreachableTarget)
                 return false;
-            switch (this.mission.target) {
-                case "CollectAll":
-                    if (this.objects.length <= this.CPUobjects.length + 1) {
-                        for (var i = 0; i < this.objects.length; i++)
-                            if (!(this.objects[i] instanceof Ship))
-                                return false;
-                            else {
-                                var ship = <Ship>this.objects[i];
-                                if (!(ship instanceof PlayerShip || ship instanceof SupportShip || ship.invulnerable))
-                                    return false;
-                            }
-                        return true;
-                    }
-                    break;
-                case "KillExceptInvulnerable":
-                case "KillAndProtect":
-                case "KillAll":                   
-                    for (var i = 0; i < this.CPUobjects.length; i++) {                        
-                        if (this.CPUobjects[i] instanceof SoldierShip &&
-                            (<SoldierShip>this.CPUobjects[i]).settings.spawn)
-                            continue;
-                        if (this.CPUobjects[i] instanceof SupportShip &&
-                            (<SupportShip>this.CPUobjects[i]).settings.soldier)
-                            continue;
-                        if (this.mission.target === "KillExceptInvulnerable" &&
-                            this.CPUobjects[i].invulnerable)
-                            continue;
-                        if ((this.CPUobjects[i] instanceof SupportShip) &&
-                            (<SupportShip>this.CPUobjects[i]).settings.playerAttacker)
-                            return false;
-                        if (!(this.CPUobjects[i] instanceof SupportShip))
-                            return false;
-                    }
-                    return true;
-                case "":
-                    return false;
-                default:
-                    throw new Error("Objects.World.checkTargetCondition failed. Unknown target: '"+this.mission.target+"'");
-            }
-            return false;
+            return this.checkCondition(this.mission.target);
         }
 
         checkProtectionCondition() {
-            var isSupportPresent = function (): boolean {
-                for (var i = 0; i < this.CPUobjects.length; i++)
-                    if (this.CPUobjects[i] instanceof SupportShip)
-                        return true;
-                return false;
-            }
-            if (this.mission.target === "KillAndProtect" && isSupportPresent() === false)
+            if (this.mission.target === "KillAndProtect" && this.getCounter("Support") == 0) {
+                this.view.midGameNotification("Your support has been destroyed.", 200);
                 this.view.onGameOver();
+            }
+        }
+
+        checkNotificationCondition() {
+            for (var id in this.mission.notifications) {
+                var notification = this.mission.notifications[id];
+                if (!notification.fired && this.checkCondition(notification.condition)) {
+                    this.view.midGameNotification(notification.message, notification.duration);
+                    notification.fired = true;
+                }
+            }
         }
 
         createObject(object: MissionObject): GameObject {
@@ -165,10 +202,13 @@
                         second.onObjectNear(first);
                     }
                 }
-            if (this.isGameMode() && this.checkTargetCondition()) {
-                this.view.onGameOver(true);
-                this.getCrystalsFromWorld();
-                Player.nextMission();
+            if (this.isGameMode()) {
+                this.checkNotificationCondition();
+                if (this.checkTargetCondition()) {
+                    this.view.onGameOver(true);
+                    this.getCrystalsFromWorld();
+                    Player.nextMission();
+                }
             }
             Benchmark.setObjectCounter(this.objects.length);
         }
@@ -233,6 +273,7 @@
                 new SupportShip(this, this.bestSpawnPosition(),
                     new PolarVector(randomFromRange(0, 2 * Math.PI), 5), { soldier: true });
             }
+            this.view.midGameNotification("You were not careful enough.\nI'm sorry, but game is over.", 200);
         }
     }
 } 

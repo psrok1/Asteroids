@@ -2,13 +2,14 @@
     "numberDescription": "TENTH MISSION",
     "majorTitle": "WAR",
     "minorTitle": "this game never becomes easy",
-    "introData": [ 
+    "introData": [
         {
             "focusOn": "soldier",
             "description": "Beware: soldiers have new weapon, which makes you unable to move or shoot for a moment.",
             "duration": 250
         }
     ],
+    "notifications": [ ],
     "width": 3500,
     "height": 3500,
     "playerPosition": {

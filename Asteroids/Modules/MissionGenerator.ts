@@ -107,6 +107,7 @@
             majorTitle: "",
             minorTitle: "",
             introData: [],
+            notifications: [],
             width: worldDimension.width,
             height: worldDimension.height,
             playerPosition: { x: 0, y: 0 },

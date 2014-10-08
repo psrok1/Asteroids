@@ -5,8 +5,15 @@
     "introData": [
         {
             "focusOn": "thief",
-            "description": "After 4 completed missions in a row... you are quite infamous.\nThieves may suddenly want to hide or make a trap for you.",
+            "description": "After 4 completed missions in a row... you are quite infamous.\nThieves may want to destroy you, if you provoke them.",
             "duration": 300
+        }
+    ],
+    "notifications": [
+        {
+            "condition": "OnlyOneThiefLeft",
+            "message": "Only one thief left.\nTry to find and destroy him!",
+            "duration": 240
         }
     ],
     "width": 3e3,

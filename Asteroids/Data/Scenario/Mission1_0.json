@@ -19,6 +19,13 @@
             "duration": 240
         }
     ],
+    "notifications": [
+        {
+            "condition": "OnlyCrystalsLeft",
+            "message": "All asteroids has been destroyed.\nFind and collect all crystals.",
+            "duration": 240
+        }
+    ],
     "width": 2e3,
     "height": 2e3,
     "playerPosition": {

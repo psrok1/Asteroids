@@ -241,6 +241,7 @@
             // Spy:  type = 3, radius = 32, maxVelocity = 5            
             super(world, (settings.spy ? 3 : 1), position, velocity, 32, 5);
             this.settings = settings;
+            this.world.increaseCounter("Thief");
             if (settings.reward)
                 this.reward = settings.reward;
         }
@@ -272,6 +273,11 @@
             if (this.settings.attackPlayer || (this.settings.attackPlayerAfterAttack && this.attacked))
                 this.attackObject(this.world.player);
             return result;
+        }
+
+        onDestroy() {
+            this.world.decreaseCounter("Thief");
+            super.onDestroy();
         }
 
         attack() {
@@ -348,6 +354,8 @@
             this.settings = settings;
             if (settings.reward)
                 this.reward = settings.reward;
+            if (!settings.invulnerable && !settings.spawn)
+                this.world.increaseCounter("Soldier");
         }
 
         attack() {
@@ -372,6 +380,8 @@
                 new SoldierShip(this.world, this.world.bestSpawnPosition(),
                     new PolarVector(randomFromRange(0, 2 * Math.PI), 5), this.settings);
             }
+            if (!this.settings.invulnerable && !this.settings.spawn)
+                this.world.decreaseCounter("Soldier");
             super.onDestroy();
             this.world.checkProtectionCondition();
         }
@@ -428,6 +438,10 @@
             this.settings = settings;
             if (settings.reward)
                 this.reward = settings.reward;
+            if (settings.playerAttacker)
+                this.world.increaseCounter("PseudoSupport");
+            else if (!settings.soldier)
+                this.world.increaseCounter("Support");
         }
 
         onCrystalHit(crystal: Crystal) {
@@ -447,7 +461,10 @@
                 // spawn
                 new SupportShip(this.world, this.world.bestSpawnPosition(),
                     new PolarVector(randomFromRange(0, 2 * Math.PI), 5), this.settings);
-            }
+            } else if (this.settings.playerAttacker)
+                this.world.decreaseCounter("PseudoSupport");
+            else
+                this.world.decreaseCounter("Support");
             super.onDestroy();
         }
 
@@ -492,7 +509,7 @@
         armor: number = 240;
         armorMaximum: number = 240;
         attackForce: number = 40;
-        settings: InvulnerableShipSettings
+        settings: InvulnerableShipSettings;
         invulnerableTimer: number = 0;
 
         constructor(
@@ -504,6 +521,7 @@
             
             this.settings = settings;
             this.invulnerableTimer = 600;
+            world.increaseCounter("Invulnerable");
             if (settings.reward)
                 this.reward = settings.reward;
         }
@@ -511,6 +529,11 @@
         onCrystalHit(crystal: Crystal) {
             if (this.settings.crystalInvulnerable)
                 this.invulnerableTimer = 600;
+        }
+
+        onDestroy() {
+            this.world.decreaseCounter("Invulnerable");
+            super.onDestroy();
         }
 
         update() {

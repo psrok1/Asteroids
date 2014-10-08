@@ -9,6 +9,13 @@
         "x": 0,
         "y": 0
     },
+    "notifications": [ 
+        {
+            "condition": "SoldiersDestroyed",
+            "message": "All soldiers are defeated!\nNow destroy all thieves.",
+            "duration": 240
+        }
+    ],
     "target": "KillAll",
     "objects": [ {
         "model": "harderAsteroid",
