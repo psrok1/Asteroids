@@ -3,82 +3,153 @@
     "majorTitle": "EXPANSION",
     "minorTitle": "",
     "introData": [],
-    "width": 3500,
-    "height": 3500,
+    "width": 4e3,
+    "height": 4e3,
     "playerPosition": {
         "x": 0,
         "y": 0
     },
-    "target": "CollectAll",
+    "target": "KillAndProtect",
     "objects": [ {
         "model": "chipAsteroid",
         "position": {
-            "x": 698,
-            "y": 1047
+            "x": 1313,
+            "y": 1659
         },
         "velocity": {
-            "x": -0.896,
-            "y": -1.788
+            "x": -0.194,
+            "y": -1.991
+        }
+    }, {
+        "model": "chipAsteroid",
+        "position": {
+            "x": -1266,
+            "y": 1150
+        },
+        "velocity": {
+            "x": -1.973,
+            "y": 0.329
+        }
+    }, {
+        "model": "chipAsteroid",
+        "position": {
+            "x": 357,
+            "y": -1324
+        },
+        "velocity": {
+            "x": 1.517,
+            "y": 1.304
+        }
+    }, {
+        "model": "chipAsteroid",
+        "position": {
+            "x": 385,
+            "y": 1019
+        },
+        "velocity": {
+            "x": 0.719,
+            "y": -1.866
         }
     }, {
         "model": "crystalAsteroid",
         "position": {
-            "x": -935,
-            "y": -707
+            "x": 1665,
+            "y": 1213
         },
         "velocity": {
-            "x": 1.374,
-            "y": 1.453
+            "x": -1.003,
+            "y": -1.73
         }
     }, {
         "model": "crystalAsteroid",
         "position": {
-            "x": -316,
-            "y": -1041
+            "x": -1771,
+            "y": 1399
         },
         "velocity": {
-            "x": -1.153,
-            "y": 1.634
+            "x": -1.562,
+            "y": 1.249
         }
     }, {
         "model": "crystalAsteroid",
         "position": {
-            "x": 362,
-            "y": -1155
+            "x": -555,
+            "y": 1389
         },
         "velocity": {
-            "x": 0.115,
-            "y": -1.997
-        }
-    }, {
-        "model": "crystalAsteroid",
-        "position": {
-            "x": -814,
-            "y": -1514
-        },
-        "velocity": {
-            "x": -0.932,
-            "y": -1.77
+            "x": 0.554,
+            "y": -1.922
         }
     }, {
         "model": "support",
         "position": {
-            "x": 1223,
-            "y": 1015
+            "x": -921,
+            "y": 1814
         },
         "velocity": {
-            "x": 4.93,
-            "y": -0.834
+            "x": 2.717,
+            "y": -4.198
         }
     }, {
         "model": "support",
         "position": {
-            "x": 665,
-            "y": -579
+            "x": -851,
+            "y": -736
         },
         "velocity": {
-            "x": 4.954,
-            "y": -0.677
+            "x": 4.167,
+            "y": -2.764
+        }
+    }, {
+        "model": "support",
+        "position": {
+            "x": 1966,
+            "y": -1139
+        },
+        "velocity": {
+            "x": -1.551,
+            "y": 4.753
+        }
+    }, {
+        "model": "supportAttackerThief",
+        "position": {
+            "x": 1566,
+            "y": 745
+        },
+        "velocity": {
+            "x": -2.487,
+            "y": -4.338
+        },
+        "objectName": "attacker"
+    }, {
+        "model": "supportAttackerThief",
+        "position": {
+            "x": -598,
+            "y": -1668
+        },
+        "velocity": {
+            "x": -3.057,
+            "y": -3.956
+        }
+    }, {
+        "model": "supportAttackerThief",
+        "position": {
+            "x": 1959,
+            "y": -1835
+        },
+        "velocity": {
+            "x": -4.066,
+            "y": -2.91
+        }
+    }, {
+        "model": "supportAttackerThief",
+        "position": {
+            "x": -1203,
+            "y": 1583
+        },
+        "velocity": {
+            "x": 2.973,
+            "y": 4.02
         }
     } ]
 }

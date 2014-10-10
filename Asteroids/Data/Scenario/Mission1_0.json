@@ -10,7 +10,7 @@
         },
         {
             "focusOn": "asteroid",
-            "description": "Use arrow keys for steering and Space for shooting.\nIn further missions you can also use <C> and <M> keys for launching rockets.",
+            "description": "Use arrow keys (or <W>/<A>/<D>) for steering and Space for shooting.\nIn further missions you can also use <C> and <M> keys for launching rockets.",
             "duration": 350
         },
         {

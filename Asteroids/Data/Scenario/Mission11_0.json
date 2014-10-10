@@ -2,7 +2,23 @@
     "numberDescription": "ELEVENTH MISSION",
     "majorTitle": "WAR",
     "minorTitle": "patience is not simply the ability to wait\nit's how we behave while we're waiting",
-    "introData": [],
+    "introData": [
+        {
+            "focusOn": "heavy",
+            "description": "Two heavy battleships supports soldiers.\nTheir force field is turned on, so you cannot deal any damage",
+            "duration": 250
+        },
+        {
+            "focusOn": "heavy",
+            "description": "Battleships are also unable to attack you, so you should ignore them for a while.",
+            "duration": 200
+        },
+        {
+            "focusOn": "soldier",
+            "description": "Just focus on these four soldiers and destroy them as fast as possible.",
+            "duration": 220
+        }
+    ],
     "width": 3500,
     "height": 3500,
     "playerPosition": {
@@ -99,7 +115,8 @@
         "velocity": {
             "x": -4.79,
             "y": 1.434
-        }
+        },
+        "objectName": "soldier"
     }, {
         "model": "invulnerableHeavySoldier",
         "position": {
@@ -109,7 +126,8 @@
         "velocity": {
             "x": -1.322,
             "y": -2.693
-        }
+        },
+        "objectName": "heavy"
     }, {
         "model": "invulnerableHeavySoldier",
         "position": {

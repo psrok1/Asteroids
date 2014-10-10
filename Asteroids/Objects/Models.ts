@@ -83,6 +83,12 @@
             explosiveRockets: true,
             reward: 75
         }),
+        supportAttackerThief: objectModel.bind(ThiefShip, {
+            attackSupport: true,
+            armor: 200,
+            attack: 15,
+            reward: 60
+        }),
         soldier: objectModel.bind(SoldierShip, {
             reward: 70
         }),
@@ -113,8 +119,8 @@
             spawn: true,
             EMPClassRockets: true,
             attack: 20,
-            armor: 220,
-            reward: 20
+            armor: 260,
+            reward: 0
         }),
         kamikazeSoldier: objectModel.bind(SoldierShip, {
             kamikazeMode: true,

@@ -1,8 +1,24 @@
 ﻿{
     "numberDescription": "TWELFTH MISSION",
     "majorTitle": "WAR",
-    "minorTitle": "",
-    "introData": [],
+    "minorTitle": "and all stopped halfway",
+    "introData": [
+        {
+            "focusOn": "heavy",
+            "description": "Battleships are going to fight. To complete the mission: just destroy two machines.",
+            "duration": 250
+        },
+        {
+            "focusOn": "soldier",
+            "description": "Try to avoid soldiers. There is no point fighting with them: if you kill one, they'll send another soldier.",
+            "duration": 300
+        },
+        {
+            "focusOn": "soldier",
+            "description": "Good luck",
+            "duration": 150
+        }
+    ],
     "width": 3500,
     "height": 3500,
     "playerPosition": {
@@ -69,7 +85,8 @@
         "velocity": {
             "x": 2.066,
             "y": -2.175
-        }
+        },
+        "objectName": "heavy"
     }, {
         "model": "heavySoldier",
         "position": {
@@ -89,7 +106,8 @@
         "velocity": {
             "x": -4.613,
             "y": 1.93
-        }
+        },
+        "objectName": "soldier"
     }, {
         "model": "spawnArmedSoldier",
         "position": {

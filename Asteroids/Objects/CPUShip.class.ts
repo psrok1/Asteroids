@@ -173,7 +173,7 @@
             return false;
         }
 
-        findNearestTarget(type: any, distanceLimit: number = Infinity): GameObject {
+        findNearestTarget(type: any, distanceLimit: number = Infinity, ignoreReserved: boolean = false): GameObject {
             var nearestTarget: GameObject = null;
             var nearestTargetScore: number = null;
             var ANGLE_WEIGHT = 200;
@@ -184,7 +184,8 @@
                 var distanceVector = object.getPosition().getRelative(this.getPosition()).getPositionVector();
                 if (distanceLimit !== Infinity && distanceVector.length > distanceLimit)
                     continue;
-                if (this.isTargetReserved(object))
+                // reserved by another ship?
+                if (!ignoreReserved && this.isTargetReserved(object))
                     continue;
                 var targetAngleScore =
                     Math.abs(this.getVelocity().angleToVector(distanceVector)) / Math.PI * ANGLE_WEIGHT;
@@ -299,6 +300,8 @@
         update() {
             if (!this.avoidObstacle() && this.world.isGameMode()) {
                 if (!this.playerInteraction()) {
+                    if (this.targetObject === null && this.settings.attackSupport)
+                        this.targetObject = this.findNearestTarget(SupportShip, Infinity, true);
                     if (this.targetObject === null)
                         this.targetObject = this.findNearestTarget(Crystal);
                     if (this.targetObject === null)
@@ -330,6 +333,7 @@
         avoidPlayerBeforeAttack?: boolean;
         attackPlayer?: boolean;
         attackPlayerAfterAttack?: boolean;
+        attackSupport?: boolean;
         followPlayer?: boolean;
         followPlayerAfterAttack?: boolean;
         propagateAttack?: boolean;
@@ -397,12 +401,23 @@
             if (!this.settings.invulnerable && !this.settings.spawn)
                 this.world.decreaseCounter("Soldier");
             super.onDestroy();
-            this.world.checkProtectionCondition();
         }
 
         update() {
             if (!this.avoidObstacle() && this.world.isGameMode()) {
-                if (!this.settings.ignorePlayer) {
+                if (this.settings.attackSupport) {
+                    if (this.targetObject === null)
+                        this.targetObject = this.findNearestTarget(SupportShip);
+                    if (this.targetObject !== null) {
+                        if (this.targetObject.destroyed)
+                            this.targetObject = null;
+                        else {
+                            this.followObject(this.targetObject);
+                            this.attackObject(this.targetObject);
+                        }
+                    }
+                }
+                else if (!this.settings.ignorePlayer) {
                     if (this.settings.kamikazeMode && this.kamikazeClock <= 0) {
                         this.collectObject(this.world.player);
                     } else
@@ -420,6 +435,7 @@
         ignorePlayer?: boolean;
         invulnerable?: boolean;
         kamikazeMode?: boolean;
+        attackSupport?: boolean; // implies ignorePlayer
         EMPClassRockets?: boolean;
         spawn?: boolean;
         reward?: number;
@@ -454,6 +470,10 @@
             this.settings = settings;
             if (settings.reward)
                 this.reward = settings.reward;
+            if (settings.attack)
+                this.attackForce = settings.attack;
+            if (settings.armor)
+                this.armor = this.armorMaximum = settings.armor;
             if (settings.playerAttacker)
                 this.world.increaseCounter("PseudoSupport");
             else if (!settings.soldier)
@@ -479,8 +499,11 @@
                     new PolarVector(randomFromRange(0, 2 * Math.PI), 5), this.settings);
             } else if (this.settings.playerAttacker)
                 this.world.decreaseCounter("PseudoSupport");
-            else
+            else {
+                this.world.view.midGameNotification("Your support ship has been destroyed.", 200);
                 this.world.decreaseCounter("Support");
+                this.world.checkProtectionCondition();
+            }
             super.onDestroy();
         }
 
@@ -518,6 +541,8 @@
         soldier?: boolean;
         reward?: number;
         clockBomb?: number;
+        attack?: number;
+        armor?: number;
     }
 
     export class InvulnerableShip extends CPUShip { // type 2

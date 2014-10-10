@@ -108,7 +108,7 @@
 
         checkProtectionCondition() {
             if (this.mission.target === "KillAndProtect" && this.getCounter("Support") == 0) {
-                this.view.midGameNotification("Your support has been destroyed.", 200);
+                this.view.midGameNotification("Your support has been defeated.", 200);
                 this.view.onGameOver();
             }
         }
