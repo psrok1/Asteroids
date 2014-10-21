@@ -33,6 +33,7 @@
     <meta charset="utf-8" />
     <title>Asteroids - Paweł Srokosz (C) 2014</title>
     <link rel="stylesheet" href="app.css" type="text/css" />
+	<meta property="og:image" content="Sprites/thumb.png" />
 <!-- WARNING: Section handled by script! -->
 	<#= require("pixi/pixi.dev.js",revisionNumber) #>
 	<#= require("app.js", revisionNumber) #>

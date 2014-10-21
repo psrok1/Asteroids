@@ -158,6 +158,7 @@
     <Content Include="Sprites\Skills\skill8_1.png" />
     <Content Include="Sprites\Skills\skill9_0.png" />
     <Content Include="Sprites\Skills\skill9_1.png" />
+    <Content Include="Sprites\thumb.png" />
     <Content Include="web.config">
       <SubType>Designer</SubType>
     </Content>
