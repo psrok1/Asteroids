@@ -16,13 +16,8 @@
     ],
     "notifications": [
         {
-            "condition": "OnlyCrystalsLeft",
-            "message": "All asteroids has been destroyed.\nFind and collect all crystals.",
-            "duration": 240
-        },
-        {
             "condition": "NoThievesLeft",
-            "message": "All thieves has been destroyed.\nNow, crush some asteroids and collect crystals!",
+            "message": "All thieves have been destroyed.\nNow, crush some asteroids and collect crystals!",
             "duration": 240
         }
     ],
@@ -32,7 +27,7 @@
         "x": 0,
         "y": 0
     },
-    "target": "CollectAll",
+    "target": "DestroyAll",
     "objects": [ {
         "model": "asteroid",
         "position": {

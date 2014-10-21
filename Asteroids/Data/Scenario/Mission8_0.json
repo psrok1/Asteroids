@@ -5,7 +5,7 @@
     "introData": [ 
         {
             "focusOn": "thief",
-            "description": "Thieves may want to help soldiers and attack you.",
+            "description": "Thieves want to help soldiers and attack you.",
             "duration": 250
         }
     ],

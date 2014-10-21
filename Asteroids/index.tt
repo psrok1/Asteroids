@@ -53,7 +53,7 @@
 	</div>
     <div id="debug">
 		<!-- REVISION = <#= revisionNumber #> -->
-        Asteroids [20140704] v1.0.0.<#= revisionNumber #> DEBUG<br/>
+        Asteroids [20140704] v1.0.0.<#= revisionNumber #> RELEASE<br/>
         Paweł Srokosz &copy; 2014
 		<!-- Font preloading -->
 		<div style="font-family: Digital-7; display:inline; color:white">.</div>

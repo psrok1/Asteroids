@@ -17,6 +17,7 @@
 
         constructor(view: Layout.GameView, mission: Mission) {
             this.mission = mission;
+            this.resetNotifications();
             this.width  = this.mission.width;
             this.height = this.mission.height;
             this.view = view;
@@ -53,6 +54,10 @@
 
         checkCondition(condition: string): boolean {
             switch (condition) {
+                case "":
+                    return false;
+                case "AlwaysTrue":
+                    return true;
                 case "CrystalsLeft":
                     return this.getCounter("Crystal") > 0;
                 case "AsteroidsLeft":
@@ -82,9 +87,8 @@
                         !this.checkCondition("AsteroidsLeft") &&
                         !this.checkCondition("ThievesLeft")
                         );
-                case "CollectAll":
+                case "DestroyAll":
                     return (
-                        !this.checkCondition("CrystalsLeft") &&
                         !this.checkCondition("AsteroidsLeft") &&
                         !this.checkCondition("ThievesLeft")
                         );
@@ -110,6 +114,15 @@
             if (this.mission.target === "KillAndProtect" && this.getCounter("Support") == 0) {
                 this.view.midGameNotification("Your support has been defeated.", 200);
                 this.view.onGameOver();
+            }
+        }
+
+        private resetNotifications() {
+            if (!this.mission.notifications)
+                return;
+            for (var id in this.mission.notifications) {
+                var notification = this.mission.notifications[id];
+                notification.fired = false;
             }
         }
 

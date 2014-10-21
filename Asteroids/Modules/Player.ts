@@ -1,6 +1,6 @@
 ﻿module Player {
     var playerData: Data;
-    var dataID: string = "asteroidsPlayer";
+    var dataID: string = "asteroidsPlayer_v10";
 
     export function existInStorage(): boolean {
         return localStorage.getItem(dataID) !== null;

@@ -1,74 +1,155 @@
 ﻿{
-    "numberDescription": "DOMINATION",
-    "majorTitle": "VICTORY",
+    "numberDescription": "THIRTEENTH MISSION",
+    "majorTitle": "EXPANSION",
     "minorTitle": "",
     "introData": [],
-    "width": 5e3,
-    "height": 5e3,
+    "width": 4e3,
+    "height": 4e3,
     "playerPosition": {
         "x": 0,
         "y": 0
     },
-    "target": "",
+    "target": "KillAndProtect",
     "objects": [ {
-        "model": "support",
+        "model": "chipAsteroid",
         "position": {
-            "x": -2440,
-            "y": -871
+            "x": 1313,
+            "y": 1659
         },
         "velocity": {
-            "x": 5,
-            "y": 0.034
+            "x": -0.194,
+            "y": -1.991
+        }
+    }, {
+        "model": "chipAsteroid",
+        "position": {
+            "x": -1266,
+            "y": 1150
+        },
+        "velocity": {
+            "x": -1.973,
+            "y": 0.329
+        }
+    }, {
+        "model": "chipAsteroid",
+        "position": {
+            "x": 357,
+            "y": -1324
+        },
+        "velocity": {
+            "x": 1.517,
+            "y": 1.304
+        }
+    }, {
+        "model": "chipAsteroid",
+        "position": {
+            "x": 385,
+            "y": 1019
+        },
+        "velocity": {
+            "x": 0.719,
+            "y": -1.866
+        }
+    }, {
+        "model": "crystalAsteroid",
+        "position": {
+            "x": 1665,
+            "y": 1213
+        },
+        "velocity": {
+            "x": -1.003,
+            "y": -1.73
+        }
+    }, {
+        "model": "crystalAsteroid",
+        "position": {
+            "x": -1771,
+            "y": 1399
+        },
+        "velocity": {
+            "x": -1.562,
+            "y": 1.249
+        }
+    }, {
+        "model": "crystalAsteroid",
+        "position": {
+            "x": -555,
+            "y": 1389
+        },
+        "velocity": {
+            "x": 0.554,
+            "y": -1.922
         }
     }, {
         "model": "support",
         "position": {
-            "x": -1968,
-            "y": 476
+            "x": -921,
+            "y": 1814
         },
         "velocity": {
-            "x": -4.612,
-            "y": 1.931
+            "x": 2.717,
+            "y": -4.198
         }
     }, {
         "model": "support",
         "position": {
-            "x": -1559,
-            "y": 1682
+            "x": -851,
+            "y": -736
         },
         "velocity": {
-            "x": -1.638,
-            "y": -4.724
+            "x": 4.167,
+            "y": -2.764
         }
     }, {
         "model": "support",
         "position": {
-            "x": 794,
-            "y": 1173
+            "x": 1966,
+            "y": -1139
         },
         "velocity": {
-            "x": -0.78,
-            "y": 4.939
+            "x": -1.551,
+            "y": 4.753
         }
     }, {
-        "model": "support",
+        "model": "supportAttackerThief",
         "position": {
-            "x": 1228,
-            "y": -1158
+            "x": 1566,
+            "y": 745
         },
         "velocity": {
-            "x": 2.393,
-            "y": -4.39
+            "x": -2.487,
+            "y": -4.338
+        },
+        "objectName": "attacker"
+    }, {
+        "model": "supportAttackerThief",
+        "position": {
+            "x": -598,
+            "y": -1668
+        },
+        "velocity": {
+            "x": -3.057,
+            "y": -3.956
         }
     }, {
-        "model": "support",
+        "model": "supportAttackerThief",
         "position": {
-            "x": -1029,
-            "y": 2319
+            "x": 1959,
+            "y": -1835
         },
         "velocity": {
-            "x": 5,
-            "y": -0.018
+            "x": -4.066,
+            "y": -2.91
+        }
+    }, {
+        "model": "supportAttackerThief",
+        "position": {
+            "x": -1203,
+            "y": 1583
+        },
+        "velocity": {
+            "x": 2.973,
+            "y": 4.02
         }
     } ]
 }

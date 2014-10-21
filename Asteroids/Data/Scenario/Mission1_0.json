@@ -15,24 +15,18 @@
         },
         {
             "focusOn": "asteroid",
-            "description": "Try to find, destroy and collect all of them.\nGood luck!",
+            "description": "Try to find and destroy all of them.\nGood luck!",
             "duration": 240
         }
     ],
-    "notifications": [
-        {
-            "condition": "OnlyCrystalsLeft",
-            "message": "All asteroids has been destroyed.\nFind and collect all crystals.",
-            "duration": 240
-        }
-    ],
+    "notifications": [ ],
     "width": 2e3,
     "height": 2e3,
     "playerPosition": {
         "x": 0,
         "y": -400
     },
-    "target": "CollectAll",
+    "target": "DestroyAll",
     "objects": [ {
         "model": "basicAsteroid",
         "position": {

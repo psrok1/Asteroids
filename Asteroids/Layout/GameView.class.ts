@@ -77,13 +77,15 @@
         midGameNotification(message: string, duration: number) {
             if (!this.midGameNotificationEnabled)
                 this.introNotification = new IntroNotification(this, false);
-            this.introClock = duration;   
+            this.introClock = (duration<0 ? Infinity : duration);   
             this.introNotification.setMessage(message);
             this.midGameNotificationEnabled = true;
         }
 
         private midGameNotificationUpdate() {
             if (this.midGameNotificationEnabled) {
+                if (this.introClock === Infinity)
+                    return;
                 this.introClock--;
                 if (this.introClock <= 0)
                     this.midGameNotificationHide();

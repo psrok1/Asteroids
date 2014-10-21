@@ -5,24 +5,18 @@
     "introData": [
         {
             "focusOn": "asteroid",
-            "description": "Some of asteroids may be a little harder to crush.",
+            "description": "Some of asteroids might be a little harder to crush.",
             "duration": 160
         }
     ],
-    "notifications": [
-        {
-            "condition": "OnlyCrystalsLeft",
-            "message": "All asteroids has been destroyed.\nFind and collect all crystals.",
-            "duration": 240
-        }
-    ],
+    "notifications": [ ],
     "width": 2e3,
     "height": 2e3,
     "playerPosition": {
         "x": 0,
         "y": 0
     },
-    "target": "CollectAll",
+    "target": "DestroyAll",
     "objects": [
         {
             "model": "basicAsteroid",
